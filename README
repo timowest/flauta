@@ -1,3 +1,7 @@
 Waveguide based flute model
 
-
+* flauta.dsp - main module, includes resonator
+* excitation.dsp - excitation
+* constants.dsp - constant declarations
+* params.dsp - variable parameters
+* utils.dsp - utilities
