@@ -12,4 +12,4 @@ svg:
 	faust -svg -sn faust/flauta.dsp
 
 clean:
-	rm -rf $(BUNDLE) *.so *.out *.wav gen/* faust/*-svg alsa-gtk 
+	rm -rf *.so *.out *.wav gen/* faust/*-svg alsa-gtk 
