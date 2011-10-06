@@ -75,7 +75,7 @@ with {
     //delay_length = floor((max_flue_labium_d / (min_convection_f * min_jet_vel)) / SR);
     delay_length = jet_msamples_per_sec/ Uj_steady;
 
-    jet_msamples_per_sec = flue_labium_d / (convection_f * SR);
+    jet_msamples_per_sec = flue_labium_distance / (convection_f * SR);
 
     jetDelay = fdelay(MAX_DELAY_LENGTH, delay_length);
 };
@@ -87,12 +87,12 @@ with {
     jet_filter_peak1 = receptivity_peak_filter(
         0.0645*(uj_steady/jet_height)*(2/(2*PI*SR)),
         0.3275*(uj_steady/jet_height)*(2/(2*PI*SR)),
-        pow(10,2.6337*(flue_labium_distance/jet_height)/20));
+        pow(10,2.6337*(flue_labium_distance / jet_height)/20));
 
     jet_filter_peak2 = receptivity_peak_filter(
         0.3278*(uj_steady/jet_height)*(2/(2*PI*SR)),
         1.2006*(uj_steady/jet_height)*(2/(2*PI*SR)),
-        pow(10,5.0719*(flue_labium_distance/jet_height)/20));
+        pow(10,5.0719*(flue_labium_distance / jet_height)/20));
 
     jet_filter_shelf = receptivity_shelf_filter(
         0.2954*(uj_steady/jet_height)*(2/(2*PI*SR)),
