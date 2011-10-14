@@ -1,0 +1,6 @@
+*.so
+*.out
+*.wav
+/gen
+/faust/*-svg
+alsa-gtk
