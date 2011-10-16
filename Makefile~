@@ -13,6 +13,7 @@ gen/%.cpp: tests/%-test.dsp
 
 tests: $(TESTS)
 	g++ -Wall -fpermissive tests/tests.cpp $(FAUST) -lm -lsndfile -Igen/ -Isrc/ -o tests.out
+	./tests.out
 
 svg:
 	rm -rf faust/*-svg    
