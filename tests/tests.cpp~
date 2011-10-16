@@ -61,6 +61,7 @@ int main() {
     // bernoulli
     ifstream bernoulli_in("tests/bernoulli-in.txt");
     bernoulli_in.getline(line, 2048);
+    //cout << line << endl;
     convert_line_to_floats(line, in1);
     bernoulli_in.getline(line, 2048);
     convert_line_to_floats(line, in2);
