@@ -6,7 +6,6 @@
 #include <cmath>
 #include <stdio.h>
 #include <math.h>
-#include <cstdlib>
 
 //#include "dsp.h"
 #include "bernoulli.cpp"
