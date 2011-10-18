@@ -1,5 +1,3 @@
-#include <vector>
-
 #include <sndfile.hh>
 #include <iostream>
 #include <fstream>
@@ -14,9 +12,10 @@
 #include "receptivity.cpp"
 #include "turbulence.cpp"
 #include "vortex.cpp"
-using namespace std;
 
-#define SIZE 128
+#define SIZE 256
+
+using namespace std;
 
 void convert_line_to_floats(char* line, float* floats) {
     char *pch = strtok(line, " ");
@@ -39,6 +38,8 @@ void convert_floats_to_out(float* floats, ofstream* out) {
     (*out) << "\n\n";
 }
 
+void test(dsp* processor, const char* in_file, const char* out_file, int in_count, int out_count);
+
 int main() {
     bernoulli b;   // 2 in, 3 out
     jetdrive jd;   // 2 in, 2 out
@@ -46,12 +47,15 @@ int main() {
     turbulence t;  // 1 in, 1 out
     vortex v;      // 1 in, 1 out
     
-    b.init(44100);
-    jd.init(44100);
-    r.init(44100);
-    t.init(44100);
-    v.init(44100);
+    test(&b,  "tests/bernoulli-in.txt",   "gen/bernoulli_out.txt",   2, 3);
+    test(&jd, "tests/jetdrive-in.txt",    "gen/jetdrive_out.txt",    2, 3);
+    test(&r,  "tests/receptivity-in.txt", "gen/receptivity_out.txt", 3, 1);
+    test(&t,  "tests/turbulence-in.txt",  "gen/turbulence_out.txt",  1, 1);
+    test(&v,  "tests/vortex-in.txt",      "gen/vortex_out.txt",      1, 1);
 
+}
+
+void test(dsp* processor, const char* in_file, const char* out_file, int in_count, int out_count) {
     float in1[SIZE],  in2[SIZE],  in3[SIZE];
     float out1[SIZE], out2[SIZE], out3[SIZE];
     float *inputs[] = {in1, in2, in3};
@@ -59,36 +63,28 @@ int main() {
 
     char line[2048];
 
-    // bernoulli
-    ifstream bernoulli_in("tests/bernoulli-in.txt");
-    bernoulli_in.getline(line, 2048);
+    // fill input buffers from file
+    ifstream in(in_file);
+    in.getline(line, 2048);
     convert_line_to_floats(line, in1);
-    bernoulli_in.getline(line, 2048);
-    convert_line_to_floats(line, in2);
-    bernoulli_in.close();
-    b.compute(SIZE, inputs, outputs);
+    if (in_count > 1) {
+        in.getline(line, 2048);
+        convert_line_to_floats(line, in2);
+    }
+    if (in_count > 2) {
+        in.getline(line, 2048);
+        convert_line_to_floats(line, in3);
+    }
+    in.close();
 
-    ofstream bernoulli_out("gen/bernoulli_out.txt");
-    convert_floats_to_out(out1, &bernoulli_out);
-    convert_floats_to_out(out2, &bernoulli_out);
-    convert_floats_to_out(out3, &bernoulli_out);
-    bernoulli_out.close();
+    // process
+    processor->init(44100);
+    processor->compute(SIZE, inputs, outputs);
 
-    /*for (int i = 0; i < SIZE; i++) {
-        cout << in1[i] << " = " << out1[i] << ", " << out2[i] << ", " << out3[i] << endl;
-    }*/
-
-    // jetdrive
-    // TODO
-
-    // receptivity
-    // TODO
-
-    // turbulence
-    // TODO
-
-    // vortex
-    // TODO
+    // serialize outputs to file
+    ofstream out(out_file);
+    convert_floats_to_out(out1, &out);
+    if (out_count > 1) convert_floats_to_out(out2, &out);
+    if (out_count > 2) convert_floats_to_out(out3, &out);
+    out.close();
 }
-
-
