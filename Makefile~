@@ -2,7 +2,7 @@ ALSA_GTK = `pkg-config --cflags --libs alsa` `pkg-config --cflags --libs gtk+-2.
 GTKMM = `pkg-config --cflags --libs gtkmm-2.4`
 PAQ = `pkg-config --cflags --libs paq`
 FAUST = -I/usr/local/lib/faust/
-TESTS = gen/blow.cpp gen/bernoulli.cpp gen/jetdrive.cpp gen/receptivity.cpp gen/turbulence.cpp gen/vortex.cpp
+TESTS = gen/bernoulli.cpp gen/jetdrive.cpp gen/receptivity.cpp gen/turbulence.cpp gen/vortex.cpp
 
 standalone: 
 	faust -fun -vec -a alsa-gtk.cpp faust/flauta.dsp > gen/flauta.cpp
