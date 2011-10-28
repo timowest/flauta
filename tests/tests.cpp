@@ -8,6 +8,7 @@
 #include <cstdio>
 
 //#include "dsp.h"
+#include "blow.cpp"
 #include "bernoulli.cpp"
 #include "jetdrive.cpp"
 #include "receptivity.cpp"
@@ -47,6 +48,7 @@ void read(const char* in_file, float* floats) {
 void test(dsp* processor, float** inputs, const char* out_file, int index, int out_count);
 
 int main() {
+    blow bl;       // 1 in, 3 out
     bernoulli b;   // 2 in, 3 out
     jetdrive jd;   // 2 in, 2 out
     receptivity r; // 3 in, 1 out
@@ -66,8 +68,9 @@ int main() {
     // 1 input
     for (int i = 0; i < 5; i++) {
         float* in1[] = {all_inputs[i]};
-        test(&t, in1, "gen/turbulence_out_%d.txt", (i+1), 1);
-        test(&v, in1, "gen/vortex_out_%d.txt",     (i+1), 1);
+        test(&bl,in1, "gen/blow_out_%d.txt",       i+1, 3); 
+        test(&t, in1, "gen/turbulence_out_%d.txt", i+1, 1);
+        test(&v, in1, "gen/vortex_out_%d.txt",     i+1, 1);
         // 2 inputs
         for (int j = 0; j < 5; j++) {
             float* in2[] = {all_inputs[i], all_inputs[j]};  
