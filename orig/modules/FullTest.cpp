@@ -126,7 +126,7 @@ void Turbulence_test(float* in1, const char* format, int index, int out_count) {
 } 
 
 // Receptivity Test Function
-void Receptivity_test(float* in1, float* in2, const char* format, int index, int out_count) {
+void Receptivity_test(float* in1, float* in2, float* in3, const char* format, int index, int out_count) {
 
      // Receptivity Definitions
      Receptivity *My_Receptivity;
@@ -134,6 +134,7 @@ void Receptivity_test(float* in1, float* in2, const char* format, int index, int
      StkFloat ETA;
    
      for (int i = 0; i < SIZE; i++) {
+         My_Receptivity->set_Coefficients(in3[i]);
          ETA = My_Receptivity->tick(in1[i],in2[i]);    
          out1[i] = ETA;
          //out2[i] = ;
@@ -165,8 +166,8 @@ void JetDrive_test(float* in1, float* in2, const char* format, int index, int ou
      for (int i = 0; i < SIZE; i++) {        
          JET_DRIVE = My_JetDrive->tick(in1[i],in2[i],TEMP);    
          HYD_FEED = My_JetDrive->get_Hyd_feedback();      
-         out1[i] = JET_DRIVE;
-         out2[i] = HYD_FEED;
+         out1[i] = HYD_FEED;
+         out2[i] = JET_DRIVE;
          //out3[i] = ;
      }
      //save_outputs();
@@ -229,23 +230,25 @@ int main() {
     for (int r = 0; r < 5; r++) {
         //float* inputs1[] = {all_inputs[r]};
 
-        Vortex_test(all_inputs[r], "../../gen/_vortex_out_%d.txt" ,(r+1), 1); 
+        Vortex_test(all_inputs[r], "../../gen/vortex_out_%d_orig.txt" ,(r+1), 1); 
 
-        Turbulence_test(all_inputs[r], "../../gen/_turbulence_out_%d.txt", (r+1), 1);
+        Turbulence_test(all_inputs[r], "../../gen/turbulence_out_%d_orig.txt", (r+1), 1);
     
         
         for (int j = 0; j < 5; j++) {
             //float* inputs2[] = {all_inputs[r], all_inputs[j]};  
             
-            Bernoulli_test(all_inputs[r], all_inputs[j], "../../gen/_bernoulli_out_%d.txt", (r+1)*10+j+1, 3);
+            Bernoulli_test(all_inputs[r], all_inputs[j], "../../gen/bernoulli_out_%d_orig.txt", (r+1)*10+j+1, 3);
 
-            JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/_jetdrive_out_%d.txt", (r+1)*10+j+1, 2);
+            JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt", (r+1)*10+j+1, 2);
      
-            Receptivity_test(all_inputs[r], all_inputs[j], "../../gen/_receptivity_out_%d.txt", (r+1)*10+j+1, 1);
+
 
             for (int k = 0; k < 5; k++) {
                 //float* inputs3[] = {all_inputs[r], all_inputs[j], all_inputs[k]};
 
+                // FIXME
+                //Receptivity_test(all_inputs[r], all_inputs[j], all_inputs[k], "../../gen/receptivity_out_%d_orig.txt", (r+1)*100+(j+1)*10+k+1, 1);
                
             } 
         } 
