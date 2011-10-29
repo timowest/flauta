@@ -3,8 +3,8 @@ import csv
 def read(filename):
     f = csv.reader(open(filename, 'rU')) 
     values = []
-    for num in f:
-        temp = [float(x) for x in num]
+    for row in f:
+        temp = [float(cell) for cell in row]
         values.append(temp)
     return values
     f.close()
@@ -16,13 +16,13 @@ def error(orig_values, faust_values):
 
 def main():
     modules = ['bernoulli', 'jetdrive','turbulence','vortex']
-    one_out_nums = [str(n) for n in [1,2,3,4,5]]
-    two_out_nums = [str(n) for n in [11,12,13,14,15,21,22,23,24,25,31,32,33,34,35,41,42,43,44,45,51,52,53,54,55]]
+    one_out = [str(n) for n in [1,2,3,4,5]]
+    two_out = [str(n) for n in [11,12,13,14,15,21,22,23,24,25,31,32,33,34,35,41,42,43,44,45,51,52,53,54,55]]
     for i in range(0, len(modules)):
         if i == 0 or i == 1:
-            nums = two_out_nums
+            nums = two_out
         elif i == 2 or i == 3:
-            nums = one_out_nums
+            nums = one_out
         ##TODO include reseptivity    
         for num in nums:
             ## receptivity has different output count            
