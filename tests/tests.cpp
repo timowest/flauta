@@ -10,6 +10,7 @@
 //#include "dsp.h"
 #include "blow.cpp"
 #include "bernoulli.cpp"
+#include "excitation.cpp"
 #include "jetdrive.cpp"
 #include "receptivity.cpp"
 #include "turbulence.cpp"
@@ -50,6 +51,7 @@ void test(dsp* processor, float** inputs, const char* out_file, int index, int o
 int main() {
     blow bl;       // 1 in, 3 out
     bernoulli b;   // 2 in, 3 out
+    excitation e;  // 2 in, 2 out
     jetdrive jd;   // 2 in, 2 out
     receptivity r; // 3 in, 1 out
     turbulence t;  // 1 in, 1 out
@@ -76,6 +78,7 @@ int main() {
             float* in2[] = {all_inputs[i], all_inputs[j]};  
             test(&b, in2, "gen/bernoulli_out_%d.txt", (i+1)*10+j+1, 3);
             test(&jd, in2, "gen/jetdrive_out_%d.txt", (i+1)*10+j+1, 2);
+            test(&e, in2, "gen/excitation_out_%d.txt",(i+1)*10+j+1, 2); 
             // 3 inputs
             for (int k = 0; k < 5; k++) {
                 float* in3[] = {all_inputs[i], all_inputs[j], all_inputs[k]};

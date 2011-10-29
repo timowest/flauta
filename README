@@ -1,5 +1,7 @@
 Waveguide based flute model
 
+Copyright (C) 2011 Timo Westkämper, Carlos Barría, Daniel Tirado and Patricio de la Cuadra
+
 * flauta.dsp - main module, includes resonator
 * excitation.dsp - excitation
 * constants.dsp - constant declarations
