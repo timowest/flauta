@@ -229,19 +229,19 @@ int main() {
     for (int r = 0; r < 5; r++) {
         //float* inputs1[] = {all_inputs[r]};
 
-        Vortex_test(all_inputs[r], "../../gen/_vortex_out_%d.txt" ,(r+1), 1); 
+        Vortex_test(all_inputs[r], "gen/_vortex_out_%d.txt" ,(r+1), 1); 
 
-        Turbulence_test(all_inputs[r], "../../gen/_turbulence_out_%d.txt", (r+1), 1);
+        Turbulence_test(all_inputs[r], "gen/_turbulence_out_%d.txt", (r+1), 1);
     
         
         for (int j = 0; j < 5; j++) {
             //float* inputs2[] = {all_inputs[r], all_inputs[j]};  
             
-            Bernoulli_test(all_inputs[r], all_inputs[j], "../../gen/_bernoulli_out_%d.txt", (r+1)*10+j+1, 3);
+            Bernoulli_test(all_inputs[r], all_inputs[j], "gen/_bernoulli_out_%d.txt", (r+1)*10+j+1, 3);
 
-            JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/_jetdrive_out_%d.txt", (r+1)*10+j+1, 2);
+            JetDrive_test(all_inputs[r], all_inputs[j], "gen/_jetdrive_out_%d.txt", (r+1)*10+j+1, 2);
      
-            Receptivity_test(all_inputs[r], all_inputs[j], "../../gen/_receptivity_out_%d.txt", (r+1)*10+j+1, 1);
+            Receptivity_test(all_inputs[r], all_inputs[j], "gen/_receptivity_out_%d.txt", (r+1)*10+j+1, 1);
 
             for (int k = 0; k < 5; k++) {
                 //float* inputs3[] = {all_inputs[r], all_inputs[j], all_inputs[k]};
