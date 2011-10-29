@@ -157,21 +157,23 @@ with {
 jetDrive(jet_displacement, uj) = Qin <: hyd_constant * _, (jet_drive_cst * (_ - _'))
 with {
 
-    Qin = uj * b * jet_width * (1.0 + 4 * tanh(tanh_argument));
-
+    Qin = uj * b * jet_width * (1.0 + tanh(tanh_argument));
+    
     tanh_argument = (jet_displacement - labium_position) / b;
 
-    hyd_constant = 2 * ratio * (kappa * kappa - 1) / (M_PI * (kappa * kappa + 1))
+    hyd_constant = 2.0 * ratio * (kappa * kappa - 1.0) / (M_PI * (kappa * kappa + 1))
     with {
         ratio = delta_d / flue_labium_distance;
-        beta = ratio + sqrt(ratio * (2 + ratio)); 
-        kappa = 1 + beta;
+        beta = ratio + sqrt(ratio * (2.0 + ratio)); 
+        kappa = 1.0 + beta;
     };
 
-    jet_drive_cst = (-1 * AIR_DENSITY * delta_d) / (jet_width * flue_labium_distance * SAMPLING_PERIOD);
+    jet_drive_cst = (-1 * AIR_DENSITY * delta_d) / (jet_width * flue_labium_distance * sampling_period);
 
     b = b_constant * jet_height;
     b_constant = 0.5; //.39 proportion between b and jet_height
+   
+    sampling_period = 1.0 / SR;
 
 };
 

@@ -8,6 +8,7 @@
 #include "Stk.h"
 #include "Tanh_table.h"
 //#include "MyFilter.h"
+#include <math.h>
 
 class JetDrive
 {
