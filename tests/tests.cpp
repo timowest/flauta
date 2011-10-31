@@ -1,4 +1,3 @@
-#include <sndfile.hh>
 #include <iostream>
 #include <fstream>
 #include <cmath>
