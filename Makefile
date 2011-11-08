@@ -11,10 +11,6 @@ standalone:
 gen/%.cpp: tests/%-test.dsp
 	faust -a minimal.cpp -cn $(patsubst gen/%.cpp,%,$@) $< > $@
 
-tests: $(TESTS)
-	g++ -Wall -fpermissive tests/tests.cpp $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
-	./tests.out
-
 compare: $(TESTS)
 	g++ -Wall -fpermissive tests/tests.cpp $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
 	./tests.out
