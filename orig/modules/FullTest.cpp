@@ -84,7 +84,7 @@ void Vortex_test(float* in1, const char* format, int index, int out_count) {
     }
     
     //save_outputs();
-    char outfile[32];
+    char outfile[40];
     sprintf(outfile, format, index);
 
     cout << outfile << endl;
@@ -113,7 +113,7 @@ void Turbulence_test(float* in1, const char* format, int index, int out_count) {
     }
  
     //save_outputs();
-    char outfile[32];
+    char outfile[40];
     sprintf(outfile, format, index);
 
     cout << outfile << endl;
@@ -141,7 +141,7 @@ void Receptivity_test(float* in1, float* in2, float* in3, const char* format, in
          //out3[i] = ;
     }
     //save_outputs();
-     char outfile[32];
+     char outfile[40];
      sprintf(outfile, format, index);
 
      cout << outfile << endl;
@@ -171,7 +171,7 @@ void JetDrive_test(float* in1, float* in2, const char* format, int index, int ou
          //out3[i] = ;
      }
      //save_outputs();
-     char outfile[32];
+     char outfile[40];
      sprintf(outfile, format, index);
 
      cout << outfile << endl;
@@ -201,7 +201,7 @@ void Bernoulli_test(float* in1, float* in2, const char* format, int index, int o
      }
     
      //save_outputs();
-     char outfile[32];
+     char outfile[40];
      sprintf(outfile, format, index);
 
      cout << outfile << endl;
