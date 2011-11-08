@@ -233,16 +233,13 @@ int main() {
         Vortex_test(all_inputs[r], "../../gen/vortex_out_%d_orig.txt" ,(r+1), 1); 
 
         Turbulence_test(all_inputs[r], "../../gen/turbulence_out_%d_orig.txt", (r+1), 1);
-    
-        
+            
         for (int j = 0; j < 5; j++) {
             //float* inputs2[] = {all_inputs[r], all_inputs[j]};  
             
             Bernoulli_test(all_inputs[r], all_inputs[j], "../../gen/bernoulli_out_%d_orig.txt", (r+1)*10+j+1, 3);
 
             JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt", (r+1)*10+j+1, 2);
-     
-
 
             for (int k = 0; k < 5; k++) {
                 //float* inputs3[] = {all_inputs[r], all_inputs[j], all_inputs[k]};
@@ -256,6 +253,7 @@ int main() {
 
 return 0;
 }
+
 
 
 
