@@ -126,15 +126,16 @@ void Turbulence_test(float* in1, const char* format, int index, int out_count) {
 } 
 
 // Receptivity Test Function
-void Receptivity_test(float* in1, float* in2, float* in3, const char* format, int index, int out_count) {
+void Receptivity_test(float* in1, float* in2,float in3, const char* format, int index, int out_count) {
 
      // Receptivity Definitions
      Receptivity *My_Receptivity;
      My_Receptivity = new Receptivity();
      StkFloat ETA;
+ 
    
      for (int i = 0; i < SIZE; i++) {
-         My_Receptivity->set_Coefficients(in3[i]);
+         My_Receptivity->set_Coefficients(in3);
          ETA = My_Receptivity->tick(in1[i],in2[i]);    
          out1[i] = ETA;
          //out2[i] = ;
@@ -239,13 +240,15 @@ int main() {
             
             Bernoulli_test(all_inputs[r], all_inputs[j], "../../gen/bernoulli_out_%d_orig.txt", (r+1)*10+j+1, 3);
 
+	    //Receptivity_test(all_inputs[r], all_inputs[j], "../../gen/receptivity_out_%d_orig.txt", (r+1)*10+j+1, 1);
+
             JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt", (r+1)*10+j+1, 2);
 
             for (int k = 0; k < 5; k++) {
                 //float* inputs3[] = {all_inputs[r], all_inputs[j], all_inputs[k]};
 
                 // FIXME
-                //Receptivity_test(all_inputs[r], all_inputs[j], all_inputs[k], "../../gen/receptivity_out_%d_orig.txt", (r+1)*100+(j+1)*10+k+1, 1);
+                Receptivity_test(all_inputs[r], all_inputs[j], 0.5, "../../gen/receptivity_out_%d_orig.txt", (r+1)*100+(j+1)*10+k+1, 1);
                
             } 
         } 
