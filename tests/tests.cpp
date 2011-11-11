@@ -75,14 +75,10 @@ int main() {
         // 2 inputs
         for (int j = 0; j < 5; j++) {
             float* in2[] = {all_inputs[i], all_inputs[j]};  
-            test(&b, in2, "gen/bernoulli_out_%d.txt", (i+1)*10+j+1, 3);
-            test(&jd, in2, "gen/jetdrive_out_%d.txt", (i+1)*10+j+1, 2);
-            test(&e, in2, "gen/excitation_out_%d.txt",(i+1)*10+j+1, 2); 
-            // 3 inputs
-            for (int k = 0; k < 5; k++) {
-                float* in3[] = {all_inputs[i], all_inputs[j], all_inputs[k]};
-                test(&r, in3, "gen/receptivity_out_%d.txt", (i+1)*100+(j+1)*10+k+1, 1);
-            } 
+            test(&b,  in2, "gen/bernoulli_out_%d.txt",   (i+1)*10+j+1, 3);
+            test(&jd, in2, "gen/jetdrive_out_%d.txt",    (i+1)*10+j+1, 2);
+            test(&e,  in2, "gen/excitation_out_%d.txt",  (i+1)*10+j+1, 2); 
+            test(&r,  in2, "gen/receptivity_out_%d.txt", (i+1)*10+j+1, 1);
         } 
     }
 }

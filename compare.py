@@ -15,12 +15,11 @@ def error(orig_values, faust_values):
     return average_out    
 
 def main():
-    # TODO : receptivity
-    modules = ['bernoulli', 'jetdrive', 'turbulence', 'vortex']
+    modules = ['bernoulli', 'jetdrive', 'receptivity','turbulence', 'vortex']
     one_out = [str(n) for n in [1,2,3,4,5]]
     two_out = [str(n) for n in [11,12,13,14,15,21,22,23,24,25,31,32,33,34,35,41,42,43,44,45,51,52,53,54,55]]
     for module in modules:
-        if module == 'bernoulli' or module == 'jetdrive':
+        if module == 'bernoulli' or module == 'jetdrive' or module == 'receptivity':
             nums = two_out
         else:
             nums = one_out

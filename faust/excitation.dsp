@@ -102,7 +102,7 @@ with {
     //jet_filter_one_over_omega = _; 
 };
 
-receptivity_shelf_filter(transition_freq, low_gain, high_gain) = tf2(b0,b1,b2,a1,a2)
+receptivity_shelf_filter(transition_freq, low_gain, high_gain) = iir((b0,b1),(a1))
 with {
     transition_gain = sqrt(low_gain * high_gain);
     pi_transition_frequency = PI * transition_freq;
@@ -114,14 +114,12 @@ with {
     beta1 = 0.5 * ((low_gain - high_gain) + (low_gain + high_gain) * alpha);
     rho = sin(pi_transition_frequency/2 - PI/4) / sin(pi_transition_frequency/2 + PI/4);
 
-    b0 = 1;
-    b1 = (beta0 + rho*beta1) / (1 + rho*alpha);
-    b2 = (beta1 + rho*beta0) / (1 + rho*alpha);
-    a1 = 1;
-    a2 = (rho + alpha) / (1 + rho*alpha);     
+    b0 = (beta0 + rho*beta1) / (1 + rho*alpha);
+    b1 = (beta1 + rho*beta0) / (1 + rho*alpha);
+    a1 = (rho + alpha) / (1 + rho*alpha);     
 };
 
-receptivity_peak_filter(low_freq, high_freq, gain) = tf3(b0,b1,b2,b3,a1,a2,a3)
+receptivity_peak_filter(low_freq, high_freq, gain) = iir((b0,b1,b2),(a1,a2))
 with {
     c1 = cos(PI * low_freq);
     c2 = cos(PI * high_freq);
@@ -133,13 +131,11 @@ with {
     Q = sqrt(gain * sc*sc * (c1+c2) / (4 * (2*cc - c1 - c2)));
     k = (2*Q - sc) / (2*Q + sc);
 
-    b0 = 1;
-    b1 = ((1+k) + gain*(1-k))/2;
-    b2 = -cc*(1+k);
-    b3 = ((1+k) - gain*(1-k))/2;
-    a1 = 1;
-    a2 = -cc*(1+k);
-    a3 = k;
+    b0 = ((1+k) + gain*(1-k))/2;
+    b1 = -cc*(1+k);
+    b2 = ((1+k) - gain*(1-k))/2;
+    a1 = -cc*(1+k);
+    a2 = k;
     
 };
 
