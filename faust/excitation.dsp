@@ -80,13 +80,13 @@ with {
     jetDelay = fdelay(MAX_DELAY_LENGTH, delay_length);
 };
 
-receptivity(qin, vac, uj_steady) = excitation : jet_filter_peak1 : jet_filter_peak2 : jet_filter_shelf
+receptivity(qin, vac, uj_steady) = excitation : jet_filter_peak1 : jet_filter_peak2 : jet_filter_shelf : *(1e-4)
 with {
     excitation = TWO_div_M_PI * vac + qin;
 
     jet_filter_peak1 = receptivity_peak_filter(
         0.0645*(uj_steady/jet_height)*(2/(2*PI*SR)),
-        0.3275*(uj_steady/jet_height)*(2/(2*PI*SR)),
+        0.3278*(uj_steady/jet_height)*(2/(2*PI*SR)),
         pow(10,2.6337*(flue_labium_distance / jet_height)/20));
 
     jet_filter_peak2 = receptivity_peak_filter(
@@ -106,13 +106,13 @@ receptivity_shelf_filter(transition_freq, low_gain, high_gain) = iir((b0,b1),(a1
 with {
     transition_gain = sqrt(low_gain * high_gain);
     pi_transition_frequency = PI * transition_freq;
-    zero = (high_gain * high_gain) + (low_gain * low_gain) - 2* (transition_gain * transition_gain);
-    alpha = select2(zero != 0, 0, lambda - (lambda / abs(lambda)) * sqrt((lambda * lambda) - 1));
+    zero = (high_gain * high_gain) + (low_gain * low_gain) - 2.0* (transition_gain * transition_gain);
+    alpha = select2(zero != 0, 0, lambda - (lambda / fabs(lambda)) * sqrt((lambda * lambda) - 1.0));
     lambda = ((high_gain * high_gain) - (low_gain * low_gain)) / zero;
 
     beta0 = 0.5 * ((low_gain + high_gain) + (low_gain - high_gain) * alpha);
     beta1 = 0.5 * ((low_gain - high_gain) + (low_gain + high_gain) * alpha);
-    rho = sin(pi_transition_frequency/2 - PI/4) / sin(pi_transition_frequency/2 + PI/4);
+    rho = sin(pi_transition_frequency/2.0 - PI/4.0) / sin(pi_transition_frequency/2.0 + PI/4.0);
 
     b0 = (beta0 + rho*beta1) / (1 + rho*alpha);
     b1 = (beta1 + rho*beta0) / (1 + rho*alpha);
@@ -124,17 +124,17 @@ with {
     c1 = cos(PI * low_freq);
     c2 = cos(PI * high_freq);
     beta = (1 + c1*c2) / (c1+c2);
-    wc = acos(beta - (beta/abs(beta))*sqrt((beta*beta)-1));
+    wc = acos(beta - (beta/fabs(beta))*sqrt((beta*beta)-1));
     cc = cos(wc);
     sc = sin(wc);
 
-    Q = sqrt(gain * sc*sc * (c1+c2) / (4 * (2*cc - c1 - c2)));
-    k = (2*Q - sc) / (2*Q + sc);
+    Q = sqrt(gain * sc*sc * (c1+c2) / (4.0 * (2.0*cc - c1 - c2)));
+    k = (2.0*Q - sc) / (2.0*Q + sc);
 
-    b0 = ((1+k) + gain*(1-k))/2;
-    b1 = -cc*(1+k);
-    b2 = ((1+k) - gain*(1-k))/2;
-    a1 = -cc*(1+k);
+    b0 = ((1.0+k) + gain*(1.0-k))/2.0;
+    b1 = (0.0-cc)*(1+k);
+    b2 = ((1.0+k) - gain*(1.0-k))/2.0;
+    a1 = (0.0-cc)*(1+k);
     a2 = k;
     
 };

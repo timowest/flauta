@@ -136,7 +136,8 @@ void Receptivity_test(float* in1, float* in2,float in3, const char* format, int 
    
      for (int i = 0; i < SIZE; i++) {
          My_Receptivity->set_Coefficients(in3);
-         ETA = My_Receptivity->tick(in1[i],in2[i]);    
+         // reverse order to match the Faust code
+         ETA = My_Receptivity->tick(in2[i],in1[i]);    
          out1[i] = ETA;
          //out2[i] = ;
          //out3[i] = ;

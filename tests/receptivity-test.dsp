@@ -4,4 +4,4 @@ import("../faust/excitation.dsp");
 import("oscillator.lib");
 
 // 2 in, 1 out
-process = receptivity(_,_,0.5);
+process(a,b) = receptivity(a,b,0.5);
