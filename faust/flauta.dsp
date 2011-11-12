@@ -22,7 +22,7 @@ import("music.lib");
 import("excitation.dsp");
 import("constants.dsp");
 import("params.dsp");
-import("utils.dsp");
+//import("utils.dsp");
 
 // flauta
 flauta = (( (_ <: mouthReflection,_) : exc : leftChimney) 
@@ -70,32 +70,26 @@ tube_samples = tub_length * SR / TWO_SOUND_SPEED;
 
 // filters
 
-// FIXME
-lossesFilter = tf4(b0,b1,b2,b3,b4,a1,a2,a3,a4)
+lossesFilter = iir((b0,b1,b2,b3),(a1,a2,a3))
 with {
-    a1 = 1.0;
-    a2 = -0.33623476246554;
-    a3 = -0.71257915055968;
-    a4 = 0.14508304017256;
-    b0 = 1.0;
-    b1 = 0.83820223947141;
-    b2 = -0.16888603248373;
-    b3 = -0.64759781930259;
-    b4 =  0.07424498608506;
+    a1 = -0.33623476246554;
+    a2 = -0.71257915055968;
+    a3 = 0.14508304017256;
+    b0 = 0.83820223947141;
+    b1 = -0.16888603248373;
+    b2 = -0.64759781930259;
+    b3 =  0.07424498608506;
 };
 
 mouthReflection = endReflection;
 
-// FIXME
-endReflection = tf3(b0,b1,b2,b3,a1,a2,a3)
+endReflection = iir((b0,b1,b2),(a1,a2))
 with {
-    a1 = 1.0;
-    a2 = -0.3587; 
-    a3 = -0.0918;
-    b0 = 1.0;
-    b1 = -0.1254;
-    b2 = -0.3237;
-    b3 = -0.1003;
+    a1 = -0.3587; 
+    a2 = -0.0918;
+    b0 = -0.1254;
+    b1 = -0.3237;
+    b2 = -0.1003;
 };
 
 

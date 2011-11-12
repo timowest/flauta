@@ -19,7 +19,7 @@ import("filter.lib");
 // flauta libs
 import("params.dsp");
 import("constants.dsp");
-import("utils.dsp");
+//import("utils.dsp");
 
 // out : sources, impulse
 excitation(Vac,Pp) = (Vac,Pp) <: (_,_,_,!)
