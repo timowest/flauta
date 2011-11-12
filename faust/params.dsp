@@ -30,7 +30,7 @@ min_convection_f = 0.3;
 channel_length = hslider("channel length", 4e-3, 0.006, 0.132, 0.001); // 0.006 - 0.132
 vibrato_freq = hslider("vibrato freq", 5.9, 0.0, 9.28125, 0.01); // 0.0 - 9.28125
 vibrato_gain = hslider("vibrato gain", 0.0, 0.0, 1.54688, 0.001); // 0.0 - 1.54688
-jet_height =  1e-3; //hslider("jet height", 1.08e-3, 5e-05, 0.00127, 0.0001); // 5e-05 - 0.00127
+jet_height =  1.0e-3; //hslider("jet height", 1.08e-3, 5e-05, 0.00127, 0.0001); // 5e-05 - 0.00127
 jet_width = 0.02;
 delta_d = 1.0e-3;
 

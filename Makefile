@@ -9,7 +9,7 @@ standalone:
 	g++ -Wall gen/flauta.cpp  $(ALSA_GTK) $(FAUST) $(CFLAGS) -lm -o flauta.out
 
 gen/%.cpp: tests/%-test.dsp
-	faust -a minimal.cpp -cn $(patsubst gen/%.cpp,%,$@) $< > $@
+	faust -a minimal.cpp -double -cn $(patsubst gen/%.cpp,%,$@) $< > $@
 
 compare: $(TESTS)
 	g++ -Wall -fpermissive tests/tests.cpp $(FAUST) -lm -Igen/ -Isrc/ -o tests.out

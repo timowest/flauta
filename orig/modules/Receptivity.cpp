@@ -89,10 +89,12 @@ void Receptivity::calculate_peak_filter(StkFloat low_freq,
   
   StkFloat  c1 = cos(PI * low_freq);
   StkFloat  c2 = cos(PI * high_freq);
-  StkFloat  beta = (1 + c1*c2)/(c1 + c2);
+  StkFloat  beta = (1.0 + c1*c2)/(c1 + c2);
   StkFloat  wc = acos(beta - (beta/fabs(beta))*sqrt((beta*beta)-1));//sign(x) = x/abs(x)
   StkFloat  cc = cos(wc);
   StkFloat  sc = sin(wc);
+
+  //scout << c2 << endl;
   
   StkFloat  Q = sqrt(gain * sc*sc * (c1 + c2) / (4 * (2*cc - c1 - c2)));
   StkFloat  k = (2*Q - sc) / (2*Q + sc);

@@ -85,19 +85,19 @@ with {
     excitation = TWO_div_M_PI * vac + qin;
 
     jet_filter_peak1 = receptivity_peak_filter(
-        0.0645*(uj_steady/jet_height)*(2/(2*PI*SR)),
-        0.3278*(uj_steady/jet_height)*(2/(2*PI*SR)),
-        pow(10,2.6337*(flue_labium_distance / jet_height)/20));
+        0.0645*(uj_steady/jet_height)*(2.0/(2.0*PI*SR)),
+        0.3278*(uj_steady/jet_height)*(2.0/(2.0*PI*SR)),
+        pow(10, 2.6337*(flue_labium_distance / jet_height)/20.0));
 
     jet_filter_peak2 = receptivity_peak_filter(
-        0.3278*(uj_steady/jet_height)*(2/(2*PI*SR)),
-        1.2006*(uj_steady/jet_height)*(2/(2*PI*SR)),
-        pow(10,5.0719*(flue_labium_distance / jet_height)/20));
+        0.3278*(uj_steady/jet_height)*(2.0/(2.0*PI*SR)),
+        1.2006*(uj_steady/jet_height)*(2.0/(2.0*PI*SR)),
+        pow(10, 5.0719*(flue_labium_distance / jet_height)/20.0));
 
     jet_filter_shelf = receptivity_shelf_filter(
-        0.2954*(uj_steady/jet_height)*(2/(2*PI*SR)),
-        pow(10,2.3884*(flue_labium_distance/jet_height)/20),
-        pow(10,0.0*(flue_labium_distance/jet_height)/20));
+        0.2954*(uj_steady/jet_height)*(2.0/(2.0*PI*SR)),
+        pow(10.0, 2.3884*(flue_labium_distance / jet_height)/20.0),
+        pow(10.0, 0.0*(flue_labium_distance / jet_height)/20.0));
 
     //jet_filter_one_over_omega = _; 
 };
@@ -114,17 +114,17 @@ with {
     beta1 = 0.5 * ((low_gain - high_gain) + (low_gain + high_gain) * alpha);
     rho = sin(pi_transition_frequency/2.0 - PI/4.0) / sin(pi_transition_frequency/2.0 + PI/4.0);
 
-    b0 = (beta0 + rho*beta1) / (1 + rho*alpha);
-    b1 = (beta1 + rho*beta0) / (1 + rho*alpha);
-    a1 = (rho + alpha) / (1 + rho*alpha);     
+    b0 = (beta0 + rho*beta1) / (1.0 + rho*alpha);
+    b1 = (beta1 + rho*beta0) / (1.0 + rho*alpha);
+    a1 = (rho + alpha) / (1.0 + rho*alpha);     
 };
 
 receptivity_peak_filter(low_freq, high_freq, gain) = iir((b0,b1,b2),(a1,a2))
 with {
     c1 = cos(PI * low_freq);
     c2 = cos(PI * high_freq);
-    beta = (1 + c1*c2) / (c1+c2);
-    wc = acos(beta - (beta/fabs(beta))*sqrt((beta*beta)-1));
+    beta = (1.0 + c1*c2) / (c1+c2);
+    wc = acos(beta - (beta/fabs(beta)) * sqrt((beta*beta)-1.0)); // FIXME
     cc = cos(wc);
     sc = sin(wc);
 
