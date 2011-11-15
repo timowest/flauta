@@ -16,6 +16,13 @@
 // Vortex Includes
 #include "Vortex.cpp"
 
+//Blow Includes
+#include "Blow.cpp"
+#include "ADSR.cpp"
+#include "SineWave.cpp"
+#include "Generator.cpp"
+#include "Envelope.cpp"
+
 // Program Includes
 
 #include <sndfile.h>
@@ -214,7 +221,34 @@ void Bernoulli_test(float* in1, float* in2, const char* format, int index, int o
      if (out_count > 2) write(&out, out3);
      out.close();   
 }
+// Blow Test Function
+void Blow_test(float* in1, const char* format, int index, int out_count) {
+     
+     // Blow definitions
+     Blow *my_Blow;
+     my_Blow = new Blow();
+     StkFloat Uj;
+     StkFloat Uj_steady;
+     StkFloat Impulse;
 
+     for (int i = 0; i < SIZE; i++) { 
+         Uj = my_Blow->tick(in1[i], Uj_steady, Impulse);
+         out1[i] = Uj;
+         out2[i] = Uj_steady;
+         out3[i] = Impulse;
+     }
+    
+     //save_outputs();
+     char outfile[40];
+     sprintf(outfile, format, index);
+     cout << outfile << endl;
+     // serialize outputs to file
+     ofstream out(outfile);
+     write(&out, out1);
+     if (out_count > 1) write(&out, out2);
+     if (out_count > 2) write(&out, out3);
+     out.close();   
+}
 
 int main() {
     
@@ -229,14 +263,16 @@ int main() {
     read("tests/in_triang.txt", in_triang);
     float* all_inputs[] = {in_imp, in_noise, in_ramp, in_sine, in_triang};
 
-    for (int r = 0; r < 5; r++) {
+    for(int r = 0; r < 5; r++) {
         //float* inputs1[] = {all_inputs[r]};
 
         Vortex_test(all_inputs[r], "../../gen/vortex_out_%d_orig.txt" ,(r+1), 1); 
 
         Turbulence_test(all_inputs[r], "../../gen/turbulence_out_%d_orig.txt", (r+1), 1);
+
+	Blow_test(all_inputs[r], "../../gen/blow_out_%d_orig.txt", (r+1), 3);
             
-        for (int j = 0; j < 5; j++) {
+        for(int j = 0; j < 5; j++) {
             //float* inputs2[] = {all_inputs[r], all_inputs[j]};  
             
             Bernoulli_test(all_inputs[r], all_inputs[j], "../../gen/bernoulli_out_%d_orig.txt", (r+1)*10+j+1, 3);
