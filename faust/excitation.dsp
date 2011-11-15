@@ -148,15 +148,20 @@ with {
     va2 = 4.99;
 };
 
+
 // jetDrive
 // out : hyd_feed, jet_drive
 jetDrive(jet_displacement, uj) = Qin <: hyd_constant * _, (jet_drive_cst * (_ - _'))
 with {
 
-    Qin = uj * b * jet_width * (1.0 + tanh(tanh_argument));
+    // FIXME : this part causes a Segmentation fault
+    Qin = uj * b * jet_width * (1.0 + tanh(tanh_argument))
+    with {
+      tanh_argument = (jet_displacement - labium_position) / b;
+      b = b_constant * jet_height;
+      b_constant = 0.5; //.39 proportion between b and jet_height
+    };
     
-    tanh_argument = (jet_displacement - labium_position) / b;
-
     hyd_constant = 2.0 * ratio * (kappa * kappa - 1.0) / (M_PI * (kappa * kappa + 1))
     with {
         ratio = delta_d / flue_labium_distance;
@@ -165,9 +170,6 @@ with {
     };
 
     jet_drive_cst = (-1 * AIR_DENSITY * delta_d) / (jet_width * flue_labium_distance * sampling_period);
-
-    b = b_constant * jet_height;
-    b_constant = 0.5; //.39 proportion between b and jet_height
    
     sampling_period = 1.0 / SR;
 

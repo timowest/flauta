@@ -4,12 +4,14 @@ PAQ = `pkg-config --cflags --libs paq`
 FAUST = -I/usr/local/lib/faust/
 TESTS = gen/blow.cpp gen/bernoulli.cpp gen/excitation.cpp gen/jetdrive.cpp gen/receptivity.cpp gen/turbulence.cpp gen/vortex.cpp
 
-standalone: 
-	faust -fun -vec -double -a alsa-gtk.cpp faust/flauta.dsp > gen/flauta.cpp
-	g++ -Wall gen/flauta.cpp  $(ALSA_GTK) $(FAUST) $(CFLAGS) -lm -o flauta.out
+gen/flauta.cpp:
+	faust -a alsa-gtk.cpp -fun -vec -double faust/flauta.dsp > gen/flauta.cpp
 
 gen/%.cpp: tests/%-test.dsp
 	faust -a minimal.cpp -double -cn $(patsubst gen/%.cpp,%,$@) $< > $@
+
+standalone: gen/flauta.cpp
+	g++ -Wall gen/flauta.cpp  $(ALSA_GTK) $(FAUST) $(CFLAGS) -lm -o flauta.out
 
 compare: $(TESTS)
 	g++ -Wall -fpermissive tests/tests.cpp $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
