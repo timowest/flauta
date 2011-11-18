@@ -148,14 +148,19 @@ with {
     va2 = 4.99;
 };
 
+tanh_fast(x) = x : min(4.0) : max(-4.0) : tanh;
+/*with {
+ size = 1000; 
+ tanh_creation(i) = tanh(float(i) / size * 8 - 4); 
+ tanh_lookup(x) = rdtable(size+1, tanh_creation, int((x + 4) / 8 * size));
+};*/
 
 // jetDrive
 // out : hyd_feed, jet_drive
 jetDrive(jet_displacement, uj) = Qin <: hyd_constant * _, (jet_drive_cst * (_ - _'))
 with {
 
-    // FIXME : this part causes a Segmentation fault
-    Qin = uj * b * jet_width * (1.0 + tanh(tanh_argument))
+    Qin = uj * b * jet_width * (1.0 + tanh_fast(tanh_argument))
     with {
       tanh_argument = (jet_displacement - labium_position) / b;
       b = b_constant * jet_height;
