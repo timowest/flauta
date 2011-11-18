@@ -150,10 +150,10 @@ with {
 
 tanh_fast = min(4.0) : max(-4.0) : tanh_lookup
 with {
- size = 1000; 
- index = (+(1)~_ ) - 1; // 0,1,2,...
- tanh_creation = (float(index)/size*8-4) : tanh;
- tanh_lookup(x) = rdtable(size+1, tanh_creation, int((x + 4) / 8 * size));
+   size = 1000; 
+   index = (+(1)~_ ) - 1; // 0,1,2,...
+   tanh_creation = (float(index)/size*8-4) : tanh;
+   tanh_lookup(x) = rdtable(size+1, tanh_creation, int((x + 4) / 8 * size));
 };
 
 // jetDrive
