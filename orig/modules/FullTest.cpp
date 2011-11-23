@@ -87,7 +87,7 @@ void Vortex_test(float* in1, const char* format, int index, int out_count) {
         Vortex_val = my_Vortex->tick(in1[i]);    
         out1[i] = Vortex_val;
         //out2[i] = ;
-        //out3[i] = ;
+        //out3[i] = ;    
     }
     
     //save_outputs();
@@ -117,6 +117,7 @@ void Turbulence_test(float* in1, const char* format, int index, int out_count) {
         out1[i] = current_turbulence;
         //out2[i] = ;
         //out3[i] = ;
+      
     }
  
     //save_outputs();
@@ -148,6 +149,7 @@ void Receptivity_test(float* in1, float* in2,float in3, const char* format, int 
          out1[i] = ETA;
          //out2[i] = ;
          //out3[i] = ;
+      
     }
     //save_outputs();
      char outfile[40];
@@ -178,6 +180,7 @@ void JetDrive_test(float* in1, float* in2, const char* format, int index, int ou
          out1[i] = HYD_FEED;
          out2[i] = JET_DRIVE;
          //out3[i] = ;
+       
      }
      //save_outputs();
      char outfile[40];
@@ -232,10 +235,26 @@ void Blow_test(float* in1, const char* format, int index, int out_count) {
      StkFloat Impulse;
 
      for (int i = 0; i < SIZE; i++) { 
-         Uj = my_Blow->tick(in1[i], Uj_steady, Impulse);
+         Uj = my_Blow->tick(in1[i], Uj_steady, Impulse); // setting Uj_steady to 0
          out1[i] = Uj;
          out2[i] = Uj_steady;
          out3[i] = Impulse;
+
+         //if (in1[i] <= 0.20027) {
+         //in1[i] = 0.20027; 
+         //}
+
+          if (std::isinf(out3[i])) { //output is infinite
+              cout << in1[i] << " " << Uj_steady << " " << Impulse << " causing Infinite in sample " << i << " previous value in " << in1[i-1] << endl; 
+              char temp;
+              //cin>>temp;
+              
+          }
+          if (std::isnan(out3[i])) { //output is not a number 0.20027
+              cout << in1[i] << " " << Uj_steady << " " << Impulse << " causing Nan in sample " << i << " previous value in " << in1[i-1] << endl; 
+              char temp;
+              //cin>>temp;
+          } 
      }
     
      //save_outputs();
