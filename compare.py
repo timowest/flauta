@@ -19,10 +19,14 @@ def plot(plotname,data1,data2, error):
     plt.savefig('gen/'+plotname)
     
 
+# for console 
 def error(orig_values, faust_values):
-    error_out = [(orig_values[i]-faust_values[i]) for i in range(0, len(orig_values))] #abs
-    #average_out = (sum(error_out)) / len(error_out)
-    return error_out    
+    error_out = [abs(orig_values[i]-faust_values[i]) for i in range(0, len(orig_values))]
+    return (sum(error_out)) / len(error_out)    
+
+# for plotting
+def error_plot(orig_values, faust_values):
+    return [(orig_values[i]-faust_values[i]) for i in range(0, len(orig_values))] #abs
 
 def main():
     modules = ['bernoulli', 'jetdrive', 'receptivity','turbulence', 'vortex', 'blow']
@@ -41,24 +45,24 @@ def main():
             faust_data = read(faust_file)
             if len(orig_data) == 1:
                 err1 = error(orig_data[0], faust_data[0])
-                plot(module+' '+ num+' output 1', orig_data[0], faust_data[0], err1)
-                #print module+' '+ num, '\n', " error output 1 = ", err1
+                #plot(module+' '+ num+' output 1', orig_data[0], faust_data[0], err1)
+                print module+' '+ num, '\n', " error output 1 = ", err1
             elif len(orig_data) == 2:
                 err1 = error(orig_data[0], faust_data[0])
                 err2 = error(orig_data[1], faust_data[1])
-                plot(module+' '+ num+' output 1', orig_data[0], faust_data[0], err1)
-                plot(module+' '+ num+' output 2', orig_data[1], faust_data[1], err2)
-                #print module+' '+ num, '\n', " error output 1 = ", err1, '\n', " error output 2 = ", err2
+                #plot(module+' '+ num+' output 1', orig_data[0], faust_data[0], err1)
+                #plot(module+' '+ num+' output 2', orig_data[1], faust_data[1], err2)
+                print module+' '+ num, '\n', " error output 1 = ", err1, '\n', " error output 2 = ", err2
             elif len(orig_data) == 3:
                 err1 = error(orig_data[0], faust_data[0])
                 err2 = error(orig_data[1], faust_data[1])
                 err3 = error(orig_data[2], faust_data[2])
-                plot(module+' '+ num+' output 1', orig_data[0], faust_data[0], err1)
-                plot(module+' '+ num+' output 2', orig_data[1], faust_data[1], err2)
-                plot(module+' '+ num+' output 3', orig_data[2], faust_data[2], err3)
-                #print module+' '+ num, '\n', " error output 1 = ", err1, '\n',  " error output 2 = ", err2, '\n', " error output 3 = ", err3       
+                #plot(module+' '+ num+' output 1', orig_data[0], faust_data[0], err1)
+                #plot(module+' '+ num+' output 2', orig_data[1], faust_data[1], err2)
+                #plot(module+' '+ num+' output 3', orig_data[2], faust_data[2], err3)
+                print module+' '+ num, '\n', " error output 1 = ", err1, '\n',  " error output 2 = ", err2, '\n', " error output 3 = ", err3       
     #plt.show() dont show graph, they are way too many
 
 if __name__ == '__main__':
+    # TODO : use command line parameter to switch between plot and console mode
     main()
-    
