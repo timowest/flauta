@@ -58,6 +58,7 @@ def main():
                 plot(module+' '+ num+' output 3', orig_data[2], faust_data[2], err3)
                 #print module+' '+ num, '\n', " error output 1 = ", err1, '\n',  " error output 2 = ", err2, '\n', " error output 3 = ", err3       
     #plt.show() dont show graph, they are way too many
+
 if __name__ == '__main__':
     main()
     

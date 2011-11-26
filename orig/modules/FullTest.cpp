@@ -245,13 +245,15 @@ void Blow_test(float* in1, const char* format, int index, int out_count) {
          //}
 
           if (std::isinf(out3[i])) { //output is infinite
-              cout << in1[i] << " " << Uj_steady << " " << Impulse << " causing Infinite in sample " << i << " previous value in " << in1[i-1] << endl; 
+              // TODO : aggregate
+              //cout << in1[i] << " " << Uj_steady << " " << Impulse << " causing Infinite in sample " << i << " previous value in " << in1[i-1] << endl; 
               char temp;
               //cin>>temp;
               
           }
           if (std::isnan(out3[i])) { //output is not a number 0.20027
-              cout << in1[i] << " " << Uj_steady << " " << Impulse << " causing Nan in sample " << i << " previous value in " << in1[i-1] << endl; 
+              // TODO : aggregate
+              //cout << in1[i] << " " << Uj_steady << " " << Impulse << " causing Nan in sample " << i << " previous value in " << in1[i-1] << endl; 
               char temp;
               //cin>>temp;
           } 
