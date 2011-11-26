@@ -23,8 +23,12 @@ def error(use_plot, orig_values, faust_values):
     if use_plot:
         return [(orig_values[i]-faust_values[i]) for i in range(0, len(orig_values))] #abs
     else:
+        val_range = max(orig_values) - min(orig_values)
         error_out = [abs(orig_values[i]-faust_values[i]) for i in range(0, len(orig_values))]
-        return (sum(error_out)) / len(error_out)    
+        if (val_range > 0):
+            return (sum(error_out)) / len(error_out) / val_range
+        else:
+            return (sum(error_out)) / len(error_out)
 
 def main(use_plot):
     modules = ['bernoulli', 'jetdrive', 'receptivity','turbulence', 'vortex', 'blow']
