@@ -1,5 +1,6 @@
 import csv
 import matplotlib.pyplot as plt
+import sys
 
 def read(filename):
     f = csv.reader(open(filename, 'rU')) 
@@ -10,7 +11,7 @@ def read(filename):
     return values
     f.close()
 
-def plot(plotname,data1,data2, error):
+def plot(plotname, data1, data2, error):
     plt.figure()
     plt.plot(data1, "b")
     plt.plot(data2, "r")
@@ -18,17 +19,14 @@ def plot(plotname,data1,data2, error):
     plt.xlabel(plotname+"  Blue = C++ Output | Red = Faust Output | Black = Error(C++ Sample - Faust Sample)")
     plt.savefig('gen/'+plotname)
     
+def error(use_plot, orig_values, faust_values):
+    if use_plot:
+        return [(orig_values[i]-faust_values[i]) for i in range(0, len(orig_values))] #abs
+    else:
+        error_out = [abs(orig_values[i]-faust_values[i]) for i in range(0, len(orig_values))]
+        return (sum(error_out)) / len(error_out)    
 
-# for console 
-def error(orig_values, faust_values):
-    error_out = [abs(orig_values[i]-faust_values[i]) for i in range(0, len(orig_values))]
-    return (sum(error_out)) / len(error_out)    
-
-# for plotting
-def error_plot(orig_values, faust_values):
-    return [(orig_values[i]-faust_values[i]) for i in range(0, len(orig_values))] #abs
-
-def main():
+def main(use_plot):
     modules = ['bernoulli', 'jetdrive', 'receptivity','turbulence', 'vortex', 'blow']
     one_out = [str(n) for n in [1,2,3,4,5]]
     two_out = [str(n) for n in [11,12,13,14,15,21,22,23,24,25,31,32,33,34,35,41,42,43,44,45,51,52,53,54,55]]
@@ -44,25 +42,30 @@ def main():
             orig_data = read(orig_file)    
             faust_data = read(faust_file)
             if len(orig_data) == 1:
-                err1 = error(orig_data[0], faust_data[0])
-                #plot(module+' '+ num+' output 1', orig_data[0], faust_data[0], err1)
-                print module+' '+ num, '\n', " error output 1 = ", err1
+                err1 = error(use_plot, orig_data[0], faust_data[0])
+                if use_plot:
+                    plot(module+' '+ num+' out1', orig_data[0], faust_data[0], err1)
+                else:
+                    print '%s %s \n err1 = %s' %(module, num, err1)
             elif len(orig_data) == 2:
-                err1 = error(orig_data[0], faust_data[0])
-                err2 = error(orig_data[1], faust_data[1])
-                #plot(module+' '+ num+' output 1', orig_data[0], faust_data[0], err1)
-                #plot(module+' '+ num+' output 2', orig_data[1], faust_data[1], err2)
-                print module+' '+ num, '\n', " error output 1 = ", err1, '\n', " error output 2 = ", err2
+                err1 = error(use_plot, orig_data[0], faust_data[0])
+                err2 = error(use_plot, orig_data[1], faust_data[1])
+                if use_plot:
+                    plot(module+' '+ num+' out1', orig_data[0], faust_data[0], err1)
+                    plot(module+' '+ num+' out2', orig_data[1], faust_data[1], err2)
+                else:
+                    print '%s %s \n err1 = %s\n err2 = %s' %(module, num, err1, err2)                    
             elif len(orig_data) == 3:
-                err1 = error(orig_data[0], faust_data[0])
-                err2 = error(orig_data[1], faust_data[1])
-                err3 = error(orig_data[2], faust_data[2])
-                #plot(module+' '+ num+' output 1', orig_data[0], faust_data[0], err1)
-                #plot(module+' '+ num+' output 2', orig_data[1], faust_data[1], err2)
-                #plot(module+' '+ num+' output 3', orig_data[2], faust_data[2], err3)
-                print module+' '+ num, '\n', " error output 1 = ", err1, '\n',  " error output 2 = ", err2, '\n', " error output 3 = ", err3       
+                err1 = error(use_plot, orig_data[0], faust_data[0])
+                err2 = error(use_plot, orig_data[1], faust_data[1])
+                err3 = error(use_plot, orig_data[2], faust_data[2])
+                if use_plot:
+                    plot(module+' '+ num+' out1', orig_data[0], faust_data[0], err1)
+                    plot(module+' '+ num+' out2', orig_data[1], faust_data[1], err2)
+                    plot(module+' '+ num+' out3', orig_data[2], faust_data[2], err3)
+                else:
+                    print '%s %s \n err1 = %s\n err2 = %s\n err3 = %s' %(module, num, err1, err2, err3)
     #plt.show() dont show graph, they are way too many
 
 if __name__ == '__main__':
-    # TODO : use command line parameter to switch between plot and console mode
-    main()
+    main(len(sys.argv) > 1) # TODO : do better switch
