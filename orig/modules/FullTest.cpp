@@ -138,7 +138,7 @@ void Receptivity_test(float* in1, float* in2,float in3, const char* format, int 
 
      // Receptivity Definitions
      Receptivity *My_Receptivity;
-     My_Receptivity = new Receptivity();
+     My_Receptivity = new Receptivity(1.08e-3, 4.0e-3); // parameters need to be identical with Faust code
      StkFloat ETA;
  
    
