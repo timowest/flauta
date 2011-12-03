@@ -75,7 +75,7 @@ StkFloat JetDrive :: FlowIn(StkFloat displacement ,
 				    this->inv_step_tanh_table) + 1;
 
   StkFloat Flow = Velocity*b*jet_width*(1.0 + tanh_table->tick(tanh_table_index));
-  return(Flow);
+  return(Flow);  
 }
 
 void JetDrive::noteOff()
@@ -99,7 +99,7 @@ StkFloat JetDrive::tick(StkFloat Jet_displacement,
   //Update variables
   previous_Qin = Qin;
 
-  return(current_jetdrive);  
+  return(current_jetdrive);    
 }
 
 

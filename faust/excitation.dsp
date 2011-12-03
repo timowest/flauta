@@ -148,12 +148,14 @@ with {
     va2 = 4.99;
 };
 
+tanh_slow = min(4.0) : max(-4.0) : tanh;
+
 tanh_fast = min(4.0) : max(-4.0) : tanh_lookup
 with {
-   size = 1000; 
+   size = 8000;
    index = (+(1)~_ ) - 1; // 0,1,2,...
-   tanh_creation = (float(index)/size*8-4) : tanh;
-   tanh_lookup(x) = rdtable(size*8+1, tanh_creation, int((x + 4) / 8 * size)); //size needed multiplication by 8 to generate 8001 values
+   tanh_creation = (float(index)/size*8.0-4.0) : tanh;
+   tanh_lookup(x) = rdtable(size+1, tanh_creation, int((x+4.0)/ 8.0 * size)); 
 };
 
 // jetDrive
@@ -161,7 +163,7 @@ with {
 jetDrive(jet_displacement, uj) = Qin <: hyd_constant * _, (jet_drive_cst * (_ - _'))
 with {
 
-    Qin = uj * b * jet_width * (1.0 + tanh_fast(tanh_argument))
+    Qin = uj * b * jet_width * (1.0 + tanh_fast(tanh_argument))    
     with {
       tanh_argument = (jet_displacement - labium_position) / b;
       b = b_constant * jet_height;
