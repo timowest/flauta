@@ -164,13 +164,13 @@ jetDrive(jet_displacement, uj) = Qin <: hyd_constant * _, (jet_drive_cst * (_ - 
 with {
 
     // FIXME
-    Qin = uj * b * jet_width * (1.0 + tanh_fast(tanh_argument))    
+    Qin = uj * b * jet_width * (1.0 + tanh_fast(tanh_argument))
     with {
       tanh_argument = (jet_displacement - labium_position) / b;     
       b = b_constant * jet_height;
       b_constant = 0.5; //.39 proportion between b and jet_height
     };
-    
+
     hyd_constant = 2.0 * ratio * (kappa * kappa - 1.0) / (M_PI * (kappa * kappa + 1))
     with {
         ratio = delta_d / flue_labium_distance;
