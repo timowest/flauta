@@ -276,16 +276,17 @@ int main() {
     Stk::setSampleRate( 44100.0 );  
 
     // inputs
-    float in_imp[SIZE], in_noise[SIZE], in_ramp[SIZE], in_sine[SIZE], in_triang[SIZE];
-    read("tests/in_imp.txt", in_imp);
-    read("tests/in_noise.txt", in_noise);
-    read("tests/in_ramp.txt", in_ramp);
-    read("tests/in_sine.txt", in_sine);
-    read("tests/in_triang.txt", in_triang);
-    float* all_inputs[] = {in_imp, in_noise, in_ramp, in_sine, in_triang};
+    float in_imp[SIZE], in_noise[SIZE], in_ramp[SIZE], in_sine[SIZE], in_triang[SIZE], in_step[SIZE];
+    read("tests/in_imp.txt", in_imp);       // 1
+    read("tests/in_noise.txt", in_noise);   // 2
+    read("tests/in_ramp.txt", in_ramp);     // 3
+    read("tests/in_sine.txt", in_sine);     // 4
+    read("tests/in_triang.txt", in_triang); // 5
+    read("tests/in_step.txt", in_step);     // 6
 
-    for(int r = 0; r < 5; r++) {
-        //float* inputs1[] = {all_inputs[r]};
+    float* all_inputs[] = {in_imp, in_noise, in_ramp, in_sine, in_triang, in_step};
+
+    for(int r = 0; r < 6; r++) {
 
         Vortex_test(all_inputs[r], "../../gen/vortex_out_%d_orig.txt" ,(r+1), 1); 
 
@@ -293,8 +294,7 @@ int main() {
 
 	Blow_test(all_inputs[r], "../../gen/blow_out_%d_orig.txt", (r+1), 3);
             
-        for(int j = 0; j < 5; j++) {
-            //float* inputs2[] = {all_inputs[r], all_inputs[j]};  
+        for(int j = 0; j < 6; j++) {
             
             Bernoulli_test(all_inputs[r], all_inputs[j], "../../gen/bernoulli_out_%d_orig.txt", (r+1)*10+j+1, 3);
 

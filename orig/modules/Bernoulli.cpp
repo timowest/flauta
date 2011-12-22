@@ -42,8 +42,13 @@ StkFloat Bernoulli::tick(StkFloat pressure_in,
   if( Impulse > max_impulse)
     Impulse = max_impulse;
 
-  previous_Velocity = Curr_Velocity;
-  
+  if(pressure_in < pressure_out) {  //only asumming blowing from inside to outside.
+    Curr_Velocity_steady = 0.0;
+    Impulse = 0.0;
+    Curr_Velocity = 0.0;
+  } 
+
+  previous_Velocity = Curr_Velocity; 
   //Filling out the output
   uj_steady = Curr_Velocity_steady;
   impulse = Impulse;
