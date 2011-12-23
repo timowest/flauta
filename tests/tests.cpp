@@ -67,13 +67,13 @@ int main() {
 
     // run tests
     // 1 input
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 6; i++) {
         float* in1[] = {all_inputs[i]};
         test(&bl,in1, "gen/blow_out_%d.txt",       i+1, 3); 
         test(&t, in1, "gen/turbulence_out_%d.txt", i+1, 1);
         test(&v, in1, "gen/vortex_out_%d.txt",     i+1, 1);
         // 2 inputs
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 6; j++) {
             float* in2[] = {all_inputs[i], all_inputs[j]};  
             test(&b,  in2, "gen/bernoulli_out_%d.txt",   (i+1)*10+j+1, 3);
             test(&jd, in2, "gen/jetdrive_out_%d.txt",    (i+1)*10+j+1, 2);
