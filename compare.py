@@ -31,11 +31,11 @@ def error(use_plot, orig_values, faust_values):
             return (sum(error_out)) / len(error_out)
 
 def main(use_plot):
-    modules = ['bernoulli', 'jetdrive', 'receptivity','turbulence', 'vortex', 'blow']
+    modules = ['bernoulli', 'jetdrive', 'receptivity','turbulence', 'vortex', 'blow', 'excitation']
     one_out = [str(n) for n in [1,2,3,4,5,6]]
     two_out = [str(n) for n in [11,12,13,14,15,16,21,22,23,24,25,26,31,32,33,34,35,36,41,42,43,44,45,46,51,52,53,54,55,56]]
     for module in modules:
-        if module == 'bernoulli' or module == 'jetdrive' or module == 'receptivity':
+        if module == 'bernoulli' or module == 'jetdrive' or module == 'receptivity' or module == 'excitation':
             nums = two_out
         else:
             nums = one_out
