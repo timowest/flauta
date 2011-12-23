@@ -23,6 +23,18 @@
 #include "Generator.cpp"
 #include "Envelope.cpp"
 
+//Excitation Includes
+#include "Excitation.cpp"
+
+//Jet Includes
+#include "Jet.cpp"
+#include "Delay.cpp"
+#include "DelayL.cpp"
+#include "Filter.cpp"
+
+//Sources Includes
+#include "Sources.cpp"
+
 // Program Includes
 
 #include <sndfile.h>
@@ -271,6 +283,34 @@ void Blow_test(float* in1, const char* format, int index, int out_count) {
      out.close();   
 }
 
+// Excitation Test Function
+void Excitation_test(float* in1, float* in2, const char* format, int index, int out_count) {
+     
+     // Excitation definitions
+     Excitation *my_Excitation;
+     my_Excitation = new Excitation();
+     StkFloat Sources;
+     StkFloat Impulse;
+
+     for (int i = 0; i < SIZE; i++) { 
+         Sources = my_Excitation->tick(in1[i], in2[i], Impulse);
+         out1[i] = Sources;
+         out2[i] = Impulse;
+     }
+    
+     //save_outputs();
+     char outfile[40];
+     sprintf(outfile, format, index);
+
+     cout << outfile << endl;
+     // serialize outputs to file
+     ofstream out(outfile);
+     write(&out, out1);
+     if (out_count > 1) write(&out, out2);
+     if (out_count > 2) write(&out, out3);
+     out.close();   
+}
+
 int main() {
     
     Stk::setSampleRate( 44100.0 );  
@@ -293,6 +333,7 @@ int main() {
         Turbulence_test(all_inputs[r], "../../gen/turbulence_out_%d_orig.txt", (r+1), 1);
 
 	Blow_test(all_inputs[r], "../../gen/blow_out_%d_orig.txt", (r+1), 3);
+
             
         for(int j = 0; j < 6; j++) {
             
@@ -301,7 +342,8 @@ int main() {
 	    Receptivity_test(all_inputs[r], all_inputs[j], 0.5, "../../gen/receptivity_out_%d_orig.txt", (r+1)*10+j+1, 1);
 
             JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt", (r+1)*10+j+1, 2);
-
+	    
+	    Excitation_test(all_inputs[r], all_inputs[j], "../../gen/excitation_out_%d_orig.txt", (r+1)*10+j+1, 2);
         } 
     }
 
