@@ -48,18 +48,19 @@ with {
 
 
 // bernoulli
-// in : pressure_in, pressure_out
 // out : bernoulli, uj_steady, impulse
-bernoulli = (_,_) <: ((curr_velocity ~ _), ((curr_velocity_steady ~ _), !)) 
+bernoulli(pin,pout) = (pin,pout) <: ((curr_velocity ~ _), ((curr_velocity_steady ~ _), !)) 
     // in : cv, cvp, cvs
     <: (_,!,_,impulse(_, _),!)
 with {
-    curr_velocity(prev) = prev + (const_bernoulli * ((_- _) - (HALF_DENSITY * (prev * prev)))), prev;
+    curr_velocity(prev) = prev + (const_bernoulli * ((_- _) - (HALF_DENSITY * (prev * prev)))) : in_goe_out, prev;
 
-    curr_velocity_steady(prev) = prev + (const_bernoulli * (_ - (HALF_DENSITY * (prev * prev)))); 
+    curr_velocity_steady(prev) = prev + (const_bernoulli * (_ - (HALF_DENSITY * (prev * prev)))) : in_goe_out; 
 
     // in : cv, cvp
-    impulse = const_impulse * (_- _) : max(0) : min(max_impulse);
+    impulse = const_impulse * (_- _) : max(0) : min(max_impulse) : in_goe_out;
+
+    in_goe_out(x) = select2(pin >= pout, 0.0, x);
 
     const_impulse = impulse_scale * (SR * AIR_DENSITY * 0.61 * chim_radius);
 
