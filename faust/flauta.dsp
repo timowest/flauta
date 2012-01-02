@@ -49,7 +49,7 @@ with {
     lowerTube + temp,  // to lower cavity
     upperCavity + temp; // to upper tube
 
-  k = 1; // TODO
+  k = -1*((chim_radius*chim_radius))/((chim_radius*chim_radius) - 2*(cav_radius*cav_radius));
 
 };
 

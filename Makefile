@@ -10,7 +10,7 @@ gen/flauta.cpp:
 gen/%.cpp: tests/%-test.dsp
 	faust -a minimal.cpp -double -cn $(patsubst gen/%.cpp,%,$@) $< > $@
 
-standalone: gen/flauta.cpp
+standalone: gen/flauta.cpp 
 	g++ -Wall gen/flauta.cpp  $(ALSA_GTK) $(FAUST) $(CFLAGS) -lm -o flauta.out
 
 compare: $(TESTS)
