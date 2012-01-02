@@ -72,9 +72,8 @@ with {
 // out : eta_d, Uj_d
 jet(Qin,Vac,Uj_steady,Uj) = (Qin,Vac,Uj_steady,Uj) : (receptivity,_) : (jetDelay, jetDelay)
 with {
-    // XXX : make sure this is correct
-    //delay_length = floor((max_flue_labium_d / (min_convection_f * min_jet_vel)) / SR);
-    delay_length = jet_msamples_per_sec/ Uj_steady;
+    
+    delay_length = floor((max_flue_labium_d / (min_convection_f * min_jet_vel)) / SR);
 
     jet_msamples_per_sec = flue_labium_distance / (convection_f * SR);
 
