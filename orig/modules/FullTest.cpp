@@ -311,6 +311,62 @@ void Excitation_test(float* in1, float* in2, const char* format, int index, int 
      out.close();   
 }
 
+// Sources Test Function
+void Sources_test(float* in1, float* in2, float* in3, const char* format, int index, int out_count) {
+     
+     // Sources definitions
+     Sources *my_Sources;
+     my_Sources = new Sources();
+     StkFloat excitation;
+     StkFloat hyd_feed;
+
+     for (int i = 0; i < SIZE; i++) { 
+         excitation = my_Sources->tick(in1[i], in2[i], in3[i], hyd_feed);
+         out1[i] = excitation;
+         out2[i] = hyd_feed;
+     }
+    
+     //save_outputs();
+     char outfile[40];
+     sprintf(outfile, format, index);
+
+     cout << outfile << endl;
+     // serialize outputs to file
+     ofstream out(outfile);
+     write(&out, out1);
+     if (out_count > 1) write(&out, out2);
+     if (out_count > 2) write(&out, out3);
+     out.close();   
+}
+
+// Jet Test Function
+void Jet_test(float* in1, float* in2, float* in3, float* in4, const char* format, int index, int out_count) {
+     
+     // Jet definitions
+     Jet *my_Jet;
+     my_Jet = new Jet();
+     StkFloat Eta_d;
+     StkFloat Uj_d;
+
+     for (int i = 0; i < SIZE; i++) { 
+         Eta_d = my_Jet->tick(in1[i], in2[i], in3[i], in4[i], Uj_d);
+         out1[i] = Eta_d;
+         out2[i] = Uj_d;
+     }
+    
+     //save_outputs();
+     char outfile[40];
+     sprintf(outfile, format, index);
+
+     cout << outfile << endl;
+     // serialize outputs to file
+     ofstream out(outfile);
+     write(&out, out1);
+     if (out_count > 1) write(&out, out2);
+     if (out_count > 2) write(&out, out3);
+     out.close();   
+}
+
 int main() {
     
     Stk::setSampleRate( 44100.0 );  
@@ -344,10 +400,22 @@ int main() {
             JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt", (r+1)*10+j+1, 2);
 	    
 	    Excitation_test(all_inputs[r], all_inputs[j], "../../gen/excitation_out_%d_orig.txt", (r+1)*10+j+1, 2);
-        } 
+            for(int i = 0; i < 6; i++) {
+	       
+               Sources_test(all_inputs[r], all_inputs[j], all_inputs[i], "../../gen/sources_out_%d_orig.txt",(i+1)*100+(r+1)*10+j+1 , 2);
+               
+	       for(int q = 0; q < 6; q++) {
+	       
+               Jet_test(all_inputs[r], all_inputs[j], all_inputs[i], all_inputs[q], "../../gen/sources_out_%d_orig.txt",(q+1)*1000+(i+1)*100+(r+1)*10+j+1 , 2);
+            
+               }
+            }
+        }
+ 
     }
 
 return 0;
+
 }
 
 

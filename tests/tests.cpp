@@ -14,6 +14,8 @@
 #include "receptivity.cpp"
 #include "turbulence.cpp"
 #include "vortex.cpp"
+#include "jet.cpp"
+#include "sources.cpp"
 
 #define SR       44100
 #define SIZE     22050
@@ -48,6 +50,8 @@ void read(const char* in_file, float* floats) {
 void test(dsp* processor, float** inputs, const char* out_file, int index, int out_count);
 
 int main() {
+    jet  jt;        // 4 in, 2 out	
+    sources s;     // 3 in, 2 out
     blow bl;       // 1 in, 3 out
     bernoulli b;   // 2 in, 3 out
     excitation e;  // 2 in, 2 out
@@ -79,6 +83,17 @@ int main() {
             test(&jd, in2, "gen/jetdrive_out_%d.txt",    (i+1)*10+j+1, 2);
             test(&e,  in2, "gen/excitation_out_%d.txt",  (i+1)*10+j+1, 2); 
             test(&r,  in2, "gen/receptivity_out_%d.txt", (i+1)*10+j+1, 1);
+            // 3 inputs
+            for (int r = 0; r < 6; r++) {
+        	float* in3[] = {all_inputs[i], all_inputs[j], all_inputs[r]};  
+            	test(&s,  in3, "gen/sources_out_%d.txt", (r+1)*100+(i+1)*10+j+1, 2);
+		// 4 inputs
+		for (int q = 0; q < 6; q++) {
+        	    float* in4[] = {all_inputs[i], all_inputs[j], all_inputs[r], all_inputs[q]};  
+            	    test(&jt,  in4, "gen/jet_out_%d.txt", (q+1)*1000+(r+1)*100+(i+1)*10+j+1, 2);
+                }
+            }
+
         } 
     }
 }
