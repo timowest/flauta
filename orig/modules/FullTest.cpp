@@ -389,7 +389,6 @@ int main() {
         Turbulence_test(all_inputs[r], "../../gen/turbulence_out_%d_orig.txt", (r+1), 1);
 
 	Blow_test(all_inputs[r], "../../gen/blow_out_%d_orig.txt", (r+1), 3);
-
             
         for(int j = 0; j < 6; j++) {
             
@@ -400,13 +399,14 @@ int main() {
             JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt", (r+1)*10+j+1, 2);
 	    
 	    Excitation_test(all_inputs[r], all_inputs[j], "../../gen/excitation_out_%d_orig.txt", (r+1)*10+j+1, 2);
+
             for(int i = 0; i < 6; i++) {
 	       
                Sources_test(all_inputs[r], all_inputs[j], all_inputs[i], "../../gen/sources_out_%d_orig.txt",(i+1)*100+(r+1)*10+j+1 , 2);
                
 	       for(int q = 0; q < 6; q++) {
 	       
-               Jet_test(all_inputs[r], all_inputs[j], all_inputs[i], all_inputs[q], "../../gen/sources_out_%d_orig.txt",(q+1)*1000+(i+1)*100+(r+1)*10+j+1 , 2);
+               Jet_test(all_inputs[r], all_inputs[j], all_inputs[i], all_inputs[q], "../../gen/jet_out_%d_orig.txt",(q+1)*1000+(i+1)*100+(r+1)*10+j+1 , 2);
             
                }
             }
