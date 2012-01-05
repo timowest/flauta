@@ -23,7 +23,7 @@ import("constants.dsp");
 
 // out : sources, impulse
 excitation(Vac,Pp) = (Vac,Pp) <: (_,_,_,!)
-    : (_,(blow : (limit, limit, _)),_) 
+    : (_,(blow : (limit, limit, (_/2))),_) 
     : ((jet,_,_)
     <: (_,_,!,_,!,!,_,!)
     : (sources, _)) ~ _
@@ -70,7 +70,7 @@ with {
 };
 
 // out : eta_d, Uj_d
-jet(Qin,Vac,Uj_steady,Uj) = (Qin,Vac,Uj_steady,Uj) : (receptivity,_) : (jetDelay, jetDelay)
+jet(hyd_feed,Vac,Uj_steady,Uj) = (hyd_feed,Vac,Uj_steady,Uj) : (receptivity,_) : (jetDelay, jetDelay)
 with {
     
     delay_length = floor((max_flue_labium_d / (min_convection_f * min_jet_vel)) / SR);
@@ -80,9 +80,9 @@ with {
     jetDelay = fdelay(MAX_DELAY_LENGTH, delay_length);
 };
 
-receptivity(qin, vac, uj_steady) = excitation : jet_filter_peak1 : jet_filter_peak2 : jet_filter_shelf : *(1e-4)
+receptivity(hyd_feed, vac, uj_steady) = excitation : jet_filter_peak1 : jet_filter_peak2 : jet_filter_shelf : *(1e-4)
 with {
-    excitation = TWO_div_M_PI * vac + qin;
+    excitation = TWO_div_M_PI * vac + hyd_feed;
 
     jet_filter_peak1 = receptivity_peak_filter(
         0.0645*(uj_steady/jet_height)*(2.0/(2.0*PI*SR)),
@@ -155,7 +155,7 @@ with {
    size = 8000;
    index = (+(1)~_ ) - 1; // 0,1,2,...
    tanh_creation = float(index) / size * 8.0 -4.0 : tanh;
-   tanh_lookup(x) = rdtable(size+1, tanh_creation, int((x+4.0)/ 8.0 * size)); 
+   tanh_lookup(x) = rdtable(size+1, tanh_creation, int((x+4.0)/ 8.0 * size));
 };
 
 // jetDrive
@@ -166,7 +166,7 @@ with {
     // FIXME
     Qin = uj * b * jet_width * (1.0 + tanh_fast(tanh_argument))
     with {
-      tanh_argument = (jet_displacement - labium_position) / b;     
+      tanh_argument = (jet_displacement - labium_position) / b;
       b = b_constant * jet_height;
       b_constant = 0.5; //.39 proportion between b and jet_height
     };
@@ -174,7 +174,7 @@ with {
     hyd_constant = 2.0 * ratio * (kappa * kappa - 1.0) / (M_PI * (kappa * kappa + 1))
     with {
         ratio = delta_d / flue_labium_distance;
-        beta = ratio + sqrt(ratio * (2.0 + ratio)); 
+        beta = ratio + sqrt(ratio * (2.0 + ratio));
         kappa = 1.0 + beta;
     };
 
@@ -183,6 +183,7 @@ with {
     sampling_period = 1.0 / SR;
 
 };
+
 
 // turbulence
 turbulence(uj) = turbulence_gain * MAX_AMPLITUDE * uj * uj * jet_height * filtered_noise
