@@ -17,7 +17,7 @@ compare: $(TESTS)
 	g++ -Wall -fpermissive tests/tests.cpp $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
 	./tests.out
 	cd orig/modules;make clean standalone;cd ../..
-	python compare.py
+	python compare2.py
 
 svg:
 	rm -rf faust/*-svg    

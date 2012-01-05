@@ -73,24 +73,24 @@ int main() {
     // 1 input
     for (int i = 0; i < 6; i++) {
         float* in1[] = {all_inputs[i]};
-        test(&bl,in1, "gen/blow_out_%d.txt",       i+1, 3); 
-        test(&t, in1, "gen/turbulence_out_%d.txt", i+1, 1);
-        test(&v, in1, "gen/vortex_out_%d.txt",     i+1, 1);
+        test(&bl,in1, "gen/blow_out_%d_faust.txt",       i+1, 3); 
+        test(&t, in1, "gen/turbulence_out_%d_faust.txt", i+1, 1);
+        test(&v, in1, "gen/vortex_out_%d_faust.txt",     i+1, 1);
         // 2 inputs
         for (int j = 0; j < 6; j++) {
             float* in2[] = {all_inputs[i], all_inputs[j]};  
-            test(&b,  in2, "gen/bernoulli_out_%d.txt",   (i+1)*10+j+1, 3);
-            test(&jd, in2, "gen/jetdrive_out_%d.txt",    (i+1)*10+j+1, 2);
-            test(&e,  in2, "gen/excitation_out_%d.txt",  (i+1)*10+j+1, 2); 
-            test(&r,  in2, "gen/receptivity_out_%d.txt", (i+1)*10+j+1, 1);
+            test(&b,  in2, "gen/bernoulli_out_%d_faust.txt",   (i+1)*10+j+1, 3);
+            test(&jd, in2, "gen/jetdrive_out_%d_faust.txt",    (i+1)*10+j+1, 2);
+            test(&e,  in2, "gen/excitation_out_%d_faust.txt",  (i+1)*10+j+1, 2); 
+            test(&r,  in2, "gen/receptivity_out_%d_faust.txt", (i+1)*10+j+1, 1);
             // 3 inputs
             for (int r = 0; r < 6; r++) {
         	float* in3[] = {all_inputs[i], all_inputs[j], all_inputs[r]};  
-            	test(&s,  in3, "gen/sources_out_%d.txt", (r+1)*100+(i+1)*10+j+1, 2);
+            	test(&s,  in3, "gen/sources_out_%d_faust.txt", (r+1)*100+(i+1)*10+j+1, 2);
 		// 4 inputs
 		for (int q = 0; q < 6; q++) {
         	    float* in4[] = {all_inputs[i], all_inputs[j], all_inputs[r], all_inputs[q]};  
-            	    test(&jt,  in4, "gen/jet_out_%d.txt", (q+1)*1000+(r+1)*100+(i+1)*10+j+1, 2);
+            	    test(&jt,  in4, "gen/jet_out_%d_faust.txt", (q+1)*1000+(r+1)*100+(i+1)*10+j+1, 2);
                 }
             }
 
