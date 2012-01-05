@@ -41,11 +41,11 @@ with {
   
 };
 
-junction(upCavity, loTube, lChimney) = (upCavity, loTube, lChimney) <: (k * (_ - _ - 2 * _),_,_,_)  : out_mix
+junction(upCavity, loTube, lChimney) = (upCavity, loTube, lChimney) <: (k * (_ + _ + -2 * _),_,_,_)  : out_mix
 with {
 
   out_mix(temp, upperCavity, lowerTube, leftChimney) = 
-    upperCavity + temp + lowerTube - leftChimney, // to right chimney
+    upperCavity + temp + lowerTube + (-1*leftChimney), // to right chimney
     lowerTube + temp,  // to lower cavity
     upperCavity + temp; // to upper tube
 
