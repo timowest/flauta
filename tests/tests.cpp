@@ -61,13 +61,14 @@ int main(int argc, char *argv[]) {
     vortex v;      // 1 in, 1 out
     
     // inputs
-    float in_imp[SIZE], in_noise[SIZE], in_ramp[SIZE], in_sine[SIZE], in_triang[SIZE];
-    read("tests/in_imp.txt", in_imp);
-    read("tests/in_noise.txt", in_noise);
-    read("tests/in_ramp.txt", in_ramp);
-    read("tests/in_sine.txt", in_sine);
-    read("tests/in_triang.txt", in_triang);
-    float* all_inputs[] = {in_imp, in_noise, in_ramp, in_sine, in_triang};
+    float in_imp[SIZE], in_noise[SIZE], in_ramp[SIZE], in_sine[SIZE], in_triang[SIZE], in_step[SIZE];
+    read("tests/in_imp.txt", in_imp);       // 1
+    read("tests/in_noise.txt", in_noise);   // 2
+    read("tests/in_ramp.txt", in_ramp);     // 3
+    read("tests/in_sine.txt", in_sine);     // 4
+    read("tests/in_triang.txt", in_triang); // 5
+    read("tests/in_step.txt", in_step);     // 6
+    float* all_inputs[] = {in_imp, in_noise, in_ramp, in_sine, in_triang, in_step};
 
     // run tests
     // 1 input
@@ -84,6 +85,8 @@ int main(int argc, char *argv[]) {
             test(&jd, in2, "gen/jetdrive_out_%d_faust.txt",    (i+1)*10+j+1, 2);
             test(&e,  in2, "gen/excitation_out_%d_faust.txt",  (i+1)*10+j+1, 2); 
             test(&r,  in2, "gen/receptivity_out_%d_faust.txt", (i+1)*10+j+1, 1);
+
+            if (argc > 1) continue; 
 
             // 3 inputs
             for (int r = 0; r < 6; r++) {

@@ -19,6 +19,13 @@ compare: $(TESTS)
 	cd orig/modules;make clean standalone;cd ../..
 	python compare.py
 
+compare_fast: $(TESTS)
+	g++ -Wall -fpermissive tests/tests.cpp -g $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
+	./tests.out fast
+	cd orig/modules;make clean fast;cd ../..
+	python compare.py fast
+
+# deprecated
 compare2: $(TESTS)
 	g++ -Wall -fpermissive tests/tests.cpp -g $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
 	./tests.out
