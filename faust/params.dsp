@@ -48,9 +48,12 @@ cav_radius = 0.0085;
 chim_length = hslider("chimney length", 10.0, 8, 20.7, 0.1) * 0.001; // 0.008 - 0.0207
 //chim_length = hslider("chimney length", 0.01, 0.008, 0.0207, 0.001); // 0.008 - 0.0207
 chim_radius = 0.007;
-end_length = 0.08;
-end_radius = 0.007;
-tub_length = 0.245; 
+end_length = hslider("end length", 8, 1, 20, 0.1) * 0.01;
+//end_length = 0.08 ;
+end_radius = hslider("end_radius", 7, 1, 20, 0.1) * 0.001;
+//end_radius = 0.007;
+tub_length = hslider("tube length", 245, 240, 250, 1) * 0.001;
+//tub_length = 0.245; 
 tub_radius = 0.009;
 
 impulse_scale = 1;
