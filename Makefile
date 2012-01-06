@@ -14,7 +14,13 @@ standalone: gen/flauta.cpp
 	g++ -Wall gen/flauta.cpp  $(ALSA_GTK) $(FAUST) $(CFLAGS) -lm -o flauta.out
 
 compare: $(TESTS)
-	g++ -Wall -fpermissive tests/tests.cpp $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
+	g++ -Wall -fpermissive tests/tests.cpp -g $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
+	./tests.out
+	cd orig/modules;make clean standalone;cd ../..
+	python compare.py
+
+compare2: $(TESTS)
+	g++ -Wall -fpermissive tests/tests.cpp -g $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
 	./tests.out
 	cd orig/modules;make clean standalone;cd ../..
 	python compare2.py

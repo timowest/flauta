@@ -367,7 +367,7 @@ void Jet_test(float* in1, float* in2, float in3, float* in4, const char* format,
      out.close();   
 }
 
-int main() {
+int main(int argc, char *argv[]) {
     
     Stk::setSampleRate( 44100.0 );  
 
