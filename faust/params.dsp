@@ -49,6 +49,11 @@ env_decay = hslider("env decay", 10, 0, 1000, 10) * 0.001;
 env_sustain = hslider("env sustain", 100, 10, 100, 1);
 env_release = hslider("env release", 10, 0, 1000, 10) * 0.001;
 
+vib_attack = hslider("vib attack", 5, 1, 100, 1) * 0.001;
+vib_decay = hslider("vib decay", 10, 0, 1000, 10) * 0.001;
+vib_sustain = hslider("vib sustain", 100, 10, 100, 1);
+vib_release = hslider("vib release", 10, 0, 1000, 10) * 0.001;
+
 // RESONATOR
 
 cav_length = hslider("cavity length", 14.0, 10.0, 22.7, 0.1) * 0.001; // 0.01 - 0.0227 //change 17.5 to 14.0

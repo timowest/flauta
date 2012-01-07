@@ -42,8 +42,8 @@ with {
     //envelope = gate : adsr(0.005 * SR, 0.01, 100, 0.01);
     envelope = gate : adsr(env_attack * SR, env_decay, env_sustain, env_release);
 
-    // XXX : vibrato envelope missing
-    vibrato = vibrato_gain * osc(vibrato_freq); 
+    vibrato = vibrato_gain * osc(vibrato_freq) * vibrato_env; 
+    vibrato_env = gate : adsr(vib_attack * SR, vib_decay, vib_sustain, vib_release);
 };
 
 // bernoulli
