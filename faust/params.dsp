@@ -17,21 +17,23 @@
 gate = button("gate");
 
 // excitation
-pressure = hslider("pressure", 32, 254, 1, 1);
+pressure = hslider("pressure", 32, 1, 254, 1); //check
 
 min_jet_vel = 1.0;
 max_jet_vel = 40;
 step_Uj = 0.1;
-flue_labium_distance = hslider("flue-labium dist", 4.0, 0.5, 13.0, 0.1) * 0.001;
-//flue_labium_distance = 0.004; 
+flue_labium_distance = hslider("flue-labium dist", 4.4, 0.5, 13.0, 0.1) * 0.001;
+//flue_labium_distance = 0.004; // is 0.0044 
 max_flue_labium_d = 0.016;
 labium_position = hslider("labium position", 2, 0, 12.7, 0.1) * 0.0001;
 //labium_position = 0.0002; 
 convection_f = 0.5;
 min_convection_f = 0.3;
-channel_length = hslider("channel length", 4e-3, 0.006, 0.132, 0.001); // 0.006 - 0.132
-vibrato_freq = hslider("vibrato freq", 5.9, 0.0, 9.28125, 0.01); // 0.0 - 9.28125
-vibrato_gain = hslider("vibrato gain", 0.0, 0.0, 1547, 1) * 0.001; // 0.0 - 1.54688
+channel_length = hslider("channel length", 0.004, 0.006, 0.132, 0.001); // 0.006 - 0.132 // CHANGED TO 0.004 and SOUNDS! Thanks Beer ;)
+
+vibrato_freq = hslider("vibrato freq", 0.0, 0.0, 9.28125, 0.01); // 0.0 - 9.28125 check
+vibrato_gain = hslider("vibrato gain", 0.0, 0.0, 1547, 1) * 0.001; // 0.0 - 1.54688 check
+
 //vibrato_gain = hslider("vibrato gain", 0.0, 0.0, 1.54688, 0.001); // 0.0 - 1.54688
 jet_height = hslider("jet height", 1.08, 0.05, 1.27, 0.01) * 0.001; // 5e-05 - 0.00127
 //jet_height =  0.00108; 
@@ -39,13 +41,13 @@ jet_width = 0.02;
 delta_d = 1.0e-3;
 //delta_d = 0.001;
 
-turbulence_gain = 1;
+turbulence_gain = 50; // value should be from 1 to 6350 in steps of 50 hslider("Turbulence", 0, 0, 6350, 50); dont know why doesnt work! ¬¬ stupid slider
 
 // resonator
-cav_length = hslider("cavity length", 17.5, 10.0, 22.7, 0.1) * 0.001; // 0.01 - 0.0227
+cav_length = hslider("cavity length", 14.0, 10.0, 22.7, 0.1) * 0.001; // 0.01 - 0.0227 //change 17.5 to 14.0
 //cav_length = hslider("cavity length", 0.0175, 0.01, 0.0227, 0.0001); // 0.01 - 0.0227
 cav_radius = 0.0085;
-chim_length = hslider("chimney length", 10.0, 8, 20.7, 0.1) * 0.001; // 0.008 - 0.0207
+chim_length = hslider("chimney length", 14.0, 8, 20.7, 0.1) * 0.001; // 0.008 - 0.0207 change 10.0 to 14.0
 //chim_length = hslider("chimney length", 0.01, 0.008, 0.0207, 0.001); // 0.008 - 0.0207
 chim_radius = 0.007;
 end_length = hslider("end length", 8, 1, 20, 0.1) * 0.01;
@@ -56,6 +58,6 @@ tub_length = hslider("tube length", 245, 240, 250, 1) * 0.001;
 //tub_length = 0.245; 
 tub_radius = 0.009;
 
-impulse_scale = 1;
+impulse_scale = 40;
 
 

@@ -37,4 +37,7 @@ svg:
 	faust -svg -sn faust/flauta.dsp
 
 clean:
-	rm -rf *.so *.out *.wav gen/* faust/*-svg alsa-gtk 
+	rm -rf *.so *.out *.wav gen/* faust/*-svg alsa-gtk
+
+carlos:
+	make clean; make; make standalone; ./flauta.out 
