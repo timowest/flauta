@@ -39,13 +39,12 @@ blow = (((envelope * target_driving_pressure) <: (_ + (vibrato_gain * vibrato) *
 with {
     target_driving_pressure = pressure;
 
-    // TODO : parametrize
-    envelope = gate : adsr(0.005 * SR, 0.01, 100, 0.01);
+    //envelope = gate : adsr(0.005 * SR, 0.01, 100, 0.01);
+    envelope = gate : adsr(env_attack * SR, env_decay, env_sustain, env_release);
 
     // XXX : vibrato envelope missing
     vibrato = vibrato_gain * osc(vibrato_freq); 
 };
-
 
 // bernoulli
 // out : bernoulli, uj_steady, impulse

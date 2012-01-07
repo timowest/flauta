@@ -16,7 +16,8 @@
 
 gate = button("gate");
 
-// excitation
+// EXCITATION
+
 pressure = hslider("pressure", 32, 1, 254, 1); //check
 
 min_jet_vel = 1.0;
@@ -43,7 +44,13 @@ delta_d = 1.0e-3;
 
 turbulence_gain = 50; // value should be from 1 to 6350 in steps of 50 hslider("Turbulence", 0, 0, 6350, 50); dont know why doesnt work! ¬¬ stupid slider
 
-// resonator
+env_attack = hslider("env attack", 5, 1, 100, 1) * 0.001;
+env_decay = hslider("env decay", 10, 0, 1000, 10) * 0.001;
+env_sustain = hslider("env sustain", 100, 10, 100, 1);
+env_release = hslider("env release", 10, 0, 1000, 10) * 0.001;
+
+// RESONATOR
+
 cav_length = hslider("cavity length", 14.0, 10.0, 22.7, 0.1) * 0.001; // 0.01 - 0.0227 //change 17.5 to 14.0
 //cav_length = hslider("cavity length", 0.0175, 0.01, 0.0227, 0.0001); // 0.01 - 0.0227
 cav_radius = 0.0085;
