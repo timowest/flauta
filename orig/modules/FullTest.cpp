@@ -389,7 +389,7 @@ int main(int argc, char *argv[]) {
             
         for (int j = 0; j < 6; j++) {            
             Bernoulli_test(all_inputs[r], all_inputs[j], "../../gen/bernoulli_out_%d_orig.txt", (r+1)*10+j+1, 3);
-	    Receptivity_test(all_inputs[r], all_inputs[j], 0.5, "../../gen/receptivity_out_%d_orig.txt", (r+1)*10+j+1, 1);
+	    Receptivity_test(all_inputs[r], all_inputs[j], 25, "../../gen/receptivity_out_%d_orig.txt", (r+1)*10+j+1, 1);
             JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt", (r+1)*10+j+1, 2);	    
 	    Excitation_test(all_inputs[r], all_inputs[j], "../../gen/excitation_out_%d_orig.txt", (r+1)*10+j+1, 2);
 
