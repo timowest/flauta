@@ -70,6 +70,6 @@ tub_length = hslider("tube length", 245, 240, 250, 1) * 0.001;
 //tub_length = 0.245; 
 tub_radius = 0.009;
 
-impulse_scale = 40;
+impulse_scale = hslider("impulse scale", 1.0, 0.1, 10, 0.1); // change from 40
 
 
