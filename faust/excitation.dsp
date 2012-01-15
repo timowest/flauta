@@ -23,7 +23,7 @@ import("constants.dsp");
 
 // out : sources, impulse
 excitation(Vac,Pp) = (Vac,Pp) <: (_,_,_,!)
-    : (_,(blow : (limit, limit, (_/2))),_) 
+    : (_,(blow : (limit, limit, _)),_) 
     : ((jet,_,_)
     <: (_,_,!,_,!,!,_,!)
     : (sources, _)) ~ _

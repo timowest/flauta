@@ -37,7 +37,7 @@ with {
 
   // out : combined sources
   exc(mouthReflection, rightChimney) = 
-    (mouthReflection, rightChimney) <: (_,!,ONE_OVER_RHO_C*(_-_),_+_) : (_,(excitation : +)) : (_+_);
+    (mouthReflection, rightChimney) <: (_,!,ONE_OVER_RHO_C*(_-_),_+_) : (_,(excitation : (_+_/2))) : (_+_);
   
 };
 
