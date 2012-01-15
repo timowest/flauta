@@ -27,7 +27,7 @@ excitation(Vac,Pp) = (Vac,Pp) <: (_,_,_,!)
     : ((jet,_,_)
     <: (_,_,!,_,!,!,_,!)
     : (sources, _)) ~ _
-    : (!,_+_);
+    : (!,_,_);
 
 limit = max(min_jet_vel) : min(max_jet_vel);
 
