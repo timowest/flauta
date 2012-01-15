@@ -322,8 +322,8 @@ void Sources_test(float* in1, float* in2, float* in3, const char* format, int in
 
      for (int i = 0; i < SIZE; i++) { 
          excitation = my_Sources->tick(in1[i], in2[i], in3[i], hyd_feed);
-         out1[i] = excitation;
-         out2[i] = hyd_feed;
+         out1[i] = hyd_feed;
+         out2[i] = excitation;
      }
     
      //save_outputs();
