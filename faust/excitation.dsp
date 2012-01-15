@@ -73,6 +73,9 @@ jet(hyd_feed,Vac,Uj_steady,Uj) = (hyd_feed,Vac,Uj_steady,Uj) : (receptivity,_) :
 with {
     
     delay_length = floor((max_flue_labium_d / (min_convection_f * min_jet_vel)) / SR);
+     
+    // other definition used in tick
+    // delay_length = jet_msamples_per_sec/ Uj_steady;
 
     jet_msamples_per_sec = flue_labium_distance / (convection_f * SR);
 
@@ -138,6 +141,7 @@ with {
     
 };
 
+// out : hyd_feedback, sources
 sources(eta_d,Uj_d,Vac) = (eta_d,Uj_d,Vac) <: (_,_,!,!,_,_) : (jetDrive, turbulence, vortex) : (_,_+_+_);
 
 // vortex
