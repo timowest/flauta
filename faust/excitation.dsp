@@ -72,10 +72,10 @@ with {
 jet(hyd_feed,Vac,Uj_steady,Uj) = (hyd_feed,Vac,Uj_steady,Uj) : (receptivity,_) : (jetDelay, jetDelay)
 with {
     
-    delay_length = floor((max_flue_labium_d / (min_convection_f * min_jet_vel)) / SR);
-     
-    // other definition used in tick
-    // delay_length = jet_msamples_per_sec/ Uj_steady;
+    // initial definition of delay length
+    initial_delay_length = floor((max_flue_labium_d / (min_convection_f * min_jet_vel)) / SR);
+         
+    delay_length = (jet_msamples_per_sec / Uj_steady) : max(0.5) : min(initial_delay_length);
 
     jet_msamples_per_sec = flue_labium_distance / (convection_f * SR);
 
@@ -126,7 +126,7 @@ with {
     c1 = cos(PI * low_freq);
     c2 = cos(PI * high_freq);
     beta = (1.0 + c1*c2) / (c1+c2);
-    wc = acos(beta - (beta/fabs(beta)) * sqrt((beta*beta)-1.0)); // FIXME
+    wc = acos(beta - (beta/fabs(beta)) * sqrt((beta*beta)-1.0)); 
     cc = cos(wc);
     sc = sin(wc);
 
