@@ -30,10 +30,10 @@ labium_position = hslider("labium position", 2, 0, 12.7, 0.1) * 0.0001;
 //labium_position = 0.0002; 
 convection_f = 0.5;
 min_convection_f = 0.3;
-channel_length = hslider("channel length", 0.004, 0.006, 0.132, 0.001); // 0.006 - 0.132 // CHANGED TO 0.004 and SOUNDS! Thanks Beer ;)
+channel_length = hslider("channel length", 0.006, 0.006, 0.132, 0.001); // 0.006 - 0.132
 
-vibrato_freq = hslider("vibrato freq", 0.0, 0.0, 9.28125, 0.01); // 0.0 - 9.28125 check
-vibrato_gain = hslider("vibrato gain", 0.0, 0.0, 1547, 1) * 0.001; // 0.0 - 1.54688 check
+vibrato_freq = hslider("vibrato freq", 0.0, 0.0, 9.28125, 0.01); // 0.0 - 9.28125 
+vibrato_gain = hslider("vibrato gain", 0.0, 0.0, 1547, 1) * 0.001; // 0.0 - 1.54688 
 
 //vibrato_gain = hslider("vibrato gain", 0.0, 0.0, 1.54688, 0.001); // 0.0 - 1.54688
 jet_height = hslider("jet height", 1.08, 0.05, 1.27, 0.01) * 0.001; // 5e-05 - 0.00127
