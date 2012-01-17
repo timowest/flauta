@@ -21,7 +21,7 @@ def error(orig_values, faust_values):
 def main(fast):
     files = os.listdir('gen')
     slow = ['jet','sources']
-    modules = ['bernoulli', 'jetdrive', 'receptivity','turbulence', 'vortex', 'blow', 'excitation', 'jet', 'sources']
+    modules = ['bernoulli', 'jetdrive', 'receptivity','turbulence', 'vortex', 'blow', 'excitation', 'jet', 'sources', 'resonator']
 
     for module in modules:
         if (fast and module in slow):

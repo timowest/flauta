@@ -3,7 +3,7 @@ import("filter.lib");
 import("music.lib");
 
 // flauta libs
-import("excitation.dsp");
+//import("excitation.dsp");
 import("constants.dsp");
 import("params.dsp");
 
@@ -59,12 +59,12 @@ with {
     b2 = -0.1003;
 };
 
-res = in<:(upperCavity,leftChimney,lowerTube,_,_,!,!,_,!,_):(junction,_,_,_,_):(lowerCavity,rightChimney,upperTube, _, _, _, _):out,!
+res(lowCav, mouRef,losFil, endRef, sour, imp) = (lowCav, mouRef+(sour+imp/2), endRef, mouRef,losFil) //in
+	<:(upperCavity,leftChimney,lowerTube,_,_,!,!,_,!,_) //first delays
+	:(junction,_,_,_,_) // junction
+	:(lowerCavity,rightChimney,upperTube, _, _, _, _) // second delays
+	:out,! //outputs
 with {
-
- in(lowerCavity, mouthReflection,lossesFilter, endReflection, excitation) = 
-   (lowerCavity, mouthReflection+excitation, endReflection, mouthReflection,lossesFilter); 
- 
  out(lowerCavity, rightChimney, upperTube, mouthReflection, lossesFilter, endReflection) =   
     lowerCavity,
     rightChimney,

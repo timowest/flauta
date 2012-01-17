@@ -32,7 +32,7 @@ def error(use_plot, orig_values, faust_values):
 
 def main(use_plot):
 
-	modules = ['bernoulli', 'jetdrive', 'receptivity','turbulence', 'vortex', 'blow', 'excitation', 'jet', 'sources']
+	modules = ['bernoulli', 'jetdrive', 'receptivity','turbulence', 'vortex', 'blow', 'excitation', 'resonator']
 
 	files = os.listdir('gen')
 	for module in modules:

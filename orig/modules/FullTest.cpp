@@ -26,6 +26,9 @@
 //Excitation Includes
 #include "Excitation.cpp"
 
+//Resonator Includes
+#include "Resonator.cpp"
+
 //Jet Includes
 #include "Jet.cpp"
 #include "Delay.cpp"
@@ -366,6 +369,38 @@ void Jet_test(float* in1, float* in2, float in3, float* in4, const char* format,
      if (out_count > 2) write(&out, out3);
      out.close();   
 }
+// Resonator Test Function
+void Resonator_test(float* in1, float* in2, const char* format, int index, int out_count) {
+     
+     // Resonator definitions
+     Resonator *my_Resonator;
+     my_Resonator = new Resonator();
+     StkFloat Vac;
+     StkFloat Pp;
+     StkFloat output;	
+
+     for (int i = 0; i < SIZE; i++) { 
+	 output = my_Resonator->tick(in1[i], in2[i]);
+         Vac= my_Resonator->get_acoustic_velocity();
+         Pp=my_Resonator->get_mouth_acoustic_pressure();
+         out1[i] = Vac;
+         out2[i] = Pp;
+	 out3[i] = output;
+     }
+    
+     //save_outputs();
+     char outfile[40];
+     sprintf(outfile, format, index);
+
+     cout << outfile << endl;
+     // serialize outputs to file
+     ofstream out(outfile);
+     write(&out, out1);
+     if (out_count > 1) write(&out, out2);
+     if (out_count > 2) write(&out, out3);
+     out.close();   
+}
+
 
 int main(int argc, char *argv[]) {
     
@@ -392,6 +427,7 @@ int main(int argc, char *argv[]) {
 	    Receptivity_test(all_inputs[r], all_inputs[j], 25, "../../gen/receptivity_out_%d_orig.txt", (r+1)*10+j+1, 1);
             JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt", (r+1)*10+j+1, 2);	    
 	    Excitation_test(all_inputs[r], all_inputs[j], "../../gen/excitation_out_%d_orig.txt", (r+1)*10+j+1, 2);
+            Resonator_test(all_inputs[r], all_inputs[j], "../../gen/resonator_out_%d_orig.txt", (r+1)*10+j+1, 2);
 
             if (argc > 1) continue;
 

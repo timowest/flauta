@@ -26,10 +26,7 @@ import("params.dsp");
 //import("utils.dsp");
 
 // flauta
-flauta = ((((exc:resonator)~_):(!,_,_))~_):(!,_) ;
-exc = excitation : (_+_/2);
-
-
+flauta = ((((excitation:resonator)~_):(!,_,_))~_):(!,_) ;
 process = flauta;
   
 
