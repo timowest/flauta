@@ -42,13 +42,13 @@ res(lowCav, mouRef, losFil, endRef, sour, imp) =
     //(lowCav, mouRef+(sour+imp/2), endRef, mouRef,losFil) 
     : (_,_+_+_/2,_,_,_) 
     //first delays
-    <: (upperCavity, leftChimney, lowerTube,_,_,!,!,_,!,_) 
+    <: (upperCavity, leftChimney, lowerTube,_,_,!,!,_,!,!) 
     // junction
-    : (junction,_,_,_,_) 
+    : (junction,_,_,_) 
     // second delays
-    : (lowerCavity, rightChimney, upperTube, _, _, _, _) 
+    : (lowerCavity, rightChimney, upperTube, _, _, _) 
     //outputs
-    : out,! 
+    : out
 with {
 
  out(lowerCavity, rightChimney, upperTube, mouthReflection, lossesFilter, endReflection) =
@@ -64,7 +64,7 @@ with {
 };
 
 // mostly preserved from original definition
-junction(upCavity, loTube, lChimney) = (upCavity, loTube, lChimney) <: (k * (_ + _ + -2 * _),_,_,_) : out_mix
+junction(upCavity, lChimney, loTube) = (upCavity, loTube, lChimney) <: (k * (_ + _ + -2 * _),_,_,_) : out_mix
 with {
 
   out_mix(temp, upperCavity, lowerTube, leftChimney) =
