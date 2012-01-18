@@ -41,6 +41,7 @@ with {
   
 };
 
+
 junction(upCavity, loTube, lChimney) = (upCavity, loTube, lChimney) <: (k * (_ + _ + -2 * _),_,_,_)  : out_mix
 with {
 
