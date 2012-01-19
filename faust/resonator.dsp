@@ -38,7 +38,7 @@ with {
         (sources, imp, eDelay) : temp 
         : (_, caDelayRight, tuDelayLeft) : temp2 
         <: ( _ <: (_, (_,tuDelayLeft : temp3 : cdr)) <: (!,_,(_,_,tuDelayLeft : temp4 <: _,ed) ) ), 
-           ( temp5 <: (_,temp6) <: (_+_,!,tdl) )  
+           (_,caDelayRight : temp5 <: (_,temp6) <: (_+_,!,tdl) )  
     with {
         temp(sources, impulse, eDelay) = sources + impulse/2 + eDelay : chimneyDelayRight;
         temp2(temp, caDelayRight, tuDelayLeft) = junction_gain * (-2 * temp + caDelayRight + tuDelayLeft); 
@@ -46,7 +46,7 @@ with {
         cdr(temp3) = temp3 : cavityDelayRight; 
         temp4(temp2, cdr, tuDelayLeft) = temp2 + cdr + tuDelayLeft : chimneyDelayLeft; 
         ed(temp4) = temp4 + impulse/2 : mouth_radiation_filter : endDelay; 
-        temp5(temp2) = temp2 + caDelayRight : tubeDelayRight : visco_termic_filter; 
+        temp5(temp2, caDelayRight) = temp2 + caDelayRight : tubeDelayRight : visco_termic_filter; 
         temp6(temp5) = temp5 : radiation_filter; 
         tdl(temp6) = temp6 : tubeDelayLeft; 
     };
