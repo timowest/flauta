@@ -30,61 +30,75 @@ import("excitation.dsp");
 import("constants.dsp");
 import("params.dsp");
 
-resonator = (((((((res~_)
-    : (!,_,_,_,_,_)) ~ _(mouthReflection))
-    : (!,lossesFilter,_,_,_)) ~ _)
-    : (endReflection,_,_,_)) ~ _) 
-    : (!,_,_,_);
-
-// out : lowerCavity, rightChimney, upperTube, Vac, Pp, out
-res(lowCav, mouRef, losFil, endRef, sour, imp) =  
-    (lowCav, mouRef, losFil, endRef, sour, imp) <: (_,_,!,!,_,_,!,!,!,_,!,!,!,_,_,!,!,!)
-    //(lowCav, mouRef+(sour+imp/2), endRef, mouRef,losFil) 
-    : (_,_+_+_/2,_,_,_) 
-    //first delays
-    <: (upperCavity, leftChimney, lowerTube,_,_,!,!,_,!,_) 
-    // junction
-    : (junction,_,_,_,_) 
-    // second delays
-    : (lowerCavity, rightChimney, upperTube, _, _, _, _) 
-    //outputs
-    : out,! 
+resonator(current_sources, impulse) = (current_sources, impulse) : (res ~ (_,_,_)) : out
 with {
 
- out(lowerCavity, rightChimney, upperTube, mouthReflection, lossesFilter, endReflection) =
-    lowerCavity,
-    rightChimney,
-    upperTube,
-    ONE_OVER_RHO_C*(rightChimney - mouthReflection), // Vac
-    (rightChimney + mouthReflection), // Pp
-    (lossesFilter + endReflection); // out
+    // out : cdr, temp4, ed, temp5 + temp6, tdl
+    res(eDelay, caDelayRight, tuDelayLeft, sources, imp) = 
+        (sources, imp, eDelay) : temp 
+        : (_, caDelayRight, tuDelayLeft) : temp2 
+        <: ( _ <: (_, (_,tuDelayLeft : temp3 : cdr)) <: (!,_,(_,_,tuDelayLeft : temp4 <: _,ed) ) ), 
+           ( temp5 <: (_,temp6) <: (_+_,!,tdl) )  
+    with {
+        temp(sources, impulse, eDelay) = sources + impulse/2 + eDelay : chimneyDelayRight;
+        temp2(temp, caDelayRight, tuDelayLeft) = junction_gain * (-2 * temp + caDelayRight + tuDelayLeft); 
+        temp3(temp2, tuDelayLeft) = temp2 + tuDelayLeft : cavityDelayLeft;
+        cdr(temp3) = temp3 : cavityDelayRight; 
+        temp4(temp2, cdr, tuDelayLeft) = temp2 + cdr + tuDelayLeft : chimneyDelayLeft; 
+        ed(temp4) = temp4 + impulse/2 : mouth_radiation_filter : endDelay; 
+        temp5(temp2) = temp2 + caDelayRight : tubeDelayRight : visco_termic_filter; 
+        temp6(temp5) = temp5 : radiation_filter; 
+        tdl(temp6) = temp6 : tubeDelayLeft; 
+    };
 
-  toVac(rightChimney) = ONE_OVER_RHO_C*(rightChimney - mouthReflection);
-    
+    // out : acoustic_pressure, acoustic_velocity
+    out(caDelayRight, chDelayLeft, eDelay, r, tuDelayRight) = 
+      eDelay + chDelayLeft, ONE_OVER_RHO_C * (eDelay - chDelayLeft), r;
+
+    junction_gain = -1 * (chim_radius * chim_radius) / ((chim_radius * chim_radius) + 2 * (cav_radius * cav_radius)); 
 };
 
-// mostly preserved from original definition
-junction(upCavity, loTube, lChimney) = (upCavity, loTube, lChimney) <: (k * (_ + _ + -2 * _),_,_,_) : out_mix
-with {
+/*StkFloat Resonator::tick(StkFloat current_sources, StkFloat impulse)
+{
 
-  out_mix(temp, upperCavity, lowerTube, leftChimney) =
-    lowerTube + temp, // to lower cavity
-    upperCavity + temp + lowerTube + (-1*leftChimney), // to right chimney
-    upperCavity + temp; // to upper tube
+  // Propagate to the tube throught the 3 port junction
+  
+  StkFloat temp,temp2,temp3,temp4,temp5,temp6;
 
-  k = -1*((chim_radius*chim_radius))/((chim_radius*chim_radius) - 2*(cav_radius*cav_radius));
+  temp = chimneyDelayRight->tick(current_sources +(impulse/2) + endDelay->lastOut());
+  // the common sigma
+  temp2 = junction_gain* (-2*temp + cavityDelayRight->lastOut() + tubeDelayLeft->lastOut());
+  
+  // The cavity
+  temp3 = cavityDelayLeft->tick(temp2 + tubeDelayLeft->lastOut());
+  cavityDelayRight->tick(temp3);
+  
+  // The chimney
+  temp4 = chimneyDelayLeft->tick(temp2 + cavityDelayRight->lastOut() + tubeDelayLeft->lastOut() - temp);
+  endDelay->tick(mouth_radiation_filter->tick(temp4 + impulse/2));
+  // The tube
+  temp5 = visco_thermic_tick(tubeDelayRight->tick(temp2 + cavityDelayRight->lastOut()));
+  temp6 = radiation_tick(temp5);
+  tubeDelayLeft->tick(temp6);
 
-};
+  // OUTPUT:
+  //Reading at the embochure
+  //  last_Output = endDelay->lastOut() + chimneyDelayLeft->lastOut();
+  
+  // Reading at the end of the tube
+  last_Output = temp5 + temp6;
+  return (last_Output);
+
+}*/
 
 // delays
-
-leftChimney = fdelay(MAX_DELAY_LENGTH, chimney_samples);
-rightChimney = fdelay(MAX_DELAY_LENGTH, chimney_samples);
-upperCavity = fdelay(MAX_DELAY_LENGTH, cavity_samples);
-lowerCavity = fdelay(MAX_DELAY_LENGTH, cavity_samples);
-upperTube = fdelay(MAX_DELAY_LENGTH, tube_samples);
-lowerTube = fdelay(MAX_DELAY_LENGTH, tube_samples);
-//endDelay = fdelay(MAX_DELAY_LENGTH, end_samples);
+chimneyDelayRight = fdelay(MAX_DELAY_LENGTH, chimney_samples);
+chimneyDelayLeft = fdelay(MAX_DELAY_LENGTH, chimney_samples);
+cavityDelayRight = fdelay(MAX_DELAY_LENGTH, cavity_samples);
+cavityDelayLeft = fdelay(MAX_DELAY_LENGTH, cavity_samples);
+tubeDelayRight = fdelay(MAX_DELAY_LENGTH, tube_samples);
+tubeDelayLeft = fdelay(MAX_DELAY_LENGTH, tube_samples);
+endDelay = fdelay(MAX_DELAY_LENGTH, end_samples);
 
 end_samples = end_length * SR / TWO_SOUND_SPEED;
 cavity_samples = cav_length * SR / TWO_SOUND_SPEED;
@@ -93,7 +107,7 @@ tube_samples = tub_length * SR / TWO_SOUND_SPEED;
 
 // filters
 
-lossesFilter = iir((b0,b1,b2,b3),(a1,a2,a3))
+visco_termic_filter = iir((b0,b1,b2,b3),(a1,a2,a3))
 with {
     a1 = -0.33623476246554;
     a2 = -0.71257915055968;
@@ -104,9 +118,9 @@ with {
     b3 = 0.07424498608506;
 };
 
-mouthReflection = endReflection;
+mouth_radiation_filter = radiation_filter;
 
-endReflection = iir((b0,b1,b2),(a1,a2))
+radiation_filter = iir((b0,b1,b2),(a1,a2))
 with {
     a1 = -0.3587;
     a2 = -0.0918;
@@ -114,6 +128,7 @@ with {
     b1 = -0.3237;
     b2 = -0.1003;
 };
+
 
 //process = resonator;
 //process = res;
