@@ -33,7 +33,8 @@ import("params.dsp");
 resonator(current_sources, impulse) = (current_sources, impulse) : (res ~ (_,_,_)) : out
 with {
 
-    // out : cdr, temp4, ed, temp5 + temp6, tdl
+    // TODO : merge res definition into resonator
+    // out : cdr, temp4, ed, tube out, tdl
     res(eDelay, caDelayRight, tuDelayLeft, sources, imp) = 
         (sources, imp, eDelay) : temp 
         : (_, caDelayRight, tuDelayLeft) : temp2 
@@ -52,8 +53,10 @@ with {
     };
 
     // out : acoustic_pressure, acoustic_velocity
-    out(caDelayRight, chDelayLeft, eDelay, r, tuDelayRight) = 
-      eDelay + chDelayLeft, ONE_OVER_RHO_C * (eDelay - chDelayLeft), r;
+    out(caDelayRight, chDelayLeft, eDelay, out, tuDelayRight) = 
+      eDelay + chDelayLeft, 
+      ONE_OVER_RHO_C * (eDelay - chDelayLeft), 
+      out;
 
     junction_gain = -1 * (chim_radius * chim_radius) / ((chim_radius * chim_radius) + 2 * (cav_radius * cav_radius)); 
 };
@@ -92,6 +95,7 @@ with {
 }*/
 
 // delays
+
 chimneyDelayRight = fdelay(MAX_DELAY_LENGTH, chimney_samples);
 chimneyDelayLeft = fdelay(MAX_DELAY_LENGTH, chimney_samples);
 cavityDelayRight = fdelay(MAX_DELAY_LENGTH, cavity_samples);
