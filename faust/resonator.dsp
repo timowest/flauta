@@ -20,27 +20,26 @@ import("music.lib");
 import("constants.dsp");
 import("params.dsp");
 
-resonator(current_sources, impulse) = (current_sources, impulse) : (res ~ (_,_,_)) : out
+resonator(current_sources, impulse) = (current_sources, impulse) : (res ~ (_,!,_,!,_)) : out
 with {
-
-    // TODO : fix recursion
+   
     // TODO : merge res definition into resonator
     // out : cdr, temp4, ed, tube out, tdl
-    res(eDelay, caDelayRight, tuDelayLeft, sources, imp) = 
+    res(caDelayRight, eDelay, tuDelayLeft, sources, imp) = 
         (sources, imp, eDelay) : temp 
         : (_, caDelayRight, tuDelayLeft) : temp2 
-        <: ( _ <: (_, (_,tuDelayLeft : temp3 : cdr)) <: (!,_,(_,_,tuDelayLeft : temp4 <: _,ed) ) ), 
-           (_,caDelayRight : temp5 <: (_,temp6) <: (_+_,!,tdl) )  
+        <: ( _ <: (_, (_,tuDelayLeft : temp3 : cavityDelayRight)) <: (!,_,(_,_,tuDelayLeft : temp4 <: _,ed) ) ), 
+           (_,caDelayRight : temp5 <: (_,temp6) <: (_+_,!,tubeDelayLeft) )  
     with {
         temp(sources, impulse, eDelay) = sources + impulse/2 + eDelay : chimneyDelayRight;
         temp2(temp, caDelayRight, tuDelayLeft) = junction_gain * (-2 * temp + caDelayRight + tuDelayLeft); 
         temp3(temp2, tuDelayLeft) = temp2 + tuDelayLeft : cavityDelayLeft;
-        cdr(temp3) = temp3 : cavityDelayRight; 
+        //cdr(temp3) = temp3 : cavityDelayRight; 
         temp4(temp2, cdr, tuDelayLeft) = temp2 + cdr + tuDelayLeft : chimneyDelayLeft; 
         ed(temp4) = temp4 + impulse/2 : mouth_radiation_filter : endDelay; 
         temp5(temp2, caDelayRight) = temp2 + caDelayRight : tubeDelayRight : visco_termic_filter; 
         temp6(temp5) = temp5 : radiation_filter; 
-        tdl(temp6) = temp6 : tubeDelayLeft; 
+        //tdl(temp6) = temp6 : tubeDelayLeft; 
     };
 
     // out : acoustic_pressure, acoustic_velocity, out
