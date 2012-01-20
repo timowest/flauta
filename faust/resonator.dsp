@@ -17,8 +17,6 @@
 // flauta
 flauta = (excitation : resonator) ~ (_,_) : (!,!,_);
 
-/*flauta = ((((excitation : resonator) ~ _) : (!,_,_)) ~ _) : (!,_);*/
-
 process = flauta;
 
 // common libs
@@ -33,6 +31,7 @@ import("params.dsp");
 resonator(current_sources, impulse) = (current_sources, impulse) : (res ~ (_,_,_)) : out
 with {
 
+    // TODO : fix recursion
     // TODO : merge res definition into resonator
     // out : cdr, temp4, ed, tube out, tdl
     res(eDelay, caDelayRight, tuDelayLeft, sources, imp) = 
