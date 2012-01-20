@@ -93,9 +93,8 @@ with {
     b2 = -0.1003;
 };
 
-
 process = flauta;
-  
+//process = excitation:(_+_);  
 
 
 

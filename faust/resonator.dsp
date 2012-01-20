@@ -54,8 +54,8 @@ with {
 
     // out : acoustic_pressure, acoustic_velocity
     out(caDelayRight, chDelayLeft, eDelay, out, tuDelayRight) = 
-      eDelay + chDelayLeft, 
       ONE_OVER_RHO_C * (eDelay - chDelayLeft), 
+      eDelay + chDelayLeft,
       out;
 
     junction_gain = -1 * (chim_radius * chim_radius) / ((chim_radius * chim_radius) + 2 * (cav_radius * cav_radius)); 
