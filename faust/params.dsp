@@ -42,7 +42,7 @@ delta_d = 1.0e-3;
 impulse_scale = vslider("h:h1/h:exc/impulse scale", 1.0, 0.1, 10, 0.1); // change from 40
 
 //turbulence_gain = 50; 
-turbulence_gain = hslider("h:h1/h:exc/turb gain", 50, 0, 6350, 50);
+turbulence_gain = vslider("h:h1/h:exc/turb gain", 50, 0, 6350, 50);
 
 // ENVELOPE
 
