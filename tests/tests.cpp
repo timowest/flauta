@@ -16,6 +16,7 @@
 #include "vortex.cpp"
 #include "jet.cpp"
 #include "sources.cpp"
+#include "resonator.cpp"
 
 #define SR       44100
 #define SIZE     22050
@@ -59,6 +60,7 @@ int main(int argc, char *argv[]) {
     receptivity r; // 3 in, 1 out
     turbulence t;  // 1 in, 1 out
     vortex v;      // 1 in, 1 out
+    resonator res; // 2 in, 3 out
     
     // inputs
     float in_imp[SIZE], in_noise[SIZE], in_ramp[SIZE], in_sine[SIZE], in_triang[SIZE], in_step[SIZE];
@@ -85,6 +87,7 @@ int main(int argc, char *argv[]) {
             test(&jd, in2, "gen/jetdrive_out_%d_faust.txt",    (i+1)*10+j+1, 2);
             test(&e,  in2, "gen/excitation_out_%d_faust.txt",  (i+1)*10+j+1, 2); 
             test(&r,  in2, "gen/receptivity_out_%d_faust.txt", (i+1)*10+j+1, 1);
+            test(&res,in2, "gen/resonator_out_%d_faust.txt", (i+1)*10+j+1, 3);
 
             if (argc > 1) continue; 
 

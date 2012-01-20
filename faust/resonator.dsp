@@ -12,19 +12,11 @@
  *  GNU General Public License for more details.
  */
 
-// TODO : move flauta and process declarations to flauta.dsp when this is ready
-
-// flauta
-flauta = (excitation : resonator) ~ (_,_) : (!,!,_);
-
-process = flauta;
-
 // common libs
 import("filter.lib");
 import("music.lib");
 
 // flauta libs
-import("excitation.dsp");
 import("constants.dsp");
 import("params.dsp");
 
@@ -51,7 +43,7 @@ with {
         tdl(temp6) = temp6 : tubeDelayLeft; 
     };
 
-    // out : acoustic_pressure, acoustic_velocity
+    // out : acoustic_pressure, acoustic_velocity, out
     out(caDelayRight, chDelayLeft, eDelay, out, tuDelayRight) = 
       ONE_OVER_RHO_C * (eDelay - chDelayLeft), 
       eDelay + chDelayLeft,

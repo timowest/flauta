@@ -20,11 +20,19 @@ import("music.lib");
 
 // flauta libs
 import("excitation.dsp");
+import("resonator.dsp");
 import("constants.dsp");
 import("params.dsp");
 //import("utils.dsp");
 
+
 // flauta
+flauta = (excitation : resonator) ~ (_,_) : (!,!,_);
+
+process = flauta;
+
+// flauta
+/*
 flauta = (( (_ <: mouthReflection,_) : exc : leftChimney) 
        : (junction : (_, _, (upperTube : lossesFilter <: (endReflection, _))))
        // feedback to junction
@@ -39,10 +47,10 @@ with {
   exc(mouthReflection, rightChimney) = 
     (mouthReflection, rightChimney) <: (_,!,ONE_OVER_RHO_C*(_-_),_+_) : (_,(excitation : (_+_/2))) : (_+_);
   
-};
+};*/
 
 
-junction(upCavity, loTube, lChimney) = (upCavity, loTube, lChimney) <: (k * (_ + _ + -2 * _),_,_,_)  : out_mix
+/*junction(upCavity, loTube, lChimney) = (upCavity, loTube, lChimney) <: (k * (_ + _ + -2 * _),_,_,_)  : out_mix
 with {
 
   out_mix(temp, upperCavity, lowerTube, leftChimney) = 
@@ -52,11 +60,11 @@ with {
 
   k = -1*((chim_radius*chim_radius))/((chim_radius*chim_radius) - 2*(cav_radius*cav_radius));
 
-};
+};*/
 
 // delays
 
-leftChimney = fdelay(MAX_DELAY_LENGTH, chimney_samples);
+/*leftChimney = fdelay(MAX_DELAY_LENGTH, chimney_samples);
 rightChimney = fdelay(MAX_DELAY_LENGTH, chimney_samples);
 upperCavity = fdelay(MAX_DELAY_LENGTH, cavity_samples);
 lowerCavity = fdelay(MAX_DELAY_LENGTH, cavity_samples);
@@ -68,9 +76,11 @@ end_samples = end_length * SR / TWO_SOUND_SPEED;
 cavity_samples = cav_length * SR / TWO_SOUND_SPEED;
 chimney_samples = chim_length * SR / TWO_SOUND_SPEED;
 tube_samples = tub_length * SR / TWO_SOUND_SPEED;
+*/
 
 // filters
 
+/*
 lossesFilter = iir((b0,b1,b2,b3),(a1,a2,a3))
 with {
     a1 = -0.33623476246554;
@@ -91,10 +101,7 @@ with {
     b0 = -0.1254;
     b1 = -0.3237;
     b2 = -0.1003;
-};
-
-process = flauta;
-//process = excitation:(_+_);  
+};*/
 
 
 

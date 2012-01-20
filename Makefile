@@ -2,15 +2,7 @@ ALSA_GTK = `pkg-config --cflags --libs alsa` `pkg-config --cflags --libs gtk+-2.
 GTKMM = `pkg-config --cflags --libs gtkmm-2.4`
 PAQ = `pkg-config --cflags --libs paq`
 FAUST = -I/usr/local/lib/faust/
-TESTS = gen/blow.cpp gen/bernoulli.cpp gen/excitation.cpp gen/jetdrive.cpp gen/receptivity.cpp gen/turbulence.cpp gen/vortex.cpp gen/jet.cpp gen/sources.cpp
-
-# temporary
-gen/resonator.cpp:
-	faust -a alsa-gtk.cpp -double faust/resonator.dsp > gen/resonator.cpp
-
-# temporary
-resonator: gen/resonator.cpp 
-	g++ -Wall gen/resonator.cpp $(ALSA_GTK) $(FAUST) $(CFLAGS) -lm -o resonator.out
+TESTS = gen/blow.cpp gen/bernoulli.cpp gen/excitation.cpp gen/jetdrive.cpp gen/receptivity.cpp gen/turbulence.cpp gen/vortex.cpp gen/jet.cpp gen/sources.cpp gen/resonator.cpp
 
 gen/flauta.cpp:
 	faust -a alsa-gtk.cpp -double faust/flauta.dsp > gen/flauta.cpp
@@ -36,7 +28,7 @@ compare_fast: $(TESTS)
 svg:
 	rm -rf faust/*-svg    
 	faust -svg -sn faust/flauta.dsp
-	faust -svg -sn faust/resonator.dsp
+	#faust -svg -sn faust/resonator.dsp
 
 clean:
 	rm -rf *.so *.out *.wav gen/* faust/*-svg alsa-gtk
