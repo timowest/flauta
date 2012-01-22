@@ -20,32 +20,40 @@ import("music.lib");
 import("constants.dsp");
 import("params.dsp");
 
-resonator(current_sources, impulse) = (current_sources, impulse) : (res ~ (_,!,_,!,_)) : out
+// out : acoustic_velocity, acoustic_pressure, out
+resonator(current_sources, impulse) = (current_sources, impulse) : (res ~ (_,!,_,_)) : out
 with {
    
     // TODO : merge res definition into resonator
     // out : cdr, temp4, ed, tube out, tdl
-    res(caDelayRight, eDelay, tuDelayLeft, sources, imp) = 
-        (sources, imp, eDelay) : temp 
-        : (_, caDelayRight, tuDelayLeft) : temp2 
-        <: ( _ <: (_, (_,tuDelayLeft : temp3 : cavityDelayRight)) <: (!,_,(_,_,tuDelayLeft : temp4 <: _,ed) ) ), 
-           (_,caDelayRight : temp5 <: (_,temp6) <: (_+_,!,tubeDelayLeft) )  
+    res(cavityRight, end, tubeLeft, sources, impulse) = 
+      (tubeLeft, cavityRight, end, sources, impulse)   
+      // temp                          
+      : (_,_,temp) /* tule, cari, temp */ <: (!,!,_,_,!,!,_,_,_,!,_,!) /* temp, tule, tule, cari, temp, cari */
+      // temp2                                                                       
+      : (_,_,temp2,_) /* temp, tule, temp2, cari */
+      // temp3 & temp4
+      <: ( ((_,_,_,!) <: (_,_,_,!,(temp3 : cavityDelayRight)) <: (!,!,!,_,((_,_,_,_) : temp4 <: (_,ed)))),
+      // temp5 & temp6
+           ((!,!,_,_) : temp5 <: ((temp6 <: (_,_)),_) : (tubeDelayLeft,_+_))
+         )
     with {
-        temp(sources, impulse, eDelay) = sources + impulse/2 + eDelay : chimneyDelayRight;
-        temp2(temp, caDelayRight, tuDelayLeft) = junction_gain * (-2 * temp + caDelayRight + tuDelayLeft); 
-        temp3(temp2, tuDelayLeft) = temp2 + tuDelayLeft : cavityDelayLeft;
+        temp(end, sources, impulse) = sources + impulse/2 + end : chimneyDelayRight;
+        temp2(tubeLeft, cavityRight, temp) = junction_gain * (-2 * temp + cavityRight + tubeLeft); 
+        temp3(tubeLeft, temp2) = temp2 + tubeLeft : cavityDelayLeft;
         //cdr(temp3) = temp3 : cavityDelayRight; 
-        temp4(temp2, cdr, tuDelayLeft) = temp2 + cdr + tuDelayLeft : chimneyDelayLeft; 
+        temp4(temp, tubeLeft, temp2, cdr) = temp2 + cdr + tubeLeft - temp : chimneyDelayLeft; 
+        // TODO : use impulse as input of ed
         ed(temp4) = temp4 + impulse/2 : mouth_radiation_filter : endDelay; 
-        temp5(temp2, caDelayRight) = temp2 + caDelayRight : tubeDelayRight : visco_termic_filter; 
+        temp5(temp2, cavityRight) = temp2 + cavityRight : tubeDelayRight : visco_termic_filter; 
         temp6(temp5) = temp5 : radiation_filter; 
         //tdl(temp6) = temp6 : tubeDelayLeft; 
     };
 
-    // out : acoustic_pressure, acoustic_velocity, out
-    out(caDelayRight, chDelayLeft, eDelay, out, tuDelayRight) = 
-      ONE_OVER_RHO_C * (eDelay - chDelayLeft), 
-      eDelay + chDelayLeft,
+    // out : acoustic_velocity, acoustic_pressure, out
+    out(cavityRight, chimneyLeft, end, tubeRight, out) = 
+      ONE_OVER_RHO_C * (end - chimneyLeft), // Vac
+      end + chimneyLeft, // Pp
       out;
 
     junction_gain = -1 * (chim_radius * chim_radius) / ((chim_radius * chim_radius) + 2 * (cav_radius * cav_radius)); 
@@ -82,15 +90,27 @@ with {
   last_Output = temp5 + temp6;
   return (last_Output);
 
-}*/
+}
+
+StkFloat Resonator::get_mouth_acoustic_pressure()
+{
+  return(endDelay->lastOut() + chimneyDelayLeft->lastOut());
+}
+
+StkFloat Resonator::get_acoustic_velocity()
+{
+  return(ONE_OVER_RHO_C*(endDelay->lastOut() - chimneyDelayLeft->lastOut()));
+}
+
+*/
 
 // delays
 
-chimneyDelayRight = fdelay(MAX_DELAY_LENGTH, chimney_samples);
+chimneyDelayRight = fdelay(MAX_DELAY_LENGTH + 1, chimney_samples);
 chimneyDelayLeft = fdelay(MAX_DELAY_LENGTH, chimney_samples);
-cavityDelayRight = fdelay(MAX_DELAY_LENGTH, cavity_samples);
+cavityDelayRight = fdelay(MAX_DELAY_LENGTH + 1, cavity_samples);
 cavityDelayLeft = fdelay(MAX_DELAY_LENGTH, cavity_samples);
-tubeDelayRight = fdelay(MAX_DELAY_LENGTH, tube_samples);
+tubeDelayRight = fdelay(MAX_DELAY_LENGTH + 1, tube_samples);
 tubeDelayLeft = fdelay(MAX_DELAY_LENGTH, tube_samples);
 endDelay = fdelay(MAX_DELAY_LENGTH, end_samples);
 

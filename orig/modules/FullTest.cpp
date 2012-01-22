@@ -91,7 +91,7 @@ void read(const char* in_file, float* floats) {
 }
 
 // Vortex Test Function 
-void Vortex_test(float* in1, const char* format, int index, int out_count) {
+void Vortex_test(float* in1, const char* format, int index) {
    
    // Vortex Definitions
    Vortex *my_Vortex;
@@ -101,8 +101,6 @@ void Vortex_test(float* in1, const char* format, int index, int out_count) {
    for (int i = 0; i < SIZE; i++) {        
         Vortex_val = my_Vortex->tick(in1[i]);    
         out1[i] = Vortex_val;
-        //out2[i] = ;
-        //out3[i] = ;    
     }
     
     //save_outputs();
@@ -113,14 +111,12 @@ void Vortex_test(float* in1, const char* format, int index, int out_count) {
     // serialize outputs to file
     ofstream out(outfile);
     write(&out, out1);
-    if (out_count > 1) write(&out, out2);
-    if (out_count > 2) write(&out, out3);
     out.close();   
     
 }
 
 // Turbulence Test Function // 
-void Turbulence_test(float* in1, const char* format, int index, int out_count) {
+void Turbulence_test(float* in1, const char* format, int index) {
      
      // Turbulence Definitions
      Turbulence *my_Turbulence;
@@ -130,8 +126,6 @@ void Turbulence_test(float* in1, const char* format, int index, int out_count) {
     for (int i = 0; i < SIZE; i++) {
         current_turbulence = my_Turbulence->tick(in1[i], 1.08e-3);    
         out1[i] = current_turbulence;
-        //out2[i] = ;
-        //out3[i] = ;
       
     }
  
@@ -143,13 +137,11 @@ void Turbulence_test(float* in1, const char* format, int index, int out_count) {
     // serialize outputs to file
     ofstream out(outfile);
     write(&out, out1);
-    if (out_count > 1) write(&out, out2);
-    if (out_count > 2) write(&out, out3);
     out.close();    
 } 
 
 // Receptivity Test Function
-void Receptivity_test(float* in1, float* in2,float in3, const char* format, int index, int out_count) {
+void Receptivity_test(float* in1, float* in2,float in3, const char* format, int index) {
 
      // Receptivity Definitions
      Receptivity *My_Receptivity;
@@ -162,8 +154,6 @@ void Receptivity_test(float* in1, float* in2,float in3, const char* format, int 
          // reverse order to match the Faust code
          ETA = My_Receptivity->tick(in2[i],in1[i]);    
          out1[i] = ETA;
-         //out2[i] = ;
-         //out3[i] = ;
       
     }
     //save_outputs();
@@ -174,13 +164,11 @@ void Receptivity_test(float* in1, float* in2,float in3, const char* format, int 
      // serialize outputs to file
      ofstream out(outfile);
      write(&out, out1);
-     if (out_count > 1) write(&out, out2);
-     if (out_count > 2) write(&out, out3);
      out.close();     
 }
 
 // JetDrive Test Function
-void JetDrive_test(float* in1, float* in2, const char* format, int index, int out_count) {
+void JetDrive_test(float* in1, float* in2, const char* format, int index) {
 
      // JetDrive Definitions
      JetDrive *My_JetDrive;
@@ -194,7 +182,6 @@ void JetDrive_test(float* in1, float* in2, const char* format, int index, int ou
          HYD_FEED = My_JetDrive->get_Hyd_feedback();      
          out1[i] = HYD_FEED;
          out2[i] = JET_DRIVE;
-         //out3[i] = ;
        
      }
      //save_outputs();
@@ -205,13 +192,12 @@ void JetDrive_test(float* in1, float* in2, const char* format, int index, int ou
      // serialize outputs to file
      ofstream out(outfile);
      write(&out, out1);
-     if (out_count > 1) write(&out, out2);
-     if (out_count > 2) write(&out, out3);
+     write(&out, out2);
      out.close();   
 }   
 
 // Bernoulli Test Function
-void Bernoulli_test(float* in1, float* in2, const char* format, int index, int out_count) {
+void Bernoulli_test(float* in1, float* in2, const char* format, int index) {
      
      // Bernoulli definitions
      Bernoulli *my_Bernoulli;
@@ -235,12 +221,12 @@ void Bernoulli_test(float* in1, float* in2, const char* format, int index, int o
      // serialize outputs to file
      ofstream out(outfile);
      write(&out, out1);
-     if (out_count > 1) write(&out, out2);
-     if (out_count > 2) write(&out, out3);
+     write(&out, out2);
+     write(&out, out3);
      out.close();   
 }
 // Blow Test Function
-void Blow_test(float* in1, const char* format, int index, int out_count) {
+void Blow_test(float* in1, const char* format, int index) {
      
      // Blow definitions
      Blow *my_Blow;
@@ -255,23 +241,6 @@ void Blow_test(float* in1, const char* format, int index, int out_count) {
          out2[i] = Uj_steady;
          out3[i] = Impulse;
 
-         //if (in1[i] <= 0.20027) {
-         //in1[i] = 0.20027; 
-         //}
-
-          if (std::isinf(out3[i])) { //output is infinite
-              // TODO : aggregate
-              //cout << in1[i] << " " << Uj_steady << " " << Impulse << " causing Infinite in sample " << i << " previous value in " << in1[i-1] << endl; 
-              char temp;
-              //cin>>temp;
-              
-          }
-          if (std::isnan(out3[i])) { //output is not a number 0.20027
-              // TODO : aggregate
-              //cout << in1[i] << " " << Uj_steady << " " << Impulse << " causing Nan in sample " << i << " previous value in " << in1[i-1] << endl; 
-              char temp;
-              //cin>>temp;
-          } 
      }
     
      //save_outputs();
@@ -281,13 +250,13 @@ void Blow_test(float* in1, const char* format, int index, int out_count) {
      // serialize outputs to file
      ofstream out(outfile);
      write(&out, out1);
-     if (out_count > 1) write(&out, out2);
-     if (out_count > 2) write(&out, out3);
+     write(&out, out2);
+     write(&out, out3);
      out.close();   
 }
 
 // Excitation Test Function
-void Excitation_test(float* in1, float* in2, const char* format, int index, int out_count) {
+void Excitation_test(float* in1, float* in2, const char* format, int index) {
      
      // Excitation definitions
      Excitation *my_Excitation;
@@ -309,13 +278,12 @@ void Excitation_test(float* in1, float* in2, const char* format, int index, int 
      // serialize outputs to file
      ofstream out(outfile);
      write(&out, out1);
-     if (out_count > 1) write(&out, out2);
-     if (out_count > 2) write(&out, out3);
+     write(&out, out2);
      out.close();   
 }
 
 // Sources Test Function
-void Sources_test(float* in1, float* in2, float* in3, const char* format, int index, int out_count) {
+void Sources_test(float* in1, float* in2, float* in3, const char* format, int index) {
      
      // Sources definitions
      Sources *my_Sources;
@@ -337,13 +305,12 @@ void Sources_test(float* in1, float* in2, float* in3, const char* format, int in
      // serialize outputs to file
      ofstream out(outfile);
      write(&out, out1);
-     if (out_count > 1) write(&out, out2);
-     if (out_count > 2) write(&out, out3);
+     write(&out, out2);
      out.close();   
 }
 
 // Jet Test Function
-void Jet_test(float* in1, float* in2, float in3, float* in4, const char* format, int index, int out_count) {
+void Jet_test(float* in1, float* in2, float in3, float* in4, const char* format, int index) {
      
      // Jet definitions
      Jet *my_Jet;
@@ -365,12 +332,11 @@ void Jet_test(float* in1, float* in2, float in3, float* in4, const char* format,
      // serialize outputs to file
      ofstream out(outfile);
      write(&out, out1);
-     if (out_count > 1) write(&out, out2);
-     if (out_count > 2) write(&out, out3);
+     write(&out, out2);
      out.close();   
 }
 // Resonator Test Function
-void Resonator_test(float* in1, float* in2, const char* format, int index, int out_count) {
+void Resonator_test(float* in1, float* in2, const char* format, int index) {
      
      // Resonator definitions
      Resonator *my_Resonator;
@@ -396,8 +362,8 @@ void Resonator_test(float* in1, float* in2, const char* format, int index, int o
      // serialize outputs to file
      ofstream out(outfile);
      write(&out, out1);
-     if (out_count > 1) write(&out, out2);
-     if (out_count > 2) write(&out, out3);
+     write(&out, out2);
+     write(&out, out3);
      out.close();   
 }
 
@@ -418,24 +384,24 @@ int main(int argc, char *argv[]) {
     float* all_inputs[] = {in_imp, in_noise, in_ramp, in_sine, in_triang, in_step};
 
     for (int r = 0; r < 6; r++) {
-        Vortex_test(all_inputs[r], "../../gen/vortex_out_%d_orig.txt" ,(r+1), 1); 
-        Turbulence_test(all_inputs[r], "../../gen/turbulence_out_%d_orig.txt", (r+1), 1);
-	Blow_test(all_inputs[r], "../../gen/blow_out_%d_orig.txt", (r+1), 3);
+        Vortex_test(all_inputs[r], "../../gen/vortex_out_%d_orig.txt" ,(r+1)); 
+        Turbulence_test(all_inputs[r], "../../gen/turbulence_out_%d_orig.txt", (r+1));
+	Blow_test(all_inputs[r], "../../gen/blow_out_%d_orig.txt", (r+1));
             
         for (int j = 0; j < 6; j++) {            
-            Bernoulli_test(all_inputs[r], all_inputs[j], "../../gen/bernoulli_out_%d_orig.txt", (r+1)*10+j+1, 3);
-	    Receptivity_test(all_inputs[r], all_inputs[j], 25, "../../gen/receptivity_out_%d_orig.txt", (r+1)*10+j+1, 1);
-            JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt", (r+1)*10+j+1, 2);	    
-	    Excitation_test(all_inputs[r], all_inputs[j], "../../gen/excitation_out_%d_orig.txt", (r+1)*10+j+1, 2);
-	    Resonator_test(all_inputs[r], all_inputs[j], "../../gen/resonator_out_%d_orig.txt", (r+1)*10+j+1, 2);
+            Bernoulli_test(all_inputs[r], all_inputs[j], "../../gen/bernoulli_out_%d_orig.txt", (r+1)*10+j+1);
+	    Receptivity_test(all_inputs[r], all_inputs[j], 25, "../../gen/receptivity_out_%d_orig.txt", (r+1)*10+j+1);
+            JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt", (r+1)*10+j+1);	    
+	    Excitation_test(all_inputs[r], all_inputs[j], "../../gen/excitation_out_%d_orig.txt", (r+1)*10+j+1);
+	    Resonator_test(all_inputs[r], all_inputs[j], "../../gen/resonator_out_%d_orig.txt", (r+1)*10+j+1);
 
             if (argc > 1) continue;
 
             for(int i = 0; i < 6; i++) {	       
-               Sources_test(all_inputs[r], all_inputs[j], all_inputs[i], "../../gen/sources_out_%d_orig.txt",(i+1)*100+(r+1)*10+j+1 , 2);
+               Sources_test(all_inputs[r], all_inputs[j], all_inputs[i], "../../gen/sources_out_%d_orig.txt",(i+1)*100+(r+1)*10+j+1);
                
 	       for(int q = 0; q < 6; q++) {	       
-               Jet_test(all_inputs[r], all_inputs[j], 25, all_inputs[q], "../../gen/jet_out_%d_orig.txt",(q+1)*1000+(i+1)*100+(r+1)*10+j+1 , 2);
+               Jet_test(all_inputs[r], all_inputs[j], 25, all_inputs[q], "../../gen/jet_out_%d_orig.txt",(q+1)*1000+(i+1)*100+(r+1)*10+j+1);
             
                }
             }

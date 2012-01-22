@@ -18,30 +18,22 @@ gate = button("gate");
 
 // EXCITATION
 
-pressure = vslider("h:h1/h:exc/pressure", 32, 1, 254, 1); //check
+pressure = vslider("h:h1/h:exc/pressure", 32, 1, 254, 1);
 
 min_jet_vel = 1.0;
 max_jet_vel = 40;
 step_Uj = 0.1;
 
 flue_labium_distance = vslider("h:h1/h:exc/fl-la dist", 4.4, 0.5, 13.0, 0.1) * 0.001;
-//flue_labium_distance = 0.004; // is 0.0044 
 max_flue_labium_d = 0.016;
 labium_position = vslider("h:h1/h:exc/lab pos", 2, 0, 12.7, 0.1) * 0.0001;
-//labium_position = 0.0002; 
 convection_f = 0.5;
 min_convection_f = 0.3;
 channel_length = vslider("h:h1/h:exc/channel len", 0.004, 0.006, 0.132, 0.001); // 0.006 - 0.132 
-//vibrato_gain = vslider("vibrato gain", 0.0, 0.0, 1.54688, 0.001); // 0.0 - 1.54688
 jet_height = vslider("h:h1/h:exc/jet hgt", 1.08, 0.05, 1.27, 0.01) * 0.001; // 5e-05 - 0.00127
-//jet_height =  0.00108; 
 jet_width = 0.02;
-delta_d = 1.0e-3;
-//delta_d = 0.001;
-
-impulse_scale = vslider("h:h1/h:exc/impulse scale", 1.0, 0.1, 10, 0.1); // change from 40
-
-//turbulence_gain = 50; 
+delta_d = 0.001;
+impulse_scale = vslider("h:h1/h:exc/impulse scale", 1.0, 0.1, 10, 0.1);
 turbulence_gain = vslider("h:h1/h:exc/turb gain", 50, 0, 6350, 50);
 
 // ENVELOPE
@@ -63,18 +55,13 @@ vib_release = vslider("h:h2/h:vib/release", 10, 0, 1000, 10) * 0.001;
 
 // RESONATOR
 
-cav_length = vslider("h:h2/h:res/cavity len", 14.0, 10.0, 22.7, 0.1) * 0.001; // 0.01 - 0.0227 //change 17.5 to 14.0
-//cav_length = vslider("cavity length", 0.0175, 0.01, 0.0227, 0.0001); // 0.01 - 0.0227
+cav_length = vslider("h:h2/h:res/cavity len", 17.5, 10.0, 22.7, 0.1) * 0.001; // 0.01 - 0.0227
 cav_radius = 0.0085;
-chim_length = vslider("h:h2/h:res/chimney len", 14.0, 8, 20.7, 0.1) * 0.001; // 0.008 - 0.0207 change 10.0 to 14.0
-//chim_length = vslider("chimney length", 0.01, 0.008, 0.0207, 0.001); // 0.008 - 0.0207
+chim_length = vslider("h:h2/h:res/chimney len", 10.0, 8, 20.7, 0.1) * 0.001; // 0.008 - 0.0207
 chim_radius = 0.007;
 end_length = vslider("h:h2/h:res/end len", 8, 1, 20, 0.1) * 0.01;
-//end_length = 0.08 ;
 end_radius = vslider("h:h2/h:res/end rad", 7, 1, 20, 0.1) * 0.001;
-//end_radius = 0.007;
 tub_length = vslider("h:h2/h:res/tube len", 245, 240, 250, 1) * 0.001;
-//tub_length = 0.245; 
 tub_radius = 0.009;
 
 

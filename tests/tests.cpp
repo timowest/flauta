@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
             test(&jd, in2, "gen/jetdrive_out_%d_faust.txt",    (i+1)*10+j+1, 2);
             test(&e,  in2, "gen/excitation_out_%d_faust.txt",  (i+1)*10+j+1, 2); 
             test(&r,  in2, "gen/receptivity_out_%d_faust.txt", (i+1)*10+j+1, 1);
-            test(&res,in2, "gen/resonator_out_%d_faust.txt", (i+1)*10+j+1, 3);
+            test(&res,in2, "gen/resonator_out_%d_faust.txt",   (i+1)*10+j+1, 3);
 
             if (argc > 1) continue; 
 
