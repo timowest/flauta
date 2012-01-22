@@ -36,16 +36,16 @@ def main(fast):
 
             if len(orig_data) == 1:
                 err1 = error(orig_data[0], faust_data[0])
-                print '%s %s \n err1 = %s' %(module, num, err1)
+                print '%s %s \n err1 = %e' %(module, num, err1)
             elif len(orig_data) == 2:
                 err1 = error(orig_data[0], faust_data[0])
                 err2 = error(orig_data[1], faust_data[1])
-                print '%s %s \n err1 = %s\n err2 = %s' %(module, num, err1, err2)                    
+                print '%s %s \n err1 = %e\n err2 = %e' %(module, num, err1, err2)                    
             elif len(orig_data) == 3:
                 err1 = error(orig_data[0], faust_data[0])
                 err2 = error(orig_data[1], faust_data[1])
                 err3 = error(orig_data[2], faust_data[2])
-                print '%s %s \n err1 = %s\n err2 = %s\n err3 = %s' %(module, num, err1, err2, err3)
+                print '%s %s \n err1 = %e\n err2 = %e\n err3 = %e' %(module, num, err1, err2, err3)
 
 if __name__ == '__main__':    
     main(len(sys.argv) > 1)
