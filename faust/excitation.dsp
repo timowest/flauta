@@ -193,10 +193,7 @@ with {
 // turbulence
 turbulence(uj) = (turbulence_gain * 833) * MAX_AMPLITUDE * uj * uj * jet_height * filtered_noise
 with {
-   
-   //turbulence_gain = 1;
 
-   // FIXME
    filtered_noise = noise : iir((b1,b2,b3),(a1,a2));
 
    a1 = -1.59164698202301;
