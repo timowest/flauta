@@ -40,7 +40,7 @@ with {
     target_driving_pressure = pressure;
 
     //envelope = gate : adsr(0.005 * SR, 0.01, 100, 0.01);
-    envelope = gate : adsr(env_attack * SR, env_decay, env_sustain, env_release);
+    envelope=1;//envelope = gate : adsr(env_attack * SR, env_decay, env_sustain, env_release);
 
     vibrato = vibrato_gain * osc(vibrato_freq) * vibrato_env; 
     vibrato_env = gate : adsr(vib_attack * SR, vib_decay, vib_sustain, vib_release);
@@ -147,8 +147,8 @@ sources(eta_d,Uj_d,Vac) = (eta_d,Uj_d,Vac) <: (_,_,!,!,_,_) : (jetDrive, turbule
 // vortex
 vortex(vac) = select2(vac > 0, -va2, va1) * VORTEX_CTE * vac * vac
 with {
-    va1 = 0.1;
-    va2 = 4.99;
+    va1 = vortex_ampli1;
+    va2 = vortex_ampli2;
 };
 
 //tanh_slow = min(4.0) : max(-4.0) : tanh;
@@ -170,8 +170,9 @@ with {
     Qin = uj * b * jet_width * (1.0 + tanh_fast(tanh_argument))
     with {
       tanh_argument = (jet_displacement - labium_position) / b;
-      b = b_constant * jet_height;
-      b_constant = 0.5; //.39 proportion between b and jet_height
+      jet_hgt = jet_height:max(0.0001); // form JetDrive::set_jet_height(StkFloat value)
+      b_constant = jet_shape:max(0.1):min(2.9); // from JetDrive::set_b_constant(StkFloat value) in JetDrive.cpp
+      b = b_constant * jet_hgt;
     };
 
     hyd_constant = 2.0 * ratio * (kappa * kappa - 1.0) / (M_PI * (kappa * kappa + 1))

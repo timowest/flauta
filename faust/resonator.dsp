@@ -117,7 +117,8 @@ endDelay = fdelay(MAX_DELAY_LENGTH, end_samples);
 end_samples = end_length * SR / TWO_SOUND_SPEED;
 cavity_samples = cav_length * SR / TWO_SOUND_SPEED;
 chimney_samples = chim_length * SR / TWO_SOUND_SPEED;
-tube_samples = tub_length * SR / TWO_SOUND_SPEED;
+tube_samples = SR / (NOTE - RAD_ORDER - VT_ORDER);
+
 
 // filters
 
