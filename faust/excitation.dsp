@@ -34,13 +34,13 @@ limit = max(min_jet_vel) : min(max_jet_vel);
 // blow
 // in : mouth pressure
 // out : uj, uj_steady, impulse
-blow = (((envelope * target_driving_pressure) <: (_ + (vibrato_gain * vibrato) * _) : max(0)),_ ) 
+blow = (((target_driving_pressure*envelope) <: (_ + (vibrato_gain * vibrato) * _) : max(0)),_ ) 
     : bernoulli : (max(0), max(0), _)
 with {
     target_driving_pressure = pressure;
 
     //envelope = gate : adsr(0.005 * SR, 0.01, 100, 0.01);
-    envelope=1;//envelope = gate : adsr(env_attack * SR, env_decay, env_sustain, env_release);
+    envelope = adsr(env_attack * SR, env_decay, env_sustain, env_release, gate);
 
     vibrato = vibrato_gain * osc(vibrato_freq) * vibrato_env; 
     vibrato_env = gate : adsr(vib_attack * SR, vib_decay, vib_sustain, vib_release);
@@ -64,8 +64,9 @@ with {
     const_impulse = impulse_scale * (SR * AIR_DENSITY * 0.61 * chim_radius);
 
     max_impulse = 500;
-
-    const_bernoulli = 1 / (SR * AIR_DENSITY * channel_length);
+    
+    chan_len = channel_length :max(0.001);//Set minimum length to 1mm.
+    const_bernoulli = 1 / (SR * AIR_DENSITY * chan_len);
 };
 
 // out : eta_d, Uj_d
@@ -190,7 +191,7 @@ with {
 
 
 // turbulence
-turbulence(uj) = turbulence_gain * MAX_AMPLITUDE * uj * uj * jet_height * filtered_noise
+turbulence(uj) = (turbulence_gain * 833) * MAX_AMPLITUDE * uj * uj * jet_height * filtered_noise
 with {
    
    //turbulence_gain = 1;
