@@ -12,34 +12,38 @@
  *  GNU General Public License for more details.
  */
 
-ONE_OVER_128 = 1/128;
+
 // parameters
 
+ONE_OVER_128 = 1/128;
 gate = button("gate");
 
 // EXCITATION
 
 // Pressure
 
-human_control_flag=checkbox("h:h2/h:res/Automatic pressure (StrW)");
-STRW=vslider("h:h2/h:res/StrW", 25, 1, 100, 1) * 0.01;
-curr_freq= NOTE;
-W= flue_labium_distance;
-rho=1.2;
-calculated_pressure = pow(curr_freq*W/STRW,2) * rho/2;
+human_control_flag = checkbox("h:h2/h:res/Automatic pressure (StrW)");
+
+calculated_pressure = pow(curr_freq * w/strW,2) * rho/2
+with {
+  curr_freq = freq;
+  rho = 1.2;
+  w = flue_labium_distance;
+  strW  = vslider("h:h2/h:res/StrW", 25, 1, 100, 1) * 0.01;
+};
 
 pressure_coarse = vslider("h:h1/h:exc/pressure coarse", 16, 0, 127, 1) * 2;
 pressure_fine = vslider("h:h1/h:exc/pressure fine", 0, 0, 99, 1) * 0.1;
 pressure_fij = pressure_coarse + pressure_fine;
 
-pressure = select2(human_control_flag, pressure_fij,calculated_pressure);
-
+pressure = select2(human_control_flag, pressure_fij, calculated_pressure);
 
 min_jet_vel = 1.0;
 max_jet_vel = 40;
 step_Uj = 0.1;
 
 //JET
+
 channel_length = vslider("h:h1/h:exc/h:Jet/channel len", 23, 1, 127, 1) + 5 * 0.001; 
 
 jet_height = vslider("h:h1/h:exc/h:Jet/jet hgt", 100, 5, 127, 1) * 0.00001; 
@@ -60,13 +64,13 @@ jet_width = 0.02;
 
 turbulence_gain = vslider("h:h1/h:exc/h:Sources/turb gain", 16, 0, 127, 1) * 50;
 
-vortex_ampli1= vslider("h:h1/h:exc/h:Sources/h:Vortex/Vor a1", 30, 0, 127, 1) * 0.1;
+vortex_ampli1 = vslider("h:h1/h:exc/h:Sources/h:Vortex/Vor a1", 30, 0, 127, 1) * 0.1;
 
-vortex_ampli2= vslider("h:h1/h:exc/h:Sources/h:Vortex/Vor a2", 50, 0, 127, 1) * 0.1;
+vortex_ampli2 = vslider("h:h1/h:exc/h:Sources/h:Vortex/Vor a2", 50, 0, 127, 1) * 0.1;
 
-delta_d =  vslider("h:h1/h:exc/h:Sources/Jet drive", 35, 0, 127, 1) * 0.0001;
+delta_d = vslider("h:h1/h:exc/h:Sources/Jet drive", 35, 0, 127, 1) * 0.0001;
 
-impulse_scale= 1; //impulse_scale = vslider("h:h1/h:exc/h:Sources/impulse scale", 40, 0, 127, 1);
+impulse_scale = 1; //impulse_scale = vslider("h:h1/h:exc/h:Sources/impulse scale", 40, 0, 127, 1);
 
 // ENVELOPE
 
@@ -95,10 +99,11 @@ end_length = vslider("h:h2/h:res/end len", 8, 1, 20, 0.1) * 0.01;
 end_radius = vslider("h:h2/h:res/end rad", 7, 1, 20, 0.1) * 0.001;
 //tub_length = vslider("h:h2/h:res/tube len", 245, 240, 250, 1) * 0.001;
 tub_radius = 0.009;
-NOTE=  vslider("h:h2/h:res/Note", 76, 1, 127, 1):mtof;
+
+freq = vslider("h:h2/h:res/Note", 76, 1, 127, 1) : midiToFreq;
 
 //MIDItoFREQ
 
-mtof(n)=440*pow(2,(n-69)/12);
+midiToFreq(n) = 440 * pow(2, (n-69)/12);
 
 

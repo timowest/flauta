@@ -40,7 +40,7 @@ with {
     target_driving_pressure = pressure;
 
     //envelope = gate : adsr(0.005 * SR, 0.01, 100, 0.01);
-    envelope = adsr(env_attack * SR, env_decay, env_sustain, env_release, gate);
+    envelope = gate : adsr(env_attack * SR, env_decay, env_sustain, env_release);
 
     vibrato = vibrato_gain * osc(vibrato_freq) * vibrato_env; 
     vibrato_env = gate : adsr(vib_attack * SR, vib_decay, vib_sustain, vib_release);
