@@ -171,8 +171,10 @@ with {
     Qin = uj * b * jet_width * (1.0 + tanh_fast(tanh_argument))
     with {
       tanh_argument = (jet_displacement - labium_position) / b;
-      jet_hgt = jet_height:max(0.0001); // form JetDrive::set_jet_height(StkFloat value)
-      b_constant = jet_shape:max(0.1):min(2.9); // from JetDrive::set_b_constant(StkFloat value) in JetDrive.cpp
+      // form JetDrive::set_jet_height(StkFloat value)
+      jet_hgt = jet_height : max(0.0001); 
+      // from JetDrive::set_b_constant(StkFloat value) in JetDrive.cpp
+      b_constant = jet_shape : max(0.1) : min(2.9); 
       b = b_constant * jet_hgt;
     };
 
