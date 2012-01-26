@@ -34,12 +34,11 @@ limit = max(min_jet_vel) : min(max_jet_vel);
 // blow
 // in : mouth pressure
 // out : uj, uj_steady, impulse
-blow = (((target_driving_pressure*envelope) <: (_ + (vibrato_gain * vibrato) * _) : max(0)),_ ) 
+blow = (((target_driving_pressure * envelope) <: (_ + (vibrato_gain * vibrato) * _) : max(0)),_ ) 
     : bernoulli : (max(0), max(0), _)
 with {
     target_driving_pressure = pressure;
-
-    //envelope = gate : adsr(0.005 * SR, 0.01, 100, 0.01);
+    
     envelope = gate : adsr(env_attack * SR, env_decay, env_sustain, env_release);
 
     vibrato = vibrato_gain * osc(vibrato_freq) * vibrato_env; 
@@ -65,7 +64,7 @@ with {
 
     max_impulse = 500;
     
-    chan_len = channel_length :max(0.001);//Set minimum length to 1mm.
+    chan_len = channel_length : max(0.001);
     const_bernoulli = 1 / (SR * AIR_DENSITY * chan_len);
 };
 

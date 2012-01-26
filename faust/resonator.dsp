@@ -114,12 +114,6 @@ tubeDelayRight = fdelay(MAX_DELAY_LENGTH + 1, tube_samples);
 tubeDelayLeft = fdelay(MAX_DELAY_LENGTH, tube_samples);
 endDelay = fdelay(MAX_DELAY_LENGTH, end_samples);
 
-end_samples = end_length * SR / TWO_SOUND_SPEED;
-cavity_samples = cav_length * SR / TWO_SOUND_SPEED;
-chimney_samples = chim_length * SR / TWO_SOUND_SPEED;
-// tube length is dependent on desired frequency
-tube_samples = SR / (freq - RAD_ORDER - VT_ORDER);
-
 // filters
 
 visco_termic_filter = iir((b0,b1,b2,b3),(a1,a2,a3))
