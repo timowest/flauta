@@ -72,7 +72,7 @@ StkFloat JetDrive :: FlowIn(StkFloat displacement ,
 
   StkFloat tanh_argument = (displacement - this->labium_position)/b;
   StkFloat tanh_table_index = (int)((tanh_argument - this->min_value_tanh_table)*
-				    this->inv_step_tanh_table) + 1;
+  				    this->inv_step_tanh_table) + 1;
 
   StkFloat Flow = Velocity*b*jet_width*(1.0 + tanh_table->tick(tanh_table_index));
   return(Flow);  

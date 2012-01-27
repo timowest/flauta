@@ -24,8 +24,8 @@ pressure = 32;
 
 //JET
 channel_length = 4e-3;
-jet_height = 1e-3; 
-jet_shape = 90 / 127.0; // jet_width ?!?
+jet_height = 1.08e-3; 
+jet_shape = 0.5; // used as b_constant in jet_drive
 flue_labium_distance = 4e-3;
 max_flue_labium_d = 0.016;
 labium_position = 0.0002;

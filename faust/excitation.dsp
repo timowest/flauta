@@ -56,7 +56,7 @@ with {
     curr_velocity_steady(prev) = prev + (const_bernoulli * (_ - (HALF_DENSITY * (prev * prev)))) : in_goe_out; 
 
     // in : cv, cvp
-    impulse = const_impulse * (_- _) : max(0) : min(max_impulse) : in_goe_out;
+    impulse = const_impulse * (_-_) : max(0) : min(max_impulse) : in_goe_out;
 
     in_goe_out(x) = select2(pin >= pout, 0.0, x);
 
@@ -153,21 +153,27 @@ with {
 
 //tanh_slow = min(4.0) : max(-4.0) : tanh;
 
-tanh_fast = min(4.0) : max(-4.0) : tanh_lookup
+tanh_fast = min(4.0) : max(-4.0) : (_ + 4.0) <: (int(_),decimal(_)) : lookup
 with {
    size = 8000;
    index = (+(1)~_ ) - 1; // 0,1,2,...
    tanh_creation = float(index) / size * 8.0 -4.0 : tanh;
-   tanh_lookup(x) = rdtable(size+1, tanh_creation, int((x+4.0)/ 8.0 * size));
+   table(x) = rdtable(size+1, tanh_creation, int(x / 8.0 * size)); // 0.0-8.0
+
+   // linear interpolation
+   decimal(x) = x - floor(x);
+   lookup(x, frac) = (table(x), table(x+1)) <: (_,_,_,!) : (_+frac*(_-_));
 };
+
+
 
 // jetDrive
 // out : hyd_feed, jet_drive
-jetDrive(jet_displacement, uj) = Qin <: hyd_constant * _, (jet_drive_cst * (_ - _'))
+jetDrive(jet_displacement, uj) = (jet_displacement, uj) : Qin <: hyd_constant * _, (jet_drive_cst * (_ - _'))
 with {
 
     // FIXME
-    Qin = uj * b * jet_width * (1.0 + tanh_fast(tanh_argument))
+    Qin(jet_displacement, uj) = uj * b * jet_width * (1.0 + tanh_fast(tanh_argument))
     with {
       tanh_argument = (jet_displacement - labium_position) / b;
       // form JetDrive::set_jet_height(StkFloat value)
