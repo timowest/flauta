@@ -23,7 +23,7 @@ gate = button("gate");
 
 human_control_flag = checkbox("h:h2/h:res/Automatic pressure (StrW)");
 
-pressure = select2(human_control_flag, pressure_fij, calculated_pressure);
+pressure = select2(human_control_flag, manual_pressure, calculated_pressure);
 
 calculated_pressure = pow(curr_freq * w/strW, 2) * rho/2
 with {
@@ -40,7 +40,7 @@ with {
 };
 
 //JET
-channel_length = vslider("h:h1/h:exc/h:Jet/channel len", 23, 1, 127, 1) + 5 * 0.001; 
+channel_length = ( vslider("h:h1/h:exc/h:Jet/channel len", 23, 1, 127, 1) + 5 ) * 0.001; 
 jet_height = vslider("h:h1/h:exc/h:Jet/jet hgt", 100, 5, 127, 1) * 0.00001; 
 jet_shape = vslider("h:h1/h:exc/h:Jet/jet shp", 90, 5, 127, 1) / 127.0;
 flue_labium_distance = vslider("h:h1/h:exc/h:Jet/fl-la dist", 44, 5, 127, 1) * 0.0001;
