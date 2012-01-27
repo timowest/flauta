@@ -153,26 +153,33 @@ with {
 
 //tanh_slow = min(4.0) : max(-4.0) : tanh;
 
-tanh_fast = min(4.0) : max(-4.0) : (_ + 4.0) <: (int(_),decimal(_)) : lookup
+tanh_fast = min(4.0) : max(-4.0) : (1000*(_+4.0)) <: (int(_),decimal(_)) : lookup
 with {
    size = 8000;
    index = (+(1)~_ ) - 1; // 0,1,2,...
    tanh_creation = float(index) / size * 8.0 -4.0 : tanh;
-   table(x) = rdtable(size+1, tanh_creation, int(x / 8.0 * size)); // 0.0-8.0
+   table(x) = rdtable(size+1, tanh_creation, int(x)); // 0.0-8.0
 
    // linear interpolation
    decimal(x) = x - floor(x);
    lookup(x, frac) = (table(x), table(x+1)) <: (_,_,_,!) : (_+frac*(_-_));
 };
 
+/*
+step_tanh_table = 0.001;
+inv_step_tanh_table = 1.0/step_tanh_table; // = 1000
 
+tanh_table_index = (int)((tanh_argument - this->min_value_tanh_table)*
+  				    this->inv_step_tanh_table) + 1;
+
+tanh_table_index(x) = (int) (x + 4) * 1000 + 1;
+*/
 
 // jetDrive
 // out : hyd_feed, jet_drive
 jetDrive(jet_displacement, uj) = (jet_displacement, uj) : Qin <: hyd_constant * _, (jet_drive_cst * (_ - _'))
 with {
-
-    // FIXME
+    
     Qin(jet_displacement, uj) = uj * b * jet_width * (1.0 + tanh_fast(tanh_argument))
     with {
       tanh_argument = (jet_displacement - labium_position) / b;
@@ -191,7 +198,7 @@ with {
     };
 
     jet_drive_cst = (-1 * AIR_DENSITY * delta_d) / (jet_width * flue_labium_distance * sampling_period);
-   
+  
     sampling_period = 1.0 / SR;
 
 };

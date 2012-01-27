@@ -13,6 +13,11 @@ def read(filename):
 def error(orig_values, faust_values):
     val_range = max(orig_values) - min(orig_values)
     error_out = [abs(orig_values[i]-faust_values[i]) for i in range(0, len(orig_values))]
+    errors = 0
+    #for i in range(0, len(orig_values)):
+    #  if (orig_values[i] != faust_values[i]):
+    #    errors += 1
+    #print errors
     if (val_range > 0):
         return sum(error_out) / len(error_out) / val_range
     else:
