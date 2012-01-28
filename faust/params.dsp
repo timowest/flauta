@@ -55,7 +55,7 @@ min_convection_f = 0.3;
 jet_width = 0.02;
 
 //SOURCES 
-turbulence_gain = vslider("h:h1/h:exc/h:Sources/turb gain", 16, 0, 127, 1) * 50;
+turbulence_gain = vslider("h:h1/h:exc/h:Sources/turb gain", 16, 0, 127, 1) * 50 * 833;
 vortex_ampli1 = vslider("h:h1/h:exc/h:Sources/h:Vortex/Vor a1", 30, 0, 127, 1) * 0.1;
 vortex_ampli2 = vslider("h:h1/h:exc/h:Sources/h:Vortex/Vor a2", 50, 0, 127, 1) * 0.1;
 delta_d = vslider("h:h1/h:exc/h:Sources/Jet drive", 35, 0, 127, 1) * 0.0001;

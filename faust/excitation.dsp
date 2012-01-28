@@ -199,8 +199,10 @@ with {
 
 
 // turbulence
-turbulence(uj) = (turbulence_gain * 833) * MAX_AMPLITUDE * uj * uj * jet_height * filtered_noise
+turbulence(uj) = turbulence_gain * MAX_AMPLITUDE * uj * uj * jet_height * filtered_noise
 with {
+
+   // turbulence_gain * MAX_AMPLITUDE * Uj * Uj * h * noise_filter->tick(random_sample);
 
    filtered_noise = noise : iir((b1,b2,b3),(a1,a2));
 
