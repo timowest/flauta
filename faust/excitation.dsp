@@ -153,6 +153,7 @@ with {
 
 //tanh_slow = min(4.0) : max(-4.0) : tanh;
 
+// XXX tanh lookup table behaves a little bit different than in STK version
 tanh_fast = min(4.0) : max(-4.0) : (1000*(_+4.0)) <: (int(_),decimal(_)) : lookup
 with {
    size = 8000;
@@ -160,20 +161,13 @@ with {
    tanh_creation = float(index) / size * 8.0 -4.0 : tanh;
    table(x) = rdtable(size+1, tanh_creation, int(x)); // 0.0-8.0
 
+   // XXX make this to use double precision properly
+   tanh	= ffunction(float tanh (float), <math.h>,"");
+
    // linear interpolation
-   decimal(x) = x - floor(x);
-   lookup(x, frac) = (table(x), table(x+1)) <: (_,_,_,!) : (_+frac*(_-_));
+   decimal(x) = x - int(x);
+   lookup(x, frac) = select2(frac > 0, table(x), ((table(x), table(x+1)) <: (_,_,_,!) : (_+frac*(_-_)) ));
 };
-
-/*
-step_tanh_table = 0.001;
-inv_step_tanh_table = 1.0/step_tanh_table; // = 1000
-
-tanh_table_index = (int)((tanh_argument - this->min_value_tanh_table)*
-  				    this->inv_step_tanh_table) + 1;
-
-tanh_table_index(x) = (int) (x + 4) * 1000 + 1;
-*/
 
 // jetDrive
 // out : hyd_feed, jet_drive
