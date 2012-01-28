@@ -265,7 +265,8 @@ void Excitation_test(float* in1, float* in2, const char* format, int index) {
      StkFloat Impulse;
 
      for (int i = 0; i < SIZE; i++) { 
-         Sources = my_Excitation->tick(in1[i], in2[i], Impulse);
+         // inputs are pressure and velocity
+         Sources = my_Excitation->tick(in2[i], in1[i], Impulse);
          out1[i] = Sources;
          out2[i] = Impulse;
      }

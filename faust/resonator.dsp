@@ -57,6 +57,7 @@ with {
       out;
 
     junction_gain = -1 * (chim_radius * chim_radius) / ((chim_radius * chim_radius) + 2 * (cav_radius * cav_radius)); 
+
 };
 
 /*StkFloat Resonator::tick(StkFloat current_sources, StkFloat impulse)
