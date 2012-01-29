@@ -385,26 +385,22 @@ int main(int argc, char *argv[]) {
     float* all_inputs[] = {in_imp, in_noise, in_ramp, in_sine, in_triang, in_step};
 
     for (int r = 0; r < 6; r++) {
-        Vortex_test(all_inputs[r], "../../gen/vortex_out_%d_orig.txt" ,(r+1)); 
+        Vortex_test(all_inputs[r], "../../gen/vortex_out_%d_orig.txt" ,        (r+1)); 
         Turbulence_test(all_inputs[r], "../../gen/turbulence_out_%d_orig.txt", (r+1));
-	Blow_test(all_inputs[r], "../../gen/blow_out_%d_orig.txt", (r+1));
+	Blow_test(all_inputs[r], "../../gen/blow_out_%d_orig.txt",             (r+1));
             
         for (int j = 0; j < 6; j++) {            
-            Bernoulli_test(all_inputs[r], all_inputs[j], "../../gen/bernoulli_out_%d_orig.txt", (r+1)*10+j+1);
+            Bernoulli_test(all_inputs[r], all_inputs[j], "../../gen/bernoulli_out_%d_orig.txt",         (r+1)*10+j+1);
 	    Receptivity_test(all_inputs[r], all_inputs[j], 25, "../../gen/receptivity_out_%d_orig.txt", (r+1)*10+j+1);
-            JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt", (r+1)*10+j+1);	    
-	    Excitation_test(all_inputs[r], all_inputs[j], "../../gen/excitation_out_%d_orig.txt", (r+1)*10+j+1);
-	    Resonator_test(all_inputs[r], all_inputs[j], "../../gen/resonator_out_%d_orig.txt", (r+1)*10+j+1);
+            JetDrive_test(all_inputs[r], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt",           (r+1)*10+j+1);	    
+	    Excitation_test(all_inputs[r], all_inputs[j], "../../gen/excitation_out_%d_orig.txt",       (r+1)*10+j+1);
+	    Resonator_test(all_inputs[r], all_inputs[j], "../../gen/resonator_out_%d_orig.txt",         (r+1)*10+j+1);
 
             if (argc > 1) continue;
 
             for(int i = 0; i < 6; i++) {	       
-               Sources_test(all_inputs[r], all_inputs[j], all_inputs[i], "../../gen/sources_out_%d_orig.txt",(i+1)*100+(r+1)*10+j+1);
-               
-	       for(int q = 0; q < 6; q++) {	       
-               Jet_test(all_inputs[r], all_inputs[j], 25, all_inputs[q], "../../gen/jet_out_%d_orig.txt",(q+1)*1000+(i+1)*100+(r+1)*10+j+1);
-            
-               }
+               Sources_test(all_inputs[r], all_inputs[j], all_inputs[i], "../../gen/sources_out_%d_orig.txt", (i+1)*100+(r+1)*10+j+1);
+               Jet_test(all_inputs[r], all_inputs[j], 25, all_inputs[i], "../../gen/jet_out_%d_orig.txt",     (i+1)*100+(r+1)*10+j+1);
             }
         }
  

@@ -51,7 +51,7 @@ void read(const char* in_file, float* floats) {
 void test(dsp* processor, float** inputs, const char* out_file, int index, int out_count);
 
 int main(int argc, char *argv[]) {
-    jet  jt;       // 4 in, 2 out	
+    jet  jt;       // 3 in, 2 out	
     sources s;     // 3 in, 2 out
     blow bl;       // 1 in, 3 out
     bernoulli b;   // 2 in, 3 out
@@ -95,12 +95,7 @@ int main(int argc, char *argv[]) {
             for (int r = 0; r < 6; r++) {
         	float* in3[] = {all_inputs[i], all_inputs[j], all_inputs[r]};  
             	test(&s,  in3, "gen/sources_out_%d_faust.txt", (r+1)*100+(i+1)*10+j+1, 2);
-
-		// 4 inputs
-		for (int q = 0; q < 6; q++) {
-        	    float* in4[] = {all_inputs[i], all_inputs[j], all_inputs[r], all_inputs[q]};  
-            	    test(&jt,  in4, "gen/jet_out_%d_faust.txt", (q+1)*1000+(r+1)*100+(i+1)*10+j+1, 2);
-                }
+                test(&jt, in3, "gen/jet_out_%d_faust.txt",     (r+1)*100+(i+1)*10+j+1, 2);		
             }
         } 
     }

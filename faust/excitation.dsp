@@ -73,13 +73,15 @@ jet(hyd_feed,Vac,Uj_steady,Uj) = (hyd_feed,Vac,Uj_steady,Uj) : (receptivity,_) :
 with {
     
     // initial definition of delay length
-    initial_delay_length = floor((max_flue_labium_d / (min_convection_f * min_jet_vel)) / (1 / SR));
+    initial_delay_length = floor((max_flue_labium_d / (min_convection_f * min_jet_vel)) / sampling_period);
          
     delay_length = (jet_msamples_per_sec / Uj_steady) : max(0.5) : min(initial_delay_length);
 
-    jet_msamples_per_sec = flue_labium_distance / (convection_f * (1 / SR));
-
+    jet_msamples_per_sec = flue_labium_distance / (convection_f * sampling_period);
+   
     jetDelay = fdelay(MAX_DELAY_LENGTH, delay_length);
+
+    sampling_period = 1 / SR;
 };
 
 receptivity(hyd_feed, vac, uj_steady) = excitation : jet_filter_peak1 : jet_filter_peak2 : jet_filter_shelf : *(1e-4)

@@ -1,0 +1,3200 @@
+rm -rf *.so *.out *.wav gen/* faust/*-svg alsa-gtk
+faust -a minimal.cpp -double -cn blow tests/blow-test.dsp > gen/blow.cpp
+faust -a minimal.cpp -double -cn bernoulli tests/bernoulli-test.dsp > gen/bernoulli.cpp
+faust -a minimal.cpp -double -cn excitation tests/excitation-test.dsp > gen/excitation.cpp
+faust -a minimal.cpp -double -cn jetdrive tests/jetdrive-test.dsp > gen/jetdrive.cpp
+faust -a minimal.cpp -double -cn receptivity tests/receptivity-test.dsp > gen/receptivity.cpp
+faust -a minimal.cpp -double -cn turbulence tests/turbulence-test.dsp > gen/turbulence.cpp
+faust -a minimal.cpp -double -cn vortex tests/vortex-test.dsp > gen/vortex.cpp
+faust -a minimal.cpp -double -cn jet tests/jet-test.dsp > gen/jet.cpp
+faust -a minimal.cpp -double -cn sources tests/sources-test.dsp > gen/sources.cpp
+faust -a minimal.cpp -double -cn resonator tests/resonator-test.dsp > gen/resonator.cpp
+g++ -Wall -fpermissive tests/tests.cpp -g -I/usr/local/lib/faust/ -lm -Igen/ -Isrc/ -o tests.out
+./tests.out
+gen/blow_out_1_faust.txt
+gen/turbulence_out_1_faust.txt
+gen/vortex_out_1_faust.txt
+gen/bernoulli_out_11_faust.txt
+gen/jetdrive_out_11_faust.txt
+gen/excitation_out_11_faust.txt
+gen/receptivity_out_11_faust.txt
+gen/resonator_out_11_faust.txt
+gen/sources_out_111_faust.txt
+gen/jet_out_111_faust.txt
+gen/sources_out_211_faust.txt
+gen/jet_out_211_faust.txt
+gen/sources_out_311_faust.txt
+gen/jet_out_311_faust.txt
+gen/sources_out_411_faust.txt
+gen/jet_out_411_faust.txt
+gen/sources_out_511_faust.txt
+gen/jet_out_511_faust.txt
+gen/sources_out_611_faust.txt
+gen/jet_out_611_faust.txt
+gen/bernoulli_out_12_faust.txt
+gen/jetdrive_out_12_faust.txt
+gen/excitation_out_12_faust.txt
+gen/receptivity_out_12_faust.txt
+gen/resonator_out_12_faust.txt
+gen/sources_out_112_faust.txt
+gen/jet_out_112_faust.txt
+gen/sources_out_212_faust.txt
+gen/jet_out_212_faust.txt
+gen/sources_out_312_faust.txt
+gen/jet_out_312_faust.txt
+gen/sources_out_412_faust.txt
+gen/jet_out_412_faust.txt
+gen/sources_out_512_faust.txt
+gen/jet_out_512_faust.txt
+gen/sources_out_612_faust.txt
+gen/jet_out_612_faust.txt
+gen/bernoulli_out_13_faust.txt
+gen/jetdrive_out_13_faust.txt
+gen/excitation_out_13_faust.txt
+gen/receptivity_out_13_faust.txt
+gen/resonator_out_13_faust.txt
+gen/sources_out_113_faust.txt
+gen/jet_out_113_faust.txt
+gen/sources_out_213_faust.txt
+gen/jet_out_213_faust.txt
+gen/sources_out_313_faust.txt
+gen/jet_out_313_faust.txt
+gen/sources_out_413_faust.txt
+gen/jet_out_413_faust.txt
+gen/sources_out_513_faust.txt
+gen/jet_out_513_faust.txt
+gen/sources_out_613_faust.txt
+gen/jet_out_613_faust.txt
+gen/bernoulli_out_14_faust.txt
+gen/jetdrive_out_14_faust.txt
+gen/excitation_out_14_faust.txt
+gen/receptivity_out_14_faust.txt
+gen/resonator_out_14_faust.txt
+gen/sources_out_114_faust.txt
+gen/jet_out_114_faust.txt
+gen/sources_out_214_faust.txt
+gen/jet_out_214_faust.txt
+gen/sources_out_314_faust.txt
+gen/jet_out_314_faust.txt
+gen/sources_out_414_faust.txt
+gen/jet_out_414_faust.txt
+gen/sources_out_514_faust.txt
+gen/jet_out_514_faust.txt
+gen/sources_out_614_faust.txt
+gen/jet_out_614_faust.txt
+gen/bernoulli_out_15_faust.txt
+gen/jetdrive_out_15_faust.txt
+gen/excitation_out_15_faust.txt
+gen/receptivity_out_15_faust.txt
+gen/resonator_out_15_faust.txt
+gen/sources_out_115_faust.txt
+gen/jet_out_115_faust.txt
+gen/sources_out_215_faust.txt
+gen/jet_out_215_faust.txt
+gen/sources_out_315_faust.txt
+gen/jet_out_315_faust.txt
+gen/sources_out_415_faust.txt
+gen/jet_out_415_faust.txt
+gen/sources_out_515_faust.txt
+gen/jet_out_515_faust.txt
+gen/sources_out_615_faust.txt
+gen/jet_out_615_faust.txt
+gen/bernoulli_out_16_faust.txt
+gen/jetdrive_out_16_faust.txt
+gen/excitation_out_16_faust.txt
+gen/receptivity_out_16_faust.txt
+gen/resonator_out_16_faust.txt
+gen/sources_out_116_faust.txt
+gen/jet_out_116_faust.txt
+gen/sources_out_216_faust.txt
+gen/jet_out_216_faust.txt
+gen/sources_out_316_faust.txt
+gen/jet_out_316_faust.txt
+gen/sources_out_416_faust.txt
+gen/jet_out_416_faust.txt
+gen/sources_out_516_faust.txt
+gen/jet_out_516_faust.txt
+gen/sources_out_616_faust.txt
+gen/jet_out_616_faust.txt
+gen/blow_out_2_faust.txt
+gen/turbulence_out_2_faust.txt
+gen/vortex_out_2_faust.txt
+gen/bernoulli_out_21_faust.txt
+gen/jetdrive_out_21_faust.txt
+gen/excitation_out_21_faust.txt
+gen/receptivity_out_21_faust.txt
+gen/resonator_out_21_faust.txt
+gen/sources_out_121_faust.txt
+gen/jet_out_121_faust.txt
+gen/sources_out_221_faust.txt
+gen/jet_out_221_faust.txt
+gen/sources_out_321_faust.txt
+gen/jet_out_321_faust.txt
+gen/sources_out_421_faust.txt
+gen/jet_out_421_faust.txt
+gen/sources_out_521_faust.txt
+gen/jet_out_521_faust.txt
+gen/sources_out_621_faust.txt
+gen/jet_out_621_faust.txt
+gen/bernoulli_out_22_faust.txt
+gen/jetdrive_out_22_faust.txt
+gen/excitation_out_22_faust.txt
+gen/receptivity_out_22_faust.txt
+gen/resonator_out_22_faust.txt
+gen/sources_out_122_faust.txt
+gen/jet_out_122_faust.txt
+gen/sources_out_222_faust.txt
+gen/jet_out_222_faust.txt
+gen/sources_out_322_faust.txt
+gen/jet_out_322_faust.txt
+gen/sources_out_422_faust.txt
+gen/jet_out_422_faust.txt
+gen/sources_out_522_faust.txt
+gen/jet_out_522_faust.txt
+gen/sources_out_622_faust.txt
+gen/jet_out_622_faust.txt
+gen/bernoulli_out_23_faust.txt
+gen/jetdrive_out_23_faust.txt
+gen/excitation_out_23_faust.txt
+gen/receptivity_out_23_faust.txt
+gen/resonator_out_23_faust.txt
+gen/sources_out_123_faust.txt
+gen/jet_out_123_faust.txt
+gen/sources_out_223_faust.txt
+gen/jet_out_223_faust.txt
+gen/sources_out_323_faust.txt
+gen/jet_out_323_faust.txt
+gen/sources_out_423_faust.txt
+gen/jet_out_423_faust.txt
+gen/sources_out_523_faust.txt
+gen/jet_out_523_faust.txt
+gen/sources_out_623_faust.txt
+gen/jet_out_623_faust.txt
+gen/bernoulli_out_24_faust.txt
+gen/jetdrive_out_24_faust.txt
+gen/excitation_out_24_faust.txt
+gen/receptivity_out_24_faust.txt
+gen/resonator_out_24_faust.txt
+gen/sources_out_124_faust.txt
+gen/jet_out_124_faust.txt
+gen/sources_out_224_faust.txt
+gen/jet_out_224_faust.txt
+gen/sources_out_324_faust.txt
+gen/jet_out_324_faust.txt
+gen/sources_out_424_faust.txt
+gen/jet_out_424_faust.txt
+gen/sources_out_524_faust.txt
+gen/jet_out_524_faust.txt
+gen/sources_out_624_faust.txt
+gen/jet_out_624_faust.txt
+gen/bernoulli_out_25_faust.txt
+gen/jetdrive_out_25_faust.txt
+gen/excitation_out_25_faust.txt
+gen/receptivity_out_25_faust.txt
+gen/resonator_out_25_faust.txt
+gen/sources_out_125_faust.txt
+gen/jet_out_125_faust.txt
+gen/sources_out_225_faust.txt
+gen/jet_out_225_faust.txt
+gen/sources_out_325_faust.txt
+gen/jet_out_325_faust.txt
+gen/sources_out_425_faust.txt
+gen/jet_out_425_faust.txt
+gen/sources_out_525_faust.txt
+gen/jet_out_525_faust.txt
+gen/sources_out_625_faust.txt
+gen/jet_out_625_faust.txt
+gen/bernoulli_out_26_faust.txt
+gen/jetdrive_out_26_faust.txt
+gen/excitation_out_26_faust.txt
+gen/receptivity_out_26_faust.txt
+gen/resonator_out_26_faust.txt
+gen/sources_out_126_faust.txt
+gen/jet_out_126_faust.txt
+gen/sources_out_226_faust.txt
+gen/jet_out_226_faust.txt
+gen/sources_out_326_faust.txt
+gen/jet_out_326_faust.txt
+gen/sources_out_426_faust.txt
+gen/jet_out_426_faust.txt
+gen/sources_out_526_faust.txt
+gen/jet_out_526_faust.txt
+gen/sources_out_626_faust.txt
+gen/jet_out_626_faust.txt
+gen/blow_out_3_faust.txt
+gen/turbulence_out_3_faust.txt
+gen/vortex_out_3_faust.txt
+gen/bernoulli_out_31_faust.txt
+gen/jetdrive_out_31_faust.txt
+gen/excitation_out_31_faust.txt
+gen/receptivity_out_31_faust.txt
+gen/resonator_out_31_faust.txt
+gen/sources_out_131_faust.txt
+gen/jet_out_131_faust.txt
+gen/sources_out_231_faust.txt
+gen/jet_out_231_faust.txt
+gen/sources_out_331_faust.txt
+gen/jet_out_331_faust.txt
+gen/sources_out_431_faust.txt
+gen/jet_out_431_faust.txt
+gen/sources_out_531_faust.txt
+gen/jet_out_531_faust.txt
+gen/sources_out_631_faust.txt
+gen/jet_out_631_faust.txt
+gen/bernoulli_out_32_faust.txt
+gen/jetdrive_out_32_faust.txt
+gen/excitation_out_32_faust.txt
+gen/receptivity_out_32_faust.txt
+gen/resonator_out_32_faust.txt
+gen/sources_out_132_faust.txt
+gen/jet_out_132_faust.txt
+gen/sources_out_232_faust.txt
+gen/jet_out_232_faust.txt
+gen/sources_out_332_faust.txt
+gen/jet_out_332_faust.txt
+gen/sources_out_432_faust.txt
+gen/jet_out_432_faust.txt
+gen/sources_out_532_faust.txt
+gen/jet_out_532_faust.txt
+gen/sources_out_632_faust.txt
+gen/jet_out_632_faust.txt
+gen/bernoulli_out_33_faust.txt
+gen/jetdrive_out_33_faust.txt
+gen/excitation_out_33_faust.txt
+gen/receptivity_out_33_faust.txt
+gen/resonator_out_33_faust.txt
+gen/sources_out_133_faust.txt
+gen/jet_out_133_faust.txt
+gen/sources_out_233_faust.txt
+gen/jet_out_233_faust.txt
+gen/sources_out_333_faust.txt
+gen/jet_out_333_faust.txt
+gen/sources_out_433_faust.txt
+gen/jet_out_433_faust.txt
+gen/sources_out_533_faust.txt
+gen/jet_out_533_faust.txt
+gen/sources_out_633_faust.txt
+gen/jet_out_633_faust.txt
+gen/bernoulli_out_34_faust.txt
+gen/jetdrive_out_34_faust.txt
+gen/excitation_out_34_faust.txt
+gen/receptivity_out_34_faust.txt
+gen/resonator_out_34_faust.txt
+gen/sources_out_134_faust.txt
+gen/jet_out_134_faust.txt
+gen/sources_out_234_faust.txt
+gen/jet_out_234_faust.txt
+gen/sources_out_334_faust.txt
+gen/jet_out_334_faust.txt
+gen/sources_out_434_faust.txt
+gen/jet_out_434_faust.txt
+gen/sources_out_534_faust.txt
+gen/jet_out_534_faust.txt
+gen/sources_out_634_faust.txt
+gen/jet_out_634_faust.txt
+gen/bernoulli_out_35_faust.txt
+gen/jetdrive_out_35_faust.txt
+gen/excitation_out_35_faust.txt
+gen/receptivity_out_35_faust.txt
+gen/resonator_out_35_faust.txt
+gen/sources_out_135_faust.txt
+gen/jet_out_135_faust.txt
+gen/sources_out_235_faust.txt
+gen/jet_out_235_faust.txt
+gen/sources_out_335_faust.txt
+gen/jet_out_335_faust.txt
+gen/sources_out_435_faust.txt
+gen/jet_out_435_faust.txt
+gen/sources_out_535_faust.txt
+gen/jet_out_535_faust.txt
+gen/sources_out_635_faust.txt
+gen/jet_out_635_faust.txt
+gen/bernoulli_out_36_faust.txt
+gen/jetdrive_out_36_faust.txt
+gen/excitation_out_36_faust.txt
+gen/receptivity_out_36_faust.txt
+gen/resonator_out_36_faust.txt
+gen/sources_out_136_faust.txt
+gen/jet_out_136_faust.txt
+gen/sources_out_236_faust.txt
+gen/jet_out_236_faust.txt
+gen/sources_out_336_faust.txt
+gen/jet_out_336_faust.txt
+gen/sources_out_436_faust.txt
+gen/jet_out_436_faust.txt
+gen/sources_out_536_faust.txt
+gen/jet_out_536_faust.txt
+gen/sources_out_636_faust.txt
+gen/jet_out_636_faust.txt
+gen/blow_out_4_faust.txt
+gen/turbulence_out_4_faust.txt
+gen/vortex_out_4_faust.txt
+gen/bernoulli_out_41_faust.txt
+gen/jetdrive_out_41_faust.txt
+gen/excitation_out_41_faust.txt
+gen/receptivity_out_41_faust.txt
+gen/resonator_out_41_faust.txt
+gen/sources_out_141_faust.txt
+gen/jet_out_141_faust.txt
+gen/sources_out_241_faust.txt
+gen/jet_out_241_faust.txt
+gen/sources_out_341_faust.txt
+gen/jet_out_341_faust.txt
+gen/sources_out_441_faust.txt
+gen/jet_out_441_faust.txt
+gen/sources_out_541_faust.txt
+gen/jet_out_541_faust.txt
+gen/sources_out_641_faust.txt
+gen/jet_out_641_faust.txt
+gen/bernoulli_out_42_faust.txt
+gen/jetdrive_out_42_faust.txt
+gen/excitation_out_42_faust.txt
+gen/receptivity_out_42_faust.txt
+gen/resonator_out_42_faust.txt
+gen/sources_out_142_faust.txt
+gen/jet_out_142_faust.txt
+gen/sources_out_242_faust.txt
+gen/jet_out_242_faust.txt
+gen/sources_out_342_faust.txt
+gen/jet_out_342_faust.txt
+gen/sources_out_442_faust.txt
+gen/jet_out_442_faust.txt
+gen/sources_out_542_faust.txt
+gen/jet_out_542_faust.txt
+gen/sources_out_642_faust.txt
+gen/jet_out_642_faust.txt
+gen/bernoulli_out_43_faust.txt
+gen/jetdrive_out_43_faust.txt
+gen/excitation_out_43_faust.txt
+gen/receptivity_out_43_faust.txt
+gen/resonator_out_43_faust.txt
+gen/sources_out_143_faust.txt
+gen/jet_out_143_faust.txt
+gen/sources_out_243_faust.txt
+gen/jet_out_243_faust.txt
+gen/sources_out_343_faust.txt
+gen/jet_out_343_faust.txt
+gen/sources_out_443_faust.txt
+gen/jet_out_443_faust.txt
+gen/sources_out_543_faust.txt
+gen/jet_out_543_faust.txt
+gen/sources_out_643_faust.txt
+gen/jet_out_643_faust.txt
+gen/bernoulli_out_44_faust.txt
+gen/jetdrive_out_44_faust.txt
+gen/excitation_out_44_faust.txt
+gen/receptivity_out_44_faust.txt
+gen/resonator_out_44_faust.txt
+gen/sources_out_144_faust.txt
+gen/jet_out_144_faust.txt
+gen/sources_out_244_faust.txt
+gen/jet_out_244_faust.txt
+gen/sources_out_344_faust.txt
+gen/jet_out_344_faust.txt
+gen/sources_out_444_faust.txt
+gen/jet_out_444_faust.txt
+gen/sources_out_544_faust.txt
+gen/jet_out_544_faust.txt
+gen/sources_out_644_faust.txt
+gen/jet_out_644_faust.txt
+gen/bernoulli_out_45_faust.txt
+gen/jetdrive_out_45_faust.txt
+gen/excitation_out_45_faust.txt
+gen/receptivity_out_45_faust.txt
+gen/resonator_out_45_faust.txt
+gen/sources_out_145_faust.txt
+gen/jet_out_145_faust.txt
+gen/sources_out_245_faust.txt
+gen/jet_out_245_faust.txt
+gen/sources_out_345_faust.txt
+gen/jet_out_345_faust.txt
+gen/sources_out_445_faust.txt
+gen/jet_out_445_faust.txt
+gen/sources_out_545_faust.txt
+gen/jet_out_545_faust.txt
+gen/sources_out_645_faust.txt
+gen/jet_out_645_faust.txt
+gen/bernoulli_out_46_faust.txt
+gen/jetdrive_out_46_faust.txt
+gen/excitation_out_46_faust.txt
+gen/receptivity_out_46_faust.txt
+gen/resonator_out_46_faust.txt
+gen/sources_out_146_faust.txt
+gen/jet_out_146_faust.txt
+gen/sources_out_246_faust.txt
+gen/jet_out_246_faust.txt
+gen/sources_out_346_faust.txt
+gen/jet_out_346_faust.txt
+gen/sources_out_446_faust.txt
+gen/jet_out_446_faust.txt
+gen/sources_out_546_faust.txt
+gen/jet_out_546_faust.txt
+gen/sources_out_646_faust.txt
+gen/jet_out_646_faust.txt
+gen/blow_out_5_faust.txt
+gen/turbulence_out_5_faust.txt
+gen/vortex_out_5_faust.txt
+gen/bernoulli_out_51_faust.txt
+gen/jetdrive_out_51_faust.txt
+gen/excitation_out_51_faust.txt
+gen/receptivity_out_51_faust.txt
+gen/resonator_out_51_faust.txt
+gen/sources_out_151_faust.txt
+gen/jet_out_151_faust.txt
+gen/sources_out_251_faust.txt
+gen/jet_out_251_faust.txt
+gen/sources_out_351_faust.txt
+gen/jet_out_351_faust.txt
+gen/sources_out_451_faust.txt
+gen/jet_out_451_faust.txt
+gen/sources_out_551_faust.txt
+gen/jet_out_551_faust.txt
+gen/sources_out_651_faust.txt
+gen/jet_out_651_faust.txt
+gen/bernoulli_out_52_faust.txt
+gen/jetdrive_out_52_faust.txt
+gen/excitation_out_52_faust.txt
+gen/receptivity_out_52_faust.txt
+gen/resonator_out_52_faust.txt
+gen/sources_out_152_faust.txt
+gen/jet_out_152_faust.txt
+gen/sources_out_252_faust.txt
+gen/jet_out_252_faust.txt
+gen/sources_out_352_faust.txt
+gen/jet_out_352_faust.txt
+gen/sources_out_452_faust.txt
+gen/jet_out_452_faust.txt
+gen/sources_out_552_faust.txt
+gen/jet_out_552_faust.txt
+gen/sources_out_652_faust.txt
+gen/jet_out_652_faust.txt
+gen/bernoulli_out_53_faust.txt
+gen/jetdrive_out_53_faust.txt
+gen/excitation_out_53_faust.txt
+gen/receptivity_out_53_faust.txt
+gen/resonator_out_53_faust.txt
+gen/sources_out_153_faust.txt
+gen/jet_out_153_faust.txt
+gen/sources_out_253_faust.txt
+gen/jet_out_253_faust.txt
+gen/sources_out_353_faust.txt
+gen/jet_out_353_faust.txt
+gen/sources_out_453_faust.txt
+gen/jet_out_453_faust.txt
+gen/sources_out_553_faust.txt
+gen/jet_out_553_faust.txt
+gen/sources_out_653_faust.txt
+gen/jet_out_653_faust.txt
+gen/bernoulli_out_54_faust.txt
+gen/jetdrive_out_54_faust.txt
+gen/excitation_out_54_faust.txt
+gen/receptivity_out_54_faust.txt
+gen/resonator_out_54_faust.txt
+gen/sources_out_154_faust.txt
+gen/jet_out_154_faust.txt
+gen/sources_out_254_faust.txt
+gen/jet_out_254_faust.txt
+gen/sources_out_354_faust.txt
+gen/jet_out_354_faust.txt
+gen/sources_out_454_faust.txt
+gen/jet_out_454_faust.txt
+gen/sources_out_554_faust.txt
+gen/jet_out_554_faust.txt
+gen/sources_out_654_faust.txt
+gen/jet_out_654_faust.txt
+gen/bernoulli_out_55_faust.txt
+gen/jetdrive_out_55_faust.txt
+gen/excitation_out_55_faust.txt
+gen/receptivity_out_55_faust.txt
+gen/resonator_out_55_faust.txt
+gen/sources_out_155_faust.txt
+gen/jet_out_155_faust.txt
+gen/sources_out_255_faust.txt
+gen/jet_out_255_faust.txt
+gen/sources_out_355_faust.txt
+gen/jet_out_355_faust.txt
+gen/sources_out_455_faust.txt
+gen/jet_out_455_faust.txt
+gen/sources_out_555_faust.txt
+gen/jet_out_555_faust.txt
+gen/sources_out_655_faust.txt
+gen/jet_out_655_faust.txt
+gen/bernoulli_out_56_faust.txt
+gen/jetdrive_out_56_faust.txt
+gen/excitation_out_56_faust.txt
+gen/receptivity_out_56_faust.txt
+gen/resonator_out_56_faust.txt
+gen/sources_out_156_faust.txt
+gen/jet_out_156_faust.txt
+gen/sources_out_256_faust.txt
+gen/jet_out_256_faust.txt
+gen/sources_out_356_faust.txt
+gen/jet_out_356_faust.txt
+gen/sources_out_456_faust.txt
+gen/jet_out_456_faust.txt
+gen/sources_out_556_faust.txt
+gen/jet_out_556_faust.txt
+gen/sources_out_656_faust.txt
+gen/jet_out_656_faust.txt
+gen/blow_out_6_faust.txt
+gen/turbulence_out_6_faust.txt
+gen/vortex_out_6_faust.txt
+gen/bernoulli_out_61_faust.txt
+gen/jetdrive_out_61_faust.txt
+gen/excitation_out_61_faust.txt
+gen/receptivity_out_61_faust.txt
+gen/resonator_out_61_faust.txt
+gen/sources_out_161_faust.txt
+gen/jet_out_161_faust.txt
+gen/sources_out_261_faust.txt
+gen/jet_out_261_faust.txt
+gen/sources_out_361_faust.txt
+gen/jet_out_361_faust.txt
+gen/sources_out_461_faust.txt
+gen/jet_out_461_faust.txt
+gen/sources_out_561_faust.txt
+gen/jet_out_561_faust.txt
+gen/sources_out_661_faust.txt
+gen/jet_out_661_faust.txt
+gen/bernoulli_out_62_faust.txt
+gen/jetdrive_out_62_faust.txt
+gen/excitation_out_62_faust.txt
+gen/receptivity_out_62_faust.txt
+gen/resonator_out_62_faust.txt
+gen/sources_out_162_faust.txt
+gen/jet_out_162_faust.txt
+gen/sources_out_262_faust.txt
+gen/jet_out_262_faust.txt
+gen/sources_out_362_faust.txt
+gen/jet_out_362_faust.txt
+gen/sources_out_462_faust.txt
+gen/jet_out_462_faust.txt
+gen/sources_out_562_faust.txt
+gen/jet_out_562_faust.txt
+gen/sources_out_662_faust.txt
+gen/jet_out_662_faust.txt
+gen/bernoulli_out_63_faust.txt
+gen/jetdrive_out_63_faust.txt
+gen/excitation_out_63_faust.txt
+gen/receptivity_out_63_faust.txt
+gen/resonator_out_63_faust.txt
+gen/sources_out_163_faust.txt
+gen/jet_out_163_faust.txt
+gen/sources_out_263_faust.txt
+gen/jet_out_263_faust.txt
+gen/sources_out_363_faust.txt
+gen/jet_out_363_faust.txt
+gen/sources_out_463_faust.txt
+gen/jet_out_463_faust.txt
+gen/sources_out_563_faust.txt
+gen/jet_out_563_faust.txt
+gen/sources_out_663_faust.txt
+gen/jet_out_663_faust.txt
+gen/bernoulli_out_64_faust.txt
+gen/jetdrive_out_64_faust.txt
+gen/excitation_out_64_faust.txt
+gen/receptivity_out_64_faust.txt
+gen/resonator_out_64_faust.txt
+gen/sources_out_164_faust.txt
+gen/jet_out_164_faust.txt
+gen/sources_out_264_faust.txt
+gen/jet_out_264_faust.txt
+gen/sources_out_364_faust.txt
+gen/jet_out_364_faust.txt
+gen/sources_out_464_faust.txt
+gen/jet_out_464_faust.txt
+gen/sources_out_564_faust.txt
+gen/jet_out_564_faust.txt
+gen/sources_out_664_faust.txt
+gen/jet_out_664_faust.txt
+gen/bernoulli_out_65_faust.txt
+gen/jetdrive_out_65_faust.txt
+gen/excitation_out_65_faust.txt
+gen/receptivity_out_65_faust.txt
+gen/resonator_out_65_faust.txt
+gen/sources_out_165_faust.txt
+gen/jet_out_165_faust.txt
+gen/sources_out_265_faust.txt
+gen/jet_out_265_faust.txt
+gen/sources_out_365_faust.txt
+gen/jet_out_365_faust.txt
+gen/sources_out_465_faust.txt
+gen/jet_out_465_faust.txt
+gen/sources_out_565_faust.txt
+gen/jet_out_565_faust.txt
+gen/sources_out_665_faust.txt
+gen/jet_out_665_faust.txt
+gen/bernoulli_out_66_faust.txt
+gen/jetdrive_out_66_faust.txt
+gen/excitation_out_66_faust.txt
+gen/receptivity_out_66_faust.txt
+gen/resonator_out_66_faust.txt
+gen/sources_out_166_faust.txt
+gen/jet_out_166_faust.txt
+gen/sources_out_266_faust.txt
+gen/jet_out_266_faust.txt
+gen/sources_out_366_faust.txt
+gen/jet_out_366_faust.txt
+gen/sources_out_466_faust.txt
+gen/jet_out_466_faust.txt
+gen/sources_out_566_faust.txt
+gen/jet_out_566_faust.txt
+gen/sources_out_666_faust.txt
+gen/jet_out_666_faust.txt
+cd orig/modules;make clean standalone;cd ../..
+make[1]: Entering directory `/home/tiwe/work/audio/lv2/flauta/orig/modules'
+rm -rf *.so *.out *.wav /gen/*.txt
+g++ -Wall -g -fpermissive FullTest.cpp -lm -I../stk/ -o FullTest.out
+./FullTest.out
+../../gen/vortex_out_1_orig.txt
+../../gen/turbulence_out_1_orig.txt
+../../gen/blow_out_1_orig.txt
+../../gen/bernoulli_out_11_orig.txt
+../../gen/receptivity_out_11_orig.txt
+../../gen/jetdrive_out_11_orig.txt
+../../gen/excitation_out_11_orig.txt
+../../gen/resonator_out_11_orig.txt
+../../gen/sources_out_111_orig.txt
+../../gen/jet_out_111_orig.txt
+../../gen/sources_out_211_orig.txt
+../../gen/jet_out_211_orig.txt
+../../gen/sources_out_311_orig.txt
+../../gen/jet_out_311_orig.txt
+../../gen/sources_out_411_orig.txt
+../../gen/jet_out_411_orig.txt
+../../gen/sources_out_511_orig.txt
+../../gen/jet_out_511_orig.txt
+../../gen/sources_out_611_orig.txt
+../../gen/jet_out_611_orig.txt
+../../gen/bernoulli_out_12_orig.txt
+../../gen/receptivity_out_12_orig.txt
+../../gen/jetdrive_out_12_orig.txt
+../../gen/excitation_out_12_orig.txt
+../../gen/resonator_out_12_orig.txt
+../../gen/sources_out_112_orig.txt
+../../gen/jet_out_112_orig.txt
+../../gen/sources_out_212_orig.txt
+../../gen/jet_out_212_orig.txt
+../../gen/sources_out_312_orig.txt
+../../gen/jet_out_312_orig.txt
+../../gen/sources_out_412_orig.txt
+../../gen/jet_out_412_orig.txt
+../../gen/sources_out_512_orig.txt
+../../gen/jet_out_512_orig.txt
+../../gen/sources_out_612_orig.txt
+../../gen/jet_out_612_orig.txt
+../../gen/bernoulli_out_13_orig.txt
+../../gen/receptivity_out_13_orig.txt
+../../gen/jetdrive_out_13_orig.txt
+../../gen/excitation_out_13_orig.txt
+../../gen/resonator_out_13_orig.txt
+../../gen/sources_out_113_orig.txt
+../../gen/jet_out_113_orig.txt
+../../gen/sources_out_213_orig.txt
+../../gen/jet_out_213_orig.txt
+../../gen/sources_out_313_orig.txt
+../../gen/jet_out_313_orig.txt
+../../gen/sources_out_413_orig.txt
+../../gen/jet_out_413_orig.txt
+../../gen/sources_out_513_orig.txt
+../../gen/jet_out_513_orig.txt
+../../gen/sources_out_613_orig.txt
+../../gen/jet_out_613_orig.txt
+../../gen/bernoulli_out_14_orig.txt
+../../gen/receptivity_out_14_orig.txt
+../../gen/jetdrive_out_14_orig.txt
+../../gen/excitation_out_14_orig.txt
+../../gen/resonator_out_14_orig.txt
+../../gen/sources_out_114_orig.txt
+../../gen/jet_out_114_orig.txt
+../../gen/sources_out_214_orig.txt
+../../gen/jet_out_214_orig.txt
+../../gen/sources_out_314_orig.txt
+../../gen/jet_out_314_orig.txt
+../../gen/sources_out_414_orig.txt
+../../gen/jet_out_414_orig.txt
+../../gen/sources_out_514_orig.txt
+../../gen/jet_out_514_orig.txt
+../../gen/sources_out_614_orig.txt
+../../gen/jet_out_614_orig.txt
+../../gen/bernoulli_out_15_orig.txt
+../../gen/receptivity_out_15_orig.txt
+../../gen/jetdrive_out_15_orig.txt
+../../gen/excitation_out_15_orig.txt
+../../gen/resonator_out_15_orig.txt
+../../gen/sources_out_115_orig.txt
+../../gen/jet_out_115_orig.txt
+../../gen/sources_out_215_orig.txt
+../../gen/jet_out_215_orig.txt
+../../gen/sources_out_315_orig.txt
+../../gen/jet_out_315_orig.txt
+../../gen/sources_out_415_orig.txt
+../../gen/jet_out_415_orig.txt
+../../gen/sources_out_515_orig.txt
+../../gen/jet_out_515_orig.txt
+../../gen/sources_out_615_orig.txt
+../../gen/jet_out_615_orig.txt
+../../gen/bernoulli_out_16_orig.txt
+../../gen/receptivity_out_16_orig.txt
+../../gen/jetdrive_out_16_orig.txt
+../../gen/excitation_out_16_orig.txt
+../../gen/resonator_out_16_orig.txt
+../../gen/sources_out_116_orig.txt
+../../gen/jet_out_116_orig.txt
+../../gen/sources_out_216_orig.txt
+../../gen/jet_out_216_orig.txt
+../../gen/sources_out_316_orig.txt
+../../gen/jet_out_316_orig.txt
+../../gen/sources_out_416_orig.txt
+../../gen/jet_out_416_orig.txt
+../../gen/sources_out_516_orig.txt
+../../gen/jet_out_516_orig.txt
+../../gen/sources_out_616_orig.txt
+../../gen/jet_out_616_orig.txt
+../../gen/vortex_out_2_orig.txt
+../../gen/turbulence_out_2_orig.txt
+../../gen/blow_out_2_orig.txt
+../../gen/bernoulli_out_21_orig.txt
+../../gen/receptivity_out_21_orig.txt
+../../gen/jetdrive_out_21_orig.txt
+../../gen/excitation_out_21_orig.txt
+../../gen/resonator_out_21_orig.txt
+../../gen/sources_out_121_orig.txt
+../../gen/jet_out_121_orig.txt
+../../gen/sources_out_221_orig.txt
+../../gen/jet_out_221_orig.txt
+../../gen/sources_out_321_orig.txt
+../../gen/jet_out_321_orig.txt
+../../gen/sources_out_421_orig.txt
+../../gen/jet_out_421_orig.txt
+../../gen/sources_out_521_orig.txt
+../../gen/jet_out_521_orig.txt
+../../gen/sources_out_621_orig.txt
+../../gen/jet_out_621_orig.txt
+../../gen/bernoulli_out_22_orig.txt
+../../gen/receptivity_out_22_orig.txt
+../../gen/jetdrive_out_22_orig.txt
+../../gen/excitation_out_22_orig.txt
+../../gen/resonator_out_22_orig.txt
+../../gen/sources_out_122_orig.txt
+../../gen/jet_out_122_orig.txt
+../../gen/sources_out_222_orig.txt
+../../gen/jet_out_222_orig.txt
+../../gen/sources_out_322_orig.txt
+../../gen/jet_out_322_orig.txt
+../../gen/sources_out_422_orig.txt
+../../gen/jet_out_422_orig.txt
+../../gen/sources_out_522_orig.txt
+../../gen/jet_out_522_orig.txt
+../../gen/sources_out_622_orig.txt
+../../gen/jet_out_622_orig.txt
+../../gen/bernoulli_out_23_orig.txt
+../../gen/receptivity_out_23_orig.txt
+../../gen/jetdrive_out_23_orig.txt
+../../gen/excitation_out_23_orig.txt
+../../gen/resonator_out_23_orig.txt
+../../gen/sources_out_123_orig.txt
+../../gen/jet_out_123_orig.txt
+../../gen/sources_out_223_orig.txt
+../../gen/jet_out_223_orig.txt
+../../gen/sources_out_323_orig.txt
+../../gen/jet_out_323_orig.txt
+../../gen/sources_out_423_orig.txt
+../../gen/jet_out_423_orig.txt
+../../gen/sources_out_523_orig.txt
+../../gen/jet_out_523_orig.txt
+../../gen/sources_out_623_orig.txt
+../../gen/jet_out_623_orig.txt
+../../gen/bernoulli_out_24_orig.txt
+../../gen/receptivity_out_24_orig.txt
+../../gen/jetdrive_out_24_orig.txt
+../../gen/excitation_out_24_orig.txt
+../../gen/resonator_out_24_orig.txt
+../../gen/sources_out_124_orig.txt
+../../gen/jet_out_124_orig.txt
+../../gen/sources_out_224_orig.txt
+../../gen/jet_out_224_orig.txt
+../../gen/sources_out_324_orig.txt
+../../gen/jet_out_324_orig.txt
+../../gen/sources_out_424_orig.txt
+../../gen/jet_out_424_orig.txt
+../../gen/sources_out_524_orig.txt
+../../gen/jet_out_524_orig.txt
+../../gen/sources_out_624_orig.txt
+../../gen/jet_out_624_orig.txt
+../../gen/bernoulli_out_25_orig.txt
+../../gen/receptivity_out_25_orig.txt
+../../gen/jetdrive_out_25_orig.txt
+../../gen/excitation_out_25_orig.txt
+../../gen/resonator_out_25_orig.txt
+../../gen/sources_out_125_orig.txt
+../../gen/jet_out_125_orig.txt
+../../gen/sources_out_225_orig.txt
+../../gen/jet_out_225_orig.txt
+../../gen/sources_out_325_orig.txt
+../../gen/jet_out_325_orig.txt
+../../gen/sources_out_425_orig.txt
+../../gen/jet_out_425_orig.txt
+../../gen/sources_out_525_orig.txt
+../../gen/jet_out_525_orig.txt
+../../gen/sources_out_625_orig.txt
+../../gen/jet_out_625_orig.txt
+../../gen/bernoulli_out_26_orig.txt
+../../gen/receptivity_out_26_orig.txt
+../../gen/jetdrive_out_26_orig.txt
+../../gen/excitation_out_26_orig.txt
+../../gen/resonator_out_26_orig.txt
+../../gen/sources_out_126_orig.txt
+../../gen/jet_out_126_orig.txt
+../../gen/sources_out_226_orig.txt
+../../gen/jet_out_226_orig.txt
+../../gen/sources_out_326_orig.txt
+../../gen/jet_out_326_orig.txt
+../../gen/sources_out_426_orig.txt
+../../gen/jet_out_426_orig.txt
+../../gen/sources_out_526_orig.txt
+../../gen/jet_out_526_orig.txt
+../../gen/sources_out_626_orig.txt
+../../gen/jet_out_626_orig.txt
+../../gen/vortex_out_3_orig.txt
+../../gen/turbulence_out_3_orig.txt
+../../gen/blow_out_3_orig.txt
+../../gen/bernoulli_out_31_orig.txt
+../../gen/receptivity_out_31_orig.txt
+../../gen/jetdrive_out_31_orig.txt
+../../gen/excitation_out_31_orig.txt
+../../gen/resonator_out_31_orig.txt
+../../gen/sources_out_131_orig.txt
+../../gen/jet_out_131_orig.txt
+../../gen/sources_out_231_orig.txt
+../../gen/jet_out_231_orig.txt
+../../gen/sources_out_331_orig.txt
+../../gen/jet_out_331_orig.txt
+../../gen/sources_out_431_orig.txt
+../../gen/jet_out_431_orig.txt
+../../gen/sources_out_531_orig.txt
+../../gen/jet_out_531_orig.txt
+../../gen/sources_out_631_orig.txt
+../../gen/jet_out_631_orig.txt
+../../gen/bernoulli_out_32_orig.txt
+../../gen/receptivity_out_32_orig.txt
+../../gen/jetdrive_out_32_orig.txt
+../../gen/excitation_out_32_orig.txt
+../../gen/resonator_out_32_orig.txt
+../../gen/sources_out_132_orig.txt
+../../gen/jet_out_132_orig.txt
+../../gen/sources_out_232_orig.txt
+../../gen/jet_out_232_orig.txt
+../../gen/sources_out_332_orig.txt
+../../gen/jet_out_332_orig.txt
+../../gen/sources_out_432_orig.txt
+../../gen/jet_out_432_orig.txt
+../../gen/sources_out_532_orig.txt
+../../gen/jet_out_532_orig.txt
+../../gen/sources_out_632_orig.txt
+../../gen/jet_out_632_orig.txt
+../../gen/bernoulli_out_33_orig.txt
+../../gen/receptivity_out_33_orig.txt
+../../gen/jetdrive_out_33_orig.txt
+../../gen/excitation_out_33_orig.txt
+../../gen/resonator_out_33_orig.txt
+../../gen/sources_out_133_orig.txt
+../../gen/jet_out_133_orig.txt
+../../gen/sources_out_233_orig.txt
+../../gen/jet_out_233_orig.txt
+../../gen/sources_out_333_orig.txt
+../../gen/jet_out_333_orig.txt
+../../gen/sources_out_433_orig.txt
+../../gen/jet_out_433_orig.txt
+../../gen/sources_out_533_orig.txt
+../../gen/jet_out_533_orig.txt
+../../gen/sources_out_633_orig.txt
+../../gen/jet_out_633_orig.txt
+../../gen/bernoulli_out_34_orig.txt
+../../gen/receptivity_out_34_orig.txt
+../../gen/jetdrive_out_34_orig.txt
+../../gen/excitation_out_34_orig.txt
+../../gen/resonator_out_34_orig.txt
+../../gen/sources_out_134_orig.txt
+../../gen/jet_out_134_orig.txt
+../../gen/sources_out_234_orig.txt
+../../gen/jet_out_234_orig.txt
+../../gen/sources_out_334_orig.txt
+../../gen/jet_out_334_orig.txt
+../../gen/sources_out_434_orig.txt
+../../gen/jet_out_434_orig.txt
+../../gen/sources_out_534_orig.txt
+../../gen/jet_out_534_orig.txt
+../../gen/sources_out_634_orig.txt
+../../gen/jet_out_634_orig.txt
+../../gen/bernoulli_out_35_orig.txt
+../../gen/receptivity_out_35_orig.txt
+../../gen/jetdrive_out_35_orig.txt
+../../gen/excitation_out_35_orig.txt
+../../gen/resonator_out_35_orig.txt
+../../gen/sources_out_135_orig.txt
+../../gen/jet_out_135_orig.txt
+../../gen/sources_out_235_orig.txt
+../../gen/jet_out_235_orig.txt
+../../gen/sources_out_335_orig.txt
+../../gen/jet_out_335_orig.txt
+../../gen/sources_out_435_orig.txt
+../../gen/jet_out_435_orig.txt
+../../gen/sources_out_535_orig.txt
+../../gen/jet_out_535_orig.txt
+../../gen/sources_out_635_orig.txt
+../../gen/jet_out_635_orig.txt
+../../gen/bernoulli_out_36_orig.txt
+../../gen/receptivity_out_36_orig.txt
+../../gen/jetdrive_out_36_orig.txt
+../../gen/excitation_out_36_orig.txt
+../../gen/resonator_out_36_orig.txt
+../../gen/sources_out_136_orig.txt
+../../gen/jet_out_136_orig.txt
+../../gen/sources_out_236_orig.txt
+../../gen/jet_out_236_orig.txt
+../../gen/sources_out_336_orig.txt
+../../gen/jet_out_336_orig.txt
+../../gen/sources_out_436_orig.txt
+../../gen/jet_out_436_orig.txt
+../../gen/sources_out_536_orig.txt
+../../gen/jet_out_536_orig.txt
+../../gen/sources_out_636_orig.txt
+../../gen/jet_out_636_orig.txt
+../../gen/vortex_out_4_orig.txt
+../../gen/turbulence_out_4_orig.txt
+../../gen/blow_out_4_orig.txt
+../../gen/bernoulli_out_41_orig.txt
+../../gen/receptivity_out_41_orig.txt
+../../gen/jetdrive_out_41_orig.txt
+../../gen/excitation_out_41_orig.txt
+../../gen/resonator_out_41_orig.txt
+../../gen/sources_out_141_orig.txt
+../../gen/jet_out_141_orig.txt
+../../gen/sources_out_241_orig.txt
+../../gen/jet_out_241_orig.txt
+../../gen/sources_out_341_orig.txt
+../../gen/jet_out_341_orig.txt
+../../gen/sources_out_441_orig.txt
+../../gen/jet_out_441_orig.txt
+../../gen/sources_out_541_orig.txt
+../../gen/jet_out_541_orig.txt
+../../gen/sources_out_641_orig.txt
+../../gen/jet_out_641_orig.txt
+../../gen/bernoulli_out_42_orig.txt
+../../gen/receptivity_out_42_orig.txt
+../../gen/jetdrive_out_42_orig.txt
+../../gen/excitation_out_42_orig.txt
+../../gen/resonator_out_42_orig.txt
+../../gen/sources_out_142_orig.txt
+../../gen/jet_out_142_orig.txt
+../../gen/sources_out_242_orig.txt
+../../gen/jet_out_242_orig.txt
+../../gen/sources_out_342_orig.txt
+../../gen/jet_out_342_orig.txt
+../../gen/sources_out_442_orig.txt
+../../gen/jet_out_442_orig.txt
+../../gen/sources_out_542_orig.txt
+../../gen/jet_out_542_orig.txt
+../../gen/sources_out_642_orig.txt
+../../gen/jet_out_642_orig.txt
+../../gen/bernoulli_out_43_orig.txt
+../../gen/receptivity_out_43_orig.txt
+../../gen/jetdrive_out_43_orig.txt
+../../gen/excitation_out_43_orig.txt
+../../gen/resonator_out_43_orig.txt
+../../gen/sources_out_143_orig.txt
+../../gen/jet_out_143_orig.txt
+../../gen/sources_out_243_orig.txt
+../../gen/jet_out_243_orig.txt
+../../gen/sources_out_343_orig.txt
+../../gen/jet_out_343_orig.txt
+../../gen/sources_out_443_orig.txt
+../../gen/jet_out_443_orig.txt
+../../gen/sources_out_543_orig.txt
+../../gen/jet_out_543_orig.txt
+../../gen/sources_out_643_orig.txt
+../../gen/jet_out_643_orig.txt
+../../gen/bernoulli_out_44_orig.txt
+../../gen/receptivity_out_44_orig.txt
+../../gen/jetdrive_out_44_orig.txt
+../../gen/excitation_out_44_orig.txt
+../../gen/resonator_out_44_orig.txt
+../../gen/sources_out_144_orig.txt
+../../gen/jet_out_144_orig.txt
+../../gen/sources_out_244_orig.txt
+../../gen/jet_out_244_orig.txt
+../../gen/sources_out_344_orig.txt
+../../gen/jet_out_344_orig.txt
+../../gen/sources_out_444_orig.txt
+../../gen/jet_out_444_orig.txt
+../../gen/sources_out_544_orig.txt
+../../gen/jet_out_544_orig.txt
+../../gen/sources_out_644_orig.txt
+../../gen/jet_out_644_orig.txt
+../../gen/bernoulli_out_45_orig.txt
+../../gen/receptivity_out_45_orig.txt
+../../gen/jetdrive_out_45_orig.txt
+../../gen/excitation_out_45_orig.txt
+../../gen/resonator_out_45_orig.txt
+../../gen/sources_out_145_orig.txt
+../../gen/jet_out_145_orig.txt
+../../gen/sources_out_245_orig.txt
+../../gen/jet_out_245_orig.txt
+../../gen/sources_out_345_orig.txt
+../../gen/jet_out_345_orig.txt
+../../gen/sources_out_445_orig.txt
+../../gen/jet_out_445_orig.txt
+../../gen/sources_out_545_orig.txt
+../../gen/jet_out_545_orig.txt
+../../gen/sources_out_645_orig.txt
+../../gen/jet_out_645_orig.txt
+../../gen/bernoulli_out_46_orig.txt
+../../gen/receptivity_out_46_orig.txt
+../../gen/jetdrive_out_46_orig.txt
+../../gen/excitation_out_46_orig.txt
+../../gen/resonator_out_46_orig.txt
+../../gen/sources_out_146_orig.txt
+../../gen/jet_out_146_orig.txt
+../../gen/sources_out_246_orig.txt
+../../gen/jet_out_246_orig.txt
+../../gen/sources_out_346_orig.txt
+../../gen/jet_out_346_orig.txt
+../../gen/sources_out_446_orig.txt
+../../gen/jet_out_446_orig.txt
+../../gen/sources_out_546_orig.txt
+../../gen/jet_out_546_orig.txt
+../../gen/sources_out_646_orig.txt
+../../gen/jet_out_646_orig.txt
+../../gen/vortex_out_5_orig.txt
+../../gen/turbulence_out_5_orig.txt
+../../gen/blow_out_5_orig.txt
+../../gen/bernoulli_out_51_orig.txt
+../../gen/receptivity_out_51_orig.txt
+../../gen/jetdrive_out_51_orig.txt
+../../gen/excitation_out_51_orig.txt
+../../gen/resonator_out_51_orig.txt
+../../gen/sources_out_151_orig.txt
+../../gen/jet_out_151_orig.txt
+../../gen/sources_out_251_orig.txt
+../../gen/jet_out_251_orig.txt
+../../gen/sources_out_351_orig.txt
+../../gen/jet_out_351_orig.txt
+../../gen/sources_out_451_orig.txt
+../../gen/jet_out_451_orig.txt
+../../gen/sources_out_551_orig.txt
+../../gen/jet_out_551_orig.txt
+../../gen/sources_out_651_orig.txt
+../../gen/jet_out_651_orig.txt
+../../gen/bernoulli_out_52_orig.txt
+../../gen/receptivity_out_52_orig.txt
+../../gen/jetdrive_out_52_orig.txt
+../../gen/excitation_out_52_orig.txt
+../../gen/resonator_out_52_orig.txt
+../../gen/sources_out_152_orig.txt
+../../gen/jet_out_152_orig.txt
+../../gen/sources_out_252_orig.txt
+../../gen/jet_out_252_orig.txt
+../../gen/sources_out_352_orig.txt
+../../gen/jet_out_352_orig.txt
+../../gen/sources_out_452_orig.txt
+../../gen/jet_out_452_orig.txt
+../../gen/sources_out_552_orig.txt
+../../gen/jet_out_552_orig.txt
+../../gen/sources_out_652_orig.txt
+../../gen/jet_out_652_orig.txt
+../../gen/bernoulli_out_53_orig.txt
+../../gen/receptivity_out_53_orig.txt
+../../gen/jetdrive_out_53_orig.txt
+../../gen/excitation_out_53_orig.txt
+../../gen/resonator_out_53_orig.txt
+../../gen/sources_out_153_orig.txt
+../../gen/jet_out_153_orig.txt
+../../gen/sources_out_253_orig.txt
+../../gen/jet_out_253_orig.txt
+../../gen/sources_out_353_orig.txt
+../../gen/jet_out_353_orig.txt
+../../gen/sources_out_453_orig.txt
+../../gen/jet_out_453_orig.txt
+../../gen/sources_out_553_orig.txt
+../../gen/jet_out_553_orig.txt
+../../gen/sources_out_653_orig.txt
+../../gen/jet_out_653_orig.txt
+../../gen/bernoulli_out_54_orig.txt
+../../gen/receptivity_out_54_orig.txt
+../../gen/jetdrive_out_54_orig.txt
+../../gen/excitation_out_54_orig.txt
+../../gen/resonator_out_54_orig.txt
+../../gen/sources_out_154_orig.txt
+../../gen/jet_out_154_orig.txt
+../../gen/sources_out_254_orig.txt
+../../gen/jet_out_254_orig.txt
+../../gen/sources_out_354_orig.txt
+../../gen/jet_out_354_orig.txt
+../../gen/sources_out_454_orig.txt
+../../gen/jet_out_454_orig.txt
+../../gen/sources_out_554_orig.txt
+../../gen/jet_out_554_orig.txt
+../../gen/sources_out_654_orig.txt
+../../gen/jet_out_654_orig.txt
+../../gen/bernoulli_out_55_orig.txt
+../../gen/receptivity_out_55_orig.txt
+../../gen/jetdrive_out_55_orig.txt
+../../gen/excitation_out_55_orig.txt
+../../gen/resonator_out_55_orig.txt
+../../gen/sources_out_155_orig.txt
+../../gen/jet_out_155_orig.txt
+../../gen/sources_out_255_orig.txt
+../../gen/jet_out_255_orig.txt
+../../gen/sources_out_355_orig.txt
+../../gen/jet_out_355_orig.txt
+../../gen/sources_out_455_orig.txt
+../../gen/jet_out_455_orig.txt
+../../gen/sources_out_555_orig.txt
+../../gen/jet_out_555_orig.txt
+../../gen/sources_out_655_orig.txt
+../../gen/jet_out_655_orig.txt
+../../gen/bernoulli_out_56_orig.txt
+../../gen/receptivity_out_56_orig.txt
+../../gen/jetdrive_out_56_orig.txt
+../../gen/excitation_out_56_orig.txt
+../../gen/resonator_out_56_orig.txt
+../../gen/sources_out_156_orig.txt
+../../gen/jet_out_156_orig.txt
+../../gen/sources_out_256_orig.txt
+../../gen/jet_out_256_orig.txt
+../../gen/sources_out_356_orig.txt
+../../gen/jet_out_356_orig.txt
+../../gen/sources_out_456_orig.txt
+../../gen/jet_out_456_orig.txt
+../../gen/sources_out_556_orig.txt
+../../gen/jet_out_556_orig.txt
+../../gen/sources_out_656_orig.txt
+../../gen/jet_out_656_orig.txt
+../../gen/vortex_out_6_orig.txt
+../../gen/turbulence_out_6_orig.txt
+../../gen/blow_out_6_orig.txt
+../../gen/bernoulli_out_61_orig.txt
+../../gen/receptivity_out_61_orig.txt
+../../gen/jetdrive_out_61_orig.txt
+../../gen/excitation_out_61_orig.txt
+../../gen/resonator_out_61_orig.txt
+../../gen/sources_out_161_orig.txt
+../../gen/jet_out_161_orig.txt
+../../gen/sources_out_261_orig.txt
+../../gen/jet_out_261_orig.txt
+../../gen/sources_out_361_orig.txt
+../../gen/jet_out_361_orig.txt
+../../gen/sources_out_461_orig.txt
+../../gen/jet_out_461_orig.txt
+../../gen/sources_out_561_orig.txt
+../../gen/jet_out_561_orig.txt
+../../gen/sources_out_661_orig.txt
+../../gen/jet_out_661_orig.txt
+../../gen/bernoulli_out_62_orig.txt
+../../gen/receptivity_out_62_orig.txt
+../../gen/jetdrive_out_62_orig.txt
+../../gen/excitation_out_62_orig.txt
+../../gen/resonator_out_62_orig.txt
+../../gen/sources_out_162_orig.txt
+../../gen/jet_out_162_orig.txt
+../../gen/sources_out_262_orig.txt
+../../gen/jet_out_262_orig.txt
+../../gen/sources_out_362_orig.txt
+../../gen/jet_out_362_orig.txt
+../../gen/sources_out_462_orig.txt
+../../gen/jet_out_462_orig.txt
+../../gen/sources_out_562_orig.txt
+../../gen/jet_out_562_orig.txt
+../../gen/sources_out_662_orig.txt
+../../gen/jet_out_662_orig.txt
+../../gen/bernoulli_out_63_orig.txt
+../../gen/receptivity_out_63_orig.txt
+../../gen/jetdrive_out_63_orig.txt
+../../gen/excitation_out_63_orig.txt
+../../gen/resonator_out_63_orig.txt
+../../gen/sources_out_163_orig.txt
+../../gen/jet_out_163_orig.txt
+../../gen/sources_out_263_orig.txt
+../../gen/jet_out_263_orig.txt
+../../gen/sources_out_363_orig.txt
+../../gen/jet_out_363_orig.txt
+../../gen/sources_out_463_orig.txt
+../../gen/jet_out_463_orig.txt
+../../gen/sources_out_563_orig.txt
+../../gen/jet_out_563_orig.txt
+../../gen/sources_out_663_orig.txt
+../../gen/jet_out_663_orig.txt
+../../gen/bernoulli_out_64_orig.txt
+../../gen/receptivity_out_64_orig.txt
+../../gen/jetdrive_out_64_orig.txt
+../../gen/excitation_out_64_orig.txt
+../../gen/resonator_out_64_orig.txt
+../../gen/sources_out_164_orig.txt
+../../gen/jet_out_164_orig.txt
+../../gen/sources_out_264_orig.txt
+../../gen/jet_out_264_orig.txt
+../../gen/sources_out_364_orig.txt
+../../gen/jet_out_364_orig.txt
+../../gen/sources_out_464_orig.txt
+../../gen/jet_out_464_orig.txt
+../../gen/sources_out_564_orig.txt
+../../gen/jet_out_564_orig.txt
+../../gen/sources_out_664_orig.txt
+../../gen/jet_out_664_orig.txt
+../../gen/bernoulli_out_65_orig.txt
+../../gen/receptivity_out_65_orig.txt
+../../gen/jetdrive_out_65_orig.txt
+../../gen/excitation_out_65_orig.txt
+../../gen/resonator_out_65_orig.txt
+../../gen/sources_out_165_orig.txt
+../../gen/jet_out_165_orig.txt
+../../gen/sources_out_265_orig.txt
+../../gen/jet_out_265_orig.txt
+../../gen/sources_out_365_orig.txt
+../../gen/jet_out_365_orig.txt
+../../gen/sources_out_465_orig.txt
+../../gen/jet_out_465_orig.txt
+../../gen/sources_out_565_orig.txt
+../../gen/jet_out_565_orig.txt
+../../gen/sources_out_665_orig.txt
+../../gen/jet_out_665_orig.txt
+../../gen/bernoulli_out_66_orig.txt
+../../gen/receptivity_out_66_orig.txt
+../../gen/jetdrive_out_66_orig.txt
+../../gen/excitation_out_66_orig.txt
+../../gen/resonator_out_66_orig.txt
+../../gen/sources_out_166_orig.txt
+../../gen/jet_out_166_orig.txt
+../../gen/sources_out_266_orig.txt
+../../gen/jet_out_266_orig.txt
+../../gen/sources_out_366_orig.txt
+../../gen/jet_out_366_orig.txt
+../../gen/sources_out_466_orig.txt
+../../gen/jet_out_466_orig.txt
+../../gen/sources_out_566_orig.txt
+../../gen/jet_out_566_orig.txt
+../../gen/sources_out_666_orig.txt
+../../gen/jet_out_666_orig.txt
+make[1]: Leaving directory `/home/tiwe/work/audio/lv2/flauta/orig/modules'
+python compare.py
+bernoulli 11 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 12 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 3.923342e-11
+bernoulli 13 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 14 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 15 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 16 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 21 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 4.743243e-11
+bernoulli 22 
+ err1 = 0.000000e+00
+ err2 = nan
+ err3 = 0.000000e+00
+bernoulli 23 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 24 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 25 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 26 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 31 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 32 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 33 
+ err1 = 0.000000e+00
+ err2 = nan
+ err3 = 0.000000e+00
+bernoulli 34 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 35 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 36 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 41 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 42 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 43 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 44 
+ err1 = 0.000000e+00
+ err2 = nan
+ err3 = 0.000000e+00
+bernoulli 45 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 46 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 51 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 52 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 53 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 54 
+ err1 = 0.000000e+00
+ err2 = nan
+ err3 = 0.000000e+00
+bernoulli 55 
+ err1 = 0.000000e+00
+ err2 = nan
+ err3 = 0.000000e+00
+bernoulli 56 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 61 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 62 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 63 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 64 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 65 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+bernoulli 66 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+jetdrive 11 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+jetdrive 12 
+ err1 = 5.116987e-05
+ err2 = 4.797137e-05
+jetdrive 13 
+ err1 = 6.337484e-05
+ err2 = 2.788983e-08
+jetdrive 14 
+ err1 = 1.595698e-04
+ err2 = 1.641042e-07
+jetdrive 15 
+ err1 = 1.253320e-04
+ err2 = 2.525527e-07
+jetdrive 16 
+ err1 = 2.392928e-04
+ err2 = 1.625324e-08
+jetdrive 21 
+ err1 = 1.901367e-09
+ err2 = 1.987597e-09
+jetdrive 22 
+ err1 = 2.876091e-09
+ err2 = 1.564016e-09
+jetdrive 23 
+ err1 = 1.124387e-07
+ err2 = 2.194995e-07
+jetdrive 24 
+ err1 = 1.422227e-07
+ err2 = 2.795240e-07
+jetdrive 25 
+ err1 = 1.120930e-07
+ err2 = 2.196448e-07
+jetdrive 26 
+ err1 = 4.583681e-07
+ err2 = 4.523896e-07
+jetdrive 31 
+ err1 = 1.901367e-09
+ err2 = 1.987597e-09
+jetdrive 32 
+ err1 = 1.621051e-08
+ err2 = 1.521376e-08
+jetdrive 33 
+ err1 = 7.159023e-09
+ err2 = 3.817082e-08
+jetdrive 34 
+ err1 = 9.622351e-09
+ err2 = 6.621995e-08
+jetdrive 35 
+ err1 = 8.008810e-09
+ err2 = 5.570436e-08
+jetdrive 36 
+ err1 = 1.283534e-07
+ err2 = 2.645099e-07
+jetdrive 41 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+jetdrive 42 
+ err1 = 1.087706e-08
+ err2 = 1.204198e-08
+jetdrive 43 
+ err1 = 3.452800e-08
+ err2 = 9.951822e-08
+jetdrive 44 
+ err1 = 9.463773e-09
+ err2 = 5.236544e-08
+jetdrive 45 
+ err1 = 7.908362e-09
+ err2 = 4.685858e-08
+jetdrive 46 
+ err1 = 7.163122e-08
+ err2 = 1.403862e-07
+jetdrive 51 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+jetdrive 52 
+ err1 = 1.002460e-07
+ err2 = 1.065197e-07
+jetdrive 53 
+ err1 = 3.782074e-07
+ err2 = 1.049364e-07
+jetdrive 54 
+ err1 = 1.514173e-08
+ err2 = 7.688903e-07
+jetdrive 55 
+ err1 = 1.153054e-08
+ err2 = 6.805718e-07
+jetdrive 56 
+ err1 = 9.700504e-07
+ err2 = 1.872403e-07
+jetdrive 61 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+jetdrive 62 
+ err1 = 9.312365e-10
+ err2 = 1.349413e-09
+jetdrive 63 
+ err1 = 3.501662e-09
+ err2 = 5.714560e-12
+jetdrive 64 
+ err1 = 4.856353e-09
+ err2 = 0.000000e+00
+jetdrive 65 
+ err1 = 4.293647e-09
+ err2 = 0.000000e+00
+jetdrive 66 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+receptivity 11 
+ err1 = 1.119060e-20
+receptivity 12 
+ err1 = 2.074398e-11
+receptivity 13 
+ err1 = 0.000000e+00
+receptivity 14 
+ err1 = 2.592307e-10
+receptivity 15 
+ err1 = 4.396395e-11
+receptivity 16 
+ err1 = 0.000000e+00
+receptivity 21 
+ err1 = 0.000000e+00
+receptivity 22 
+ err1 = 3.858157e-11
+receptivity 23 
+ err1 = 9.629674e-13
+receptivity 24 
+ err1 = 4.612923e-13
+receptivity 25 
+ err1 = 0.000000e+00
+receptivity 26 
+ err1 = 1.677837e-11
+receptivity 31 
+ err1 = 0.000000e+00
+receptivity 32 
+ err1 = 3.433564e-12
+receptivity 33 
+ err1 = 0.000000e+00
+receptivity 34 
+ err1 = 1.342429e-11
+receptivity 35 
+ err1 = 0.000000e+00
+receptivity 36 
+ err1 = 1.289192e-11
+receptivity 41 
+ err1 = 0.000000e+00
+receptivity 42 
+ err1 = 4.933017e-12
+receptivity 43 
+ err1 = 5.933317e-13
+receptivity 44 
+ err1 = 0.000000e+00
+receptivity 45 
+ err1 = 0.000000e+00
+receptivity 46 
+ err1 = 2.000767e-11
+receptivity 51 
+ err1 = 0.000000e+00
+receptivity 52 
+ err1 = 9.317475e-13
+receptivity 53 
+ err1 = 5.989943e-12
+receptivity 54 
+ err1 = 0.000000e+00
+receptivity 55 
+ err1 = 0.000000e+00
+receptivity 56 
+ err1 = 0.000000e+00
+receptivity 61 
+ err1 = 0.000000e+00
+receptivity 62 
+ err1 = 0.000000e+00
+receptivity 63 
+ err1 = 0.000000e+00
+receptivity 64 
+ err1 = 0.000000e+00
+receptivity 65 
+ err1 = 0.000000e+00
+receptivity 66 
+ err1 = 0.000000e+00
+turbulence 1 
+ err1 = 3.228465e-05
+turbulence 2 
+ err1 = 2.170850e-02
+turbulence 3 
+ err1 = 6.731334e-02
+turbulence 4 
+ err1 = 9.026479e-02
+turbulence 5 
+ err1 = 7.184391e-02
+turbulence 6 
+ err1 = 1.555896e-01
+vortex 1 
+ err1 = 0.000000e+00
+vortex 2 
+ err1 = 0.000000e+00
+vortex 3 
+ err1 = 5.345966e-15
+vortex 4 
+ err1 = 0.000000e+00
+vortex 5 
+ err1 = 6.843917e-13
+vortex 6 
+ err1 = 0.000000e+00
+blow 1 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+blow 2 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 4.654231e-11
+blow 3 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+blow 4 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+blow 5 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+blow 6 
+ err1 = 0.000000e+00
+ err2 = 0.000000e+00
+ err3 = 0.000000e+00
+excitation 11 
+ err1 = 1.353426e-04
+ err2 = 0.000000e+00
+excitation 12 
+ err1 = 1.353425e-04
+ err2 = 0.000000e+00
+excitation 13 
+ err1 = 1.520519e-04
+ err2 = 0.000000e+00
+excitation 14 
+ err1 = 1.632771e-04
+ err2 = 0.000000e+00
+excitation 15 
+ err1 = 1.353425e-04
+ err2 = 0.000000e+00
+excitation 16 
+ err1 = 1.353426e-04
+ err2 = 0.000000e+00
+excitation 21 
+ err1 = 2.407567e-02
+ err2 = 0.000000e+00
+excitation 22 
+ err1 = 2.407567e-02
+ err2 = 0.000000e+00
+excitation 23 
+ err1 = 2.346329e-02
+ err2 = 0.000000e+00
+excitation 24 
+ err1 = 2.331199e-02
+ err2 = 0.000000e+00
+excitation 25 
+ err1 = 2.407567e-02
+ err2 = 0.000000e+00
+excitation 26 
+ err1 = 2.407567e-02
+ err2 = 0.000000e+00
+excitation 31 
+ err1 = 1.006491e-04
+ err2 = 0.000000e+00
+excitation 32 
+ err1 = 1.006492e-04
+ err2 = 0.000000e+00
+excitation 33 
+ err1 = 8.526150e-05
+ err2 = 0.000000e+00
+excitation 34 
+ err1 = 1.136056e-04
+ err2 = 0.000000e+00
+excitation 35 
+ err1 = 1.006490e-04
+ err2 = 0.000000e+00
+excitation 36 
+ err1 = 1.006492e-04
+ err2 = 0.000000e+00
+excitation 41 
+ err1 = 7.615423e-05
+ err2 = 0.000000e+00
+excitation 42 
+ err1 = 7.615444e-05
+ err2 = 0.000000e+00
+excitation 43 
+ err1 = 8.563212e-05
+ err2 = 0.000000e+00
+excitation 44 
+ err1 = 8.436539e-05
+ err2 = 0.000000e+00
+excitation 45 
+ err1 = 7.615418e-05
+ err2 = 0.000000e+00
+excitation 46 
+ err1 = 7.615424e-05
+ err2 = 0.000000e+00
+excitation 51 
+ err1 = 1.356817e-04
+ err2 = 0.000000e+00
+excitation 52 
+ err1 = 1.356816e-04
+ err2 = 0.000000e+00
+excitation 53 
+ err1 = 1.617648e-04
+ err2 = 0.000000e+00
+excitation 54 
+ err1 = 1.665316e-04
+ err2 = 0.000000e+00
+excitation 55 
+ err1 = 1.356817e-04
+ err2 = 0.000000e+00
+excitation 56 
+ err1 = 1.356818e-04
+ err2 = 0.000000e+00
+excitation 61 
+ err1 = 2.634486e-04
+ err2 = 0.000000e+00
+excitation 62 
+ err1 = 2.634486e-04
+ err2 = 0.000000e+00
+excitation 63 
+ err1 = 3.192950e-04
+ err2 = 0.000000e+00
+excitation 64 
+ err1 = 3.131200e-04
+ err2 = 0.000000e+00
+excitation 65 
+ err1 = 2.634486e-04
+ err2 = 0.000000e+00
+excitation 66 
+ err1 = 2.634486e-04
+ err2 = 0.000000e+00
+resonator 11 
+ err1 = 1.259909e-02
+ err2 = 2.236293e-03
+ err3 = 9.449078e-04
+resonator 12 
+ err1 = 1.051455e-01
+ err2 = 1.231530e-01
+ err3 = 1.019467e-01
+resonator 13 
+ err1 = 5.045302e-02
+ err2 = 2.430403e-03
+ err3 = 2.539555e-03
+resonator 14 
+ err1 = 1.271523e-01
+ err2 = 9.538711e-04
+ err3 = 9.379538e-04
+resonator 15 
+ err1 = 3.017977e-02
+ err2 = 2.201336e-03
+ err3 = 9.013285e-04
+resonator 16 
+ err1 = 4.705308e-02
+ err2 = 3.064989e-03
+ err3 = 2.255249e-03
+resonator 21 
+ err1 = 8.318545e-02
+ err2 = 1.275328e-01
+ err3 = 9.372486e-02
+resonator 22 
+ err1 = 8.846183e-02
+ err2 = 1.297325e-01
+ err3 = 9.602200e-02
+resonator 23 
+ err1 = 7.170899e-02
+ err2 = 8.216508e-02
+ err3 = 9.356594e-02
+resonator 24 
+ err1 = 9.623760e-02
+ err2 = 8.576512e-02
+ err3 = 9.366360e-02
+resonator 25 
+ err1 = 8.439529e-02
+ err2 = 1.276273e-01
+ err3 = 9.366855e-02
+resonator 26 
+ err1 = 8.008657e-02
+ err2 = 1.272434e-01
+ err3 = 9.398050e-02
+resonator 31 
+ err1 = 1.287350e-01
+ err2 = 4.092581e-02
+ err3 = 2.181617e-02
+resonator 32 
+ err1 = 1.285885e-01
+ err2 = 9.034277e-02
+ err3 = 7.944525e-02
+resonator 33 
+ err1 = 1.289336e-01
+ err2 = 1.803668e-02
+ err3 = 1.508322e-02
+resonator 34 
+ err1 = 1.285788e-01
+ err2 = 3.323271e-02
+ err3 = 2.175410e-02
+resonator 35 
+ err1 = 1.287199e-01
+ err2 = 4.090343e-02
+ err3 = 2.175516e-02
+resonator 36 
+ err1 = 1.286797e-01
+ err2 = 4.747448e-02
+ err3 = 3.895463e-02
+resonator 41 
+ err1 = 1.415193e-01
+ err2 = 1.327211e-01
+ err3 = 7.836053e-02
+resonator 42 
+ err1 = 1.413546e-01
+ err2 = 1.018639e-01
+ err3 = 9.273689e-02
+resonator 43 
+ err1 = 1.413671e-01
+ err2 = 3.874195e-02
+ err3 = 4.493554e-02
+resonator 44 
+ err1 = 1.416435e-01
+ err2 = 3.897913e-02
+ err3 = 1.386411e-01
+resonator 45 
+ err1 = 1.415310e-01
+ err2 = 1.046311e-01
+ err3 = 1.386065e-01
+resonator 46 
+ err1 = 1.415688e-01
+ err2 = 6.254354e-02
+ err3 = 4.498203e-02
+resonator 51 
+ err1 = 1.427589e-01
+ err2 = 2.125922e-02
+ err3 = 8.748649e-03
+resonator 52 
+ err1 = 1.407102e-01
+ err2 = 1.192528e-01
+ err3 = 1.006523e-01
+resonator 53 
+ err1 = 1.413032e-01
+ err2 = 5.682620e-03
+ err3 = 6.639985e-03
+resonator 54 
+ err1 = 1.440910e-01
+ err2 = 5.311548e-03
+ err3 = 1.109368e-01
+resonator 55 
+ err1 = 1.428832e-01
+ err2 = 3.176617e-02
+ err3 = 1.106667e-01
+resonator 56 
+ err1 = 1.432608e-01
+ err2 = 9.029030e-03
+ err3 = 6.634170e-03
+resonator 61 
+ err1 = 1.526594e-01
+ err2 = 2.601664e-02
+ err3 = 2.154142e-02
+resonator 62 
+ err1 = 1.526282e-01
+ err2 = 9.905229e-02
+ err3 = 7.834392e-02
+resonator 63 
+ err1 = 1.527498e-01
+ err2 = 2.299781e-02
+ err3 = 3.843819e-02
+resonator 64 
+ err1 = 1.526258e-01
+ err2 = 2.137683e-02
+ err3 = 2.145154e-02
+resonator 65 
+ err1 = 1.526559e-01
+ err2 = 2.597350e-02
+ err3 = 2.145583e-02
+resonator 66 
+ err1 = 1.527664e-01
+ err2 = 1.666802e-02
+ err3 = 1.486996e-02
+jet 111 
+ err1 = 5.535598e-04
+ err2 = 1.744287e-04
+jet 112 
+ err1 = 1.456576e-01
+ err2 = 1.744287e-04
+jet 113 
+ err1 = 1.561024e-03
+ err2 = 1.744287e-04
+jet 114 
+ err1 = 1.698536e-03
+ err2 = 1.744287e-04
+jet 115 
+ err1 = 8.198838e-04
+ err2 = 1.744287e-04
+jet 116 
+ err1 = 1.627351e-03
+ err2 = 1.744287e-04
+jet 121 
+ err1 = 1.456103e-01
+ err2 = 1.744287e-04
+jet 122 
+ err1 = 1.455995e-01
+ err2 = 1.744287e-04
+jet 123 
+ err1 = 1.064767e-01
+ err2 = 1.744287e-04
+jet 124 
+ err1 = 1.039945e-01
+ err2 = 1.744287e-04
+jet 125 
+ err1 = 1.411280e-01
+ err2 = 1.744287e-04
+jet 126 
+ err1 = 1.461366e-01
+ err2 = 1.744287e-04
+jet 131 
+ err1 = 1.411382e-03
+ err2 = 1.744287e-04
+jet 132 
+ err1 = 6.047574e-02
+ err2 = 1.744287e-04
+jet 133 
+ err1 = 1.311954e-03
+ err2 = 1.744287e-04
+jet 134 
+ err1 = 1.516765e-03
+ err2 = 1.744287e-04
+jet 135 
+ err1 = 1.311376e-03
+ err2 = 1.744287e-04
+jet 136 
+ err1 = 9.924768e-04
+ err2 = 1.744287e-04
+jet 141 
+ err1 = 1.596182e-03
+ err2 = 1.744287e-04
+jet 142 
+ err1 = 6.979503e-02
+ err2 = 1.744287e-04
+jet 143 
+ err1 = 2.292100e-03
+ err2 = 1.744287e-04
+jet 144 
+ err1 = 1.452933e-03
+ err2 = 1.744287e-04
+jet 145 
+ err1 = 1.452806e-03
+ err2 = 1.744287e-04
+jet 146 
+ err1 = 2.227522e-03
+ err2 = 1.744287e-04
+jet 151 
+ err1 = 1.211482e-03
+ err2 = 1.744287e-04
+jet 152 
+ err1 = 1.350424e-01
+ err2 = 1.744287e-04
+jet 153 
+ err1 = 1.310819e-03
+ err2 = 1.744287e-04
+jet 154 
+ err1 = 1.452631e-03
+ err2 = 1.744287e-04
+jet 155 
+ err1 = 1.451023e-03
+ err2 = 1.744287e-04
+jet 156 
+ err1 = 1.534470e-03
+ err2 = 1.744287e-04
+jet 161 
+ err1 = 1.402773e-03
+ err2 = 1.744287e-04
+jet 162 
+ err1 = 1.319147e-01
+ err2 = 1.744287e-04
+jet 163 
+ err1 = 1.111471e-03
+ err2 = 1.744287e-04
+jet 164 
+ err1 = 2.165058e-03
+ err2 = 1.744287e-04
+jet 165 
+ err1 = 1.364691e-03
+ err2 = 1.744287e-04
+jet 166 
+ err1 = 1.249227e-03
+ err2 = 1.744287e-04
+jet 211 
+ err1 = 5.535598e-04
+ err2 = 1.427694e-01
+jet 212 
+ err1 = 1.456576e-01
+ err2 = 1.427694e-01
+jet 213 
+ err1 = 1.561024e-03
+ err2 = 1.427694e-01
+jet 214 
+ err1 = 1.698536e-03
+ err2 = 1.427694e-01
+jet 215 
+ err1 = 8.198838e-04
+ err2 = 1.427694e-01
+jet 216 
+ err1 = 1.627351e-03
+ err2 = 1.427694e-01
+jet 221 
+ err1 = 1.456103e-01
+ err2 = 1.427694e-01
+jet 222 
+ err1 = 1.455995e-01
+ err2 = 1.427694e-01
+jet 223 
+ err1 = 1.064767e-01
+ err2 = 1.427694e-01
+jet 224 
+ err1 = 1.039945e-01
+ err2 = 1.427694e-01
+jet 225 
+ err1 = 1.411280e-01
+ err2 = 1.427694e-01
+jet 226 
+ err1 = 1.461366e-01
+ err2 = 1.427694e-01
+jet 231 
+ err1 = 1.411382e-03
+ err2 = 1.427694e-01
+jet 232 
+ err1 = 6.047574e-02
+ err2 = 1.427694e-01
+jet 233 
+ err1 = 1.311954e-03
+ err2 = 1.427694e-01
+jet 234 
+ err1 = 1.516765e-03
+ err2 = 1.427694e-01
+jet 235 
+ err1 = 1.311376e-03
+ err2 = 1.427694e-01
+jet 236 
+ err1 = 9.924768e-04
+ err2 = 1.427694e-01
+jet 241 
+ err1 = 1.596182e-03
+ err2 = 1.427694e-01
+jet 242 
+ err1 = 6.979503e-02
+ err2 = 1.427694e-01
+jet 243 
+ err1 = 2.292100e-03
+ err2 = 1.427694e-01
+jet 244 
+ err1 = 1.452933e-03
+ err2 = 1.427694e-01
+jet 245 
+ err1 = 1.452806e-03
+ err2 = 1.427694e-01
+jet 246 
+ err1 = 2.227522e-03
+ err2 = 1.427694e-01
+jet 251 
+ err1 = 1.211482e-03
+ err2 = 1.427694e-01
+jet 252 
+ err1 = 1.350424e-01
+ err2 = 1.427694e-01
+jet 253 
+ err1 = 1.310819e-03
+ err2 = 1.427694e-01
+jet 254 
+ err1 = 1.452631e-03
+ err2 = 1.427694e-01
+jet 255 
+ err1 = 1.451023e-03
+ err2 = 1.427694e-01
+jet 256 
+ err1 = 1.534470e-03
+ err2 = 1.427694e-01
+jet 261 
+ err1 = 1.402773e-03
+ err2 = 1.427694e-01
+jet 262 
+ err1 = 1.319147e-01
+ err2 = 1.427694e-01
+jet 263 
+ err1 = 1.111471e-03
+ err2 = 1.427694e-01
+jet 264 
+ err1 = 2.165058e-03
+ err2 = 1.427694e-01
+jet 265 
+ err1 = 1.364691e-03
+ err2 = 1.427694e-01
+jet 266 
+ err1 = 1.249227e-03
+ err2 = 1.427694e-01
+jet 311 
+ err1 = 5.535598e-04
+ err2 = 1.088619e-03
+jet 312 
+ err1 = 1.456576e-01
+ err2 = 1.088619e-03
+jet 313 
+ err1 = 1.561024e-03
+ err2 = 1.088619e-03
+jet 314 
+ err1 = 1.698536e-03
+ err2 = 1.088619e-03
+jet 315 
+ err1 = 8.198838e-04
+ err2 = 1.088619e-03
+jet 316 
+ err1 = 1.627351e-03
+ err2 = 1.088619e-03
+jet 321 
+ err1 = 1.456103e-01
+ err2 = 1.088619e-03
+jet 322 
+ err1 = 1.455995e-01
+ err2 = 1.088619e-03
+jet 323 
+ err1 = 1.064767e-01
+ err2 = 1.088619e-03
+jet 324 
+ err1 = 1.039945e-01
+ err2 = 1.088619e-03
+jet 325 
+ err1 = 1.411280e-01
+ err2 = 1.088619e-03
+jet 326 
+ err1 = 1.461366e-01
+ err2 = 1.088619e-03
+jet 331 
+ err1 = 1.411382e-03
+ err2 = 1.088619e-03
+jet 332 
+ err1 = 6.047574e-02
+ err2 = 1.088619e-03
+jet 333 
+ err1 = 1.311954e-03
+ err2 = 1.088619e-03
+jet 334 
+ err1 = 1.516765e-03
+ err2 = 1.088619e-03
+jet 335 
+ err1 = 1.311376e-03
+ err2 = 1.088619e-03
+jet 336 
+ err1 = 9.924768e-04
+ err2 = 1.088619e-03
+jet 341 
+ err1 = 1.596182e-03
+ err2 = 1.088619e-03
+jet 342 
+ err1 = 6.979503e-02
+ err2 = 1.088619e-03
+jet 343 
+ err1 = 2.292100e-03
+ err2 = 1.088619e-03
+jet 344 
+ err1 = 1.452933e-03
+ err2 = 1.088619e-03
+jet 345 
+ err1 = 1.452806e-03
+ err2 = 1.088619e-03
+jet 346 
+ err1 = 2.227522e-03
+ err2 = 1.088619e-03
+jet 351 
+ err1 = 1.211482e-03
+ err2 = 1.088619e-03
+jet 352 
+ err1 = 1.350424e-01
+ err2 = 1.088619e-03
+jet 353 
+ err1 = 1.310819e-03
+ err2 = 1.088619e-03
+jet 354 
+ err1 = 1.452631e-03
+ err2 = 1.088619e-03
+jet 355 
+ err1 = 1.451023e-03
+ err2 = 1.088619e-03
+jet 356 
+ err1 = 1.534470e-03
+ err2 = 1.088619e-03
+jet 361 
+ err1 = 1.402773e-03
+ err2 = 1.088619e-03
+jet 362 
+ err1 = 1.319147e-01
+ err2 = 1.088619e-03
+jet 363 
+ err1 = 1.111471e-03
+ err2 = 1.088619e-03
+jet 364 
+ err1 = 2.165058e-03
+ err2 = 1.088619e-03
+jet 365 
+ err1 = 1.364691e-03
+ err2 = 1.088619e-03
+jet 366 
+ err1 = 1.249227e-03
+ err2 = 1.088619e-03
+jet 411 
+ err1 = 5.535598e-04
+ err2 = 1.449591e-03
+jet 412 
+ err1 = 1.456576e-01
+ err2 = 1.449591e-03
+jet 413 
+ err1 = 1.561024e-03
+ err2 = 1.449591e-03
+jet 414 
+ err1 = 1.698536e-03
+ err2 = 1.449591e-03
+jet 415 
+ err1 = 8.198838e-04
+ err2 = 1.449591e-03
+jet 416 
+ err1 = 1.627351e-03
+ err2 = 1.449591e-03
+jet 421 
+ err1 = 1.456103e-01
+ err2 = 1.449591e-03
+jet 422 
+ err1 = 1.455995e-01
+ err2 = 1.449591e-03
+jet 423 
+ err1 = 1.064767e-01
+ err2 = 1.449591e-03
+jet 424 
+ err1 = 1.039945e-01
+ err2 = 1.449591e-03
+jet 425 
+ err1 = 1.411280e-01
+ err2 = 1.449591e-03
+jet 426 
+ err1 = 1.461366e-01
+ err2 = 1.449591e-03
+jet 431 
+ err1 = 1.411382e-03
+ err2 = 1.449591e-03
+jet 432 
+ err1 = 6.047574e-02
+ err2 = 1.449591e-03
+jet 433 
+ err1 = 1.311954e-03
+ err2 = 1.449591e-03
+jet 434 
+ err1 = 1.516765e-03
+ err2 = 1.449591e-03
+jet 435 
+ err1 = 1.311376e-03
+ err2 = 1.449591e-03
+jet 436 
+ err1 = 9.924768e-04
+ err2 = 1.449591e-03
+jet 441 
+ err1 = 1.596182e-03
+ err2 = 1.449591e-03
+jet 442 
+ err1 = 6.979503e-02
+ err2 = 1.449591e-03
+jet 443 
+ err1 = 2.292100e-03
+ err2 = 1.449591e-03
+jet 444 
+ err1 = 1.452933e-03
+ err2 = 1.449591e-03
+jet 445 
+ err1 = 1.452806e-03
+ err2 = 1.449591e-03
+jet 446 
+ err1 = 2.227522e-03
+ err2 = 1.449591e-03
+jet 451 
+ err1 = 1.211482e-03
+ err2 = 1.449591e-03
+jet 452 
+ err1 = 1.350424e-01
+ err2 = 1.449591e-03
+jet 453 
+ err1 = 1.310819e-03
+ err2 = 1.449591e-03
+jet 454 
+ err1 = 1.452631e-03
+ err2 = 1.449591e-03
+jet 455 
+ err1 = 1.451023e-03
+ err2 = 1.449591e-03
+jet 456 
+ err1 = 1.534470e-03
+ err2 = 1.449591e-03
+jet 461 
+ err1 = 1.402773e-03
+ err2 = 1.449591e-03
+jet 462 
+ err1 = 1.319147e-01
+ err2 = 1.449591e-03
+jet 463 
+ err1 = 1.111471e-03
+ err2 = 1.449591e-03
+jet 464 
+ err1 = 2.165058e-03
+ err2 = 1.449591e-03
+jet 465 
+ err1 = 1.364691e-03
+ err2 = 1.449591e-03
+jet 466 
+ err1 = 1.249227e-03
+ err2 = 1.449591e-03
+jet 511 
+ err1 = 5.535598e-04
+ err2 = 1.449257e-03
+jet 512 
+ err1 = 1.456576e-01
+ err2 = 1.449257e-03
+jet 513 
+ err1 = 1.561024e-03
+ err2 = 1.449257e-03
+jet 514 
+ err1 = 1.698536e-03
+ err2 = 1.449257e-03
+jet 515 
+ err1 = 8.198838e-04
+ err2 = 1.449257e-03
+jet 516 
+ err1 = 1.627351e-03
+ err2 = 1.449257e-03
+jet 521 
+ err1 = 1.456103e-01
+ err2 = 1.449257e-03
+jet 522 
+ err1 = 1.455995e-01
+ err2 = 1.449257e-03
+jet 523 
+ err1 = 1.064767e-01
+ err2 = 1.449257e-03
+jet 524 
+ err1 = 1.039945e-01
+ err2 = 1.449257e-03
+jet 525 
+ err1 = 1.411280e-01
+ err2 = 1.449257e-03
+jet 526 
+ err1 = 1.461366e-01
+ err2 = 1.449257e-03
+jet 531 
+ err1 = 1.411382e-03
+ err2 = 1.449257e-03
+jet 532 
+ err1 = 6.047574e-02
+ err2 = 1.449257e-03
+jet 533 
+ err1 = 1.311954e-03
+ err2 = 1.449257e-03
+jet 534 
+ err1 = 1.516765e-03
+ err2 = 1.449257e-03
+jet 535 
+ err1 = 1.311376e-03
+ err2 = 1.449257e-03
+jet 536 
+ err1 = 9.924768e-04
+ err2 = 1.449257e-03
+jet 541 
+ err1 = 1.596182e-03
+ err2 = 1.449257e-03
+jet 542 
+ err1 = 6.979503e-02
+ err2 = 1.449257e-03
+jet 543 
+ err1 = 2.292100e-03
+ err2 = 1.449257e-03
+jet 544 
+ err1 = 1.452933e-03
+ err2 = 1.449257e-03
+jet 545 
+ err1 = 1.452806e-03
+ err2 = 1.449257e-03
+jet 546 
+ err1 = 2.227522e-03
+ err2 = 1.449257e-03
+jet 551 
+ err1 = 1.211482e-03
+ err2 = 1.449257e-03
+jet 552 
+ err1 = 1.350424e-01
+ err2 = 1.449257e-03
+jet 553 
+ err1 = 1.310819e-03
+ err2 = 1.449257e-03
+jet 554 
+ err1 = 1.452631e-03
+ err2 = 1.449257e-03
+jet 555 
+ err1 = 1.451023e-03
+ err2 = 1.449257e-03
+jet 556 
+ err1 = 1.534470e-03
+ err2 = 1.449257e-03
+jet 561 
+ err1 = 1.402773e-03
+ err2 = 1.449257e-03
+jet 562 
+ err1 = 1.319147e-01
+ err2 = 1.449257e-03
+jet 563 
+ err1 = 1.111471e-03
+ err2 = 1.449257e-03
+jet 564 
+ err1 = 2.165058e-03
+ err2 = 1.449257e-03
+jet 565 
+ err1 = 1.364691e-03
+ err2 = 1.449257e-03
+jet 566 
+ err1 = 1.249227e-03
+ err2 = 1.449257e-03
+jet 611 
+ err1 = 5.535598e-04
+ err2 = 7.256236e-04
+jet 612 
+ err1 = 1.456576e-01
+ err2 = 7.256236e-04
+jet 613 
+ err1 = 1.561024e-03
+ err2 = 7.256236e-04
+jet 614 
+ err1 = 1.698536e-03
+ err2 = 7.256236e-04
+jet 615 
+ err1 = 8.198838e-04
+ err2 = 7.256236e-04
+jet 616 
+ err1 = 1.627351e-03
+ err2 = 7.256236e-04
+jet 621 
+ err1 = 1.456103e-01
+ err2 = 7.256236e-04
+jet 622 
+ err1 = 1.455995e-01
+ err2 = 7.256236e-04
+jet 623 
+ err1 = 1.064767e-01
+ err2 = 7.256236e-04
+jet 624 
+ err1 = 1.039945e-01
+ err2 = 7.256236e-04
+jet 625 
+ err1 = 1.411280e-01
+ err2 = 7.256236e-04
+jet 626 
+ err1 = 1.461366e-01
+ err2 = 7.256236e-04
+jet 631 
+ err1 = 1.411382e-03
+ err2 = 7.256236e-04
+jet 632 
+ err1 = 6.047574e-02
+ err2 = 7.256236e-04
+jet 633 
+ err1 = 1.311954e-03
+ err2 = 7.256236e-04
+jet 634 
+ err1 = 1.516765e-03
+ err2 = 7.256236e-04
+jet 635 
+ err1 = 1.311376e-03
+ err2 = 7.256236e-04
+jet 636 
+ err1 = 9.924768e-04
+ err2 = 7.256236e-04
+jet 641 
+ err1 = 1.596182e-03
+ err2 = 7.256236e-04
+jet 642 
+ err1 = 6.979503e-02
+ err2 = 7.256236e-04
+jet 643 
+ err1 = 2.292100e-03
+ err2 = 7.256236e-04
+jet 644 
+ err1 = 1.452933e-03
+ err2 = 7.256236e-04
+jet 645 
+ err1 = 1.452806e-03
+ err2 = 7.256236e-04
+jet 646 
+ err1 = 2.227522e-03
+ err2 = 7.256236e-04
+jet 651 
+ err1 = 1.211482e-03
+ err2 = 7.256236e-04
+jet 652 
+ err1 = 1.350424e-01
+ err2 = 7.256236e-04
+jet 653 
+ err1 = 1.310819e-03
+ err2 = 7.256236e-04
+jet 654 
+ err1 = 1.452631e-03
+ err2 = 7.256236e-04
+jet 655 
+ err1 = 1.451023e-03
+ err2 = 7.256236e-04
+jet 656 
+ err1 = 1.534470e-03
+ err2 = 7.256236e-04
+jet 661 
+ err1 = 1.402773e-03
+ err2 = 7.256236e-04
+jet 662 
+ err1 = 1.319147e-01
+ err2 = 7.256236e-04
+jet 663 
+ err1 = 1.111471e-03
+ err2 = 7.256236e-04
+jet 664 
+ err1 = 2.165058e-03
+ err2 = 7.256236e-04
+jet 665 
+ err1 = 1.364691e-03
+ err2 = 7.256236e-04
+jet 666 
+ err1 = 1.249227e-03
+ err2 = 7.256236e-04
+sources 111 
+ err1 = 3.628175e-06
+ err2 = 3.605416e-06
+sources 112 
+ err1 = 1.272371e-02
+ err2 = 1.192729e-02
+sources 113 
+ err1 = 1.528278e-02
+ err2 = 6.774916e-06
+sources 114 
+ err1 = 3.967715e-02
+ err2 = 3.624025e-05
+sources 115 
+ err1 = 3.116479e-02
+ err2 = 3.256636e-05
+sources 116 
+ err1 = 5.603807e-02
+ err2 = 3.953461e-06
+sources 121 
+ err1 = 3.626011e-06
+ err2 = 1.833620e-07
+sources 122 
+ err1 = 8.146174e-03
+ err2 = 6.111802e-03
+sources 123 
+ err1 = 9.920257e-03
+ err2 = 1.003358e-02
+sources 124 
+ err1 = 1.260548e-02
+ err2 = 1.271381e-02
+sources 125 
+ err1 = 9.898632e-03
+ err2 = 9.977393e-03
+sources 126 
+ err1 = 3.957868e-02
+ err2 = 2.008941e-02
+sources 131 
+ err1 = 3.626011e-06
+ err2 = 1.833620e-07
+sources 132 
+ err1 = 4.254616e-03
+ err2 = 3.846697e-03
+sources 133 
+ err1 = 1.999995e-02
+ err2 = 2.806659e-04
+sources 134 
+ err1 = 2.546477e-02
+ err2 = 5.612019e-04
+sources 135 
+ err1 = 2.000161e-02
+ err2 = 7.183295e-05
+sources 136 
+ err1 = 4.001753e-02
+ err2 = 4.031866e-05
+sources 141 
+ err1 = 3.628175e-06
+ err2 = 3.605416e-06
+sources 142 
+ err1 = 4.295644e-03
+ err2 = 4.367366e-03
+sources 143 
+ err1 = 1.777876e-02
+ err2 = 2.171853e-05
+sources 144 
+ err1 = 2.546478e-02
+ err2 = 5.493855e-04
+sources 145 
+ err1 = 2.000162e-02
+ err2 = 7.170577e-05
+sources 146 
+ err1 = 4.002231e-02
+ err2 = 1.458749e-05
+sources 151 
+ err1 = 3.628175e-06
+ err2 = 3.605416e-06
+sources 152 
+ err1 = 4.290627e-03
+ err2 = 4.361789e-03
+sources 153 
+ err1 = 1.557060e-02
+ err2 = 2.743623e-05
+sources 154 
+ err1 = 2.546128e-02
+ err2 = 5.506750e-04
+sources 155 
+ err1 = 2.000125e-02
+ err2 = 7.182405e-05
+sources 156 
+ err1 = 3.996246e-02
+ err2 = 2.750925e-05
+sources 161 
+ err1 = 3.628175e-06
+ err2 = 3.605416e-06
+sources 162 
+ err1 = 8.166010e-03
+ err2 = 7.655016e-03
+sources 163 
+ err1 = 2.000089e-02
+ err2 = 1.074749e-05
+sources 164 
+ err1 = 2.546479e-02
+ err2 = 1.101700e-03
+sources 165 
+ err1 = 2.000163e-02
+ err2 = 1.433423e-04
+sources 166 
+ err1 = 1.527400e-07
+ err2 = 3.629424e-06
+sources 211 
+ err1 = 3.628175e-06
+ err2 = 3.543016e-06
+sources 212 
+ err1 = 1.272371e-02
+ err2 = 8.048191e-03
+sources 213 
+ err1 = 1.528278e-02
+ err2 = 6.964236e-06
+sources 214 
+ err1 = 3.967715e-02
+ err2 = 1.221393e-05
+sources 215 
+ err1 = 3.116479e-02
+ err2 = 1.721627e-06
+sources 216 
+ err1 = 5.603807e-02
+ err2 = 3.855432e-06
+sources 221 
+ err1 = 3.626011e-06
+ err2 = 4.557502e-09
+sources 222 
+ err1 = 8.146174e-03
+ err2 = 5.789167e-03
+sources 223 
+ err1 = 9.920257e-03
+ err2 = 8.748298e-03
+sources 224 
+ err1 = 1.260548e-02
+ err2 = 1.094742e-02
+sources 225 
+ err1 = 9.898632e-03
+ err2 = 3.812818e-03
+sources 226 
+ err1 = 3.957868e-02
+ err2 = 1.682924e-02
+sources 231 
+ err1 = 3.626011e-06
+ err2 = 4.557502e-09
+sources 232 
+ err1 = 4.254616e-03
+ err2 = 3.440844e-03
+sources 233 
+ err1 = 1.999995e-02
+ err2 = 6.801308e-06
+sources 234 
+ err1 = 2.546477e-02
+ err2 = 1.358671e-05
+sources 235 
+ err1 = 2.000161e-02
+ err2 = 1.699049e-06
+sources 236 
+ err1 = 4.001753e-02
+ err2 = 5.983011e-06
+sources 241 
+ err1 = 3.628175e-06
+ err2 = 3.543016e-06
+sources 242 
+ err1 = 4.295644e-03
+ err2 = 4.073013e-03
+sources 243 
+ err1 = 1.777876e-02
+ err2 = 1.405492e-05
+sources 244 
+ err1 = 2.546478e-02
+ err2 = 1.359380e-05
+sources 245 
+ err1 = 2.000162e-02
+ err2 = 1.699977e-06
+sources 246 
+ err1 = 4.002231e-02
+ err2 = 1.018151e-05
+sources 251 
+ err1 = 3.628175e-06
+ err2 = 3.543016e-06
+sources 252 
+ err1 = 4.290627e-03
+ err2 = 4.067812e-03
+sources 253 
+ err1 = 1.557060e-02
+ err2 = 1.661822e-05
+sources 254 
+ err1 = 2.546128e-02
+ err2 = 1.362889e-05
+sources 255 
+ err1 = 2.000125e-02
+ err2 = 1.702678e-06
+sources 256 
+ err1 = 3.996246e-02
+ err2 = 1.095318e-05
+sources 261 
+ err1 = 3.628175e-06
+ err2 = 3.543016e-06
+sources 262 
+ err1 = 8.166010e-03
+ err2 = 6.847362e-03
+sources 263 
+ err1 = 2.000089e-02
+ err2 = 1.080384e-05
+sources 264 
+ err1 = 2.546479e-02
+ err2 = 2.715781e-05
+sources 265 
+ err1 = 2.000163e-02
+ err2 = 3.397400e-06
+sources 266 
+ err1 = 1.527400e-07
+ err2 = 2.377591e-06
+sources 311 
+ err1 = 3.628175e-06
+ err2 = 3.628400e-06
+sources 312 
+ err1 = 1.272371e-02
+ err2 = 7.454507e-03
+sources 313 
+ err1 = 1.528278e-02
+ err2 = 6.710055e-06
+sources 314 
+ err1 = 3.967715e-02
+ err2 = 1.103577e-05
+sources 315 
+ err1 = 3.116479e-02
+ err2 = 1.431315e-06
+sources 316 
+ err1 = 5.603807e-02
+ err2 = 3.989876e-06
+sources 321 
+ err1 = 3.626011e-06
+ err2 = 3.742176e-09
+sources 322 
+ err1 = 8.146174e-03
+ err2 = 4.925725e-03
+sources 323 
+ err1 = 9.920257e-03
+ err2 = 7.596684e-03
+sources 324 
+ err1 = 1.260548e-02
+ err2 = 1.164562e-02
+sources 325 
+ err1 = 9.898632e-03
+ err2 = 3.293246e-03
+sources 326 
+ err1 = 3.957868e-02
+ err2 = 1.521347e-02
+sources 331 
+ err1 = 3.626011e-06
+ err2 = 3.742176e-09
+sources 332 
+ err1 = 4.254616e-03
+ err2 = 3.863355e-03
+sources 333 
+ err1 = 1.999995e-02
+ err2 = 5.657173e-06
+sources 334 
+ err1 = 2.546477e-02
+ err2 = 1.131378e-05
+sources 335 
+ err1 = 2.000161e-02
+ err2 = 1.414693e-06
+sources 336 
+ err1 = 4.001753e-02
+ err2 = 5.074284e-06
+sources 341 
+ err1 = 3.628175e-06
+ err2 = 3.628400e-06
+sources 342 
+ err1 = 4.295644e-03
+ err2 = 3.983420e-03
+sources 343 
+ err1 = 1.777876e-02
+ err2 = 8.236357e-06
+sources 344 
+ err1 = 2.546478e-02
+ err2 = 1.131571e-05
+sources 345 
+ err1 = 2.000162e-02
+ err2 = 1.413855e-06
+sources 346 
+ err1 = 4.002231e-02
+ err2 = 1.179417e-05
+sources 351 
+ err1 = 3.628175e-06
+ err2 = 3.628400e-06
+sources 352 
+ err1 = 4.290627e-03
+ err2 = 3.982537e-03
+sources 353 
+ err1 = 1.557060e-02
+ err2 = 9.288708e-06
+sources 354 
+ err1 = 2.546128e-02
+ err2 = 1.134377e-05
+sources 355 
+ err1 = 2.000125e-02
+ err2 = 1.416329e-06
+sources 356 
+ err1 = 3.996246e-02
+ err2 = 1.405490e-05
+sources 361 
+ err1 = 3.628175e-06
+ err2 = 3.628400e-06
+sources 362 
+ err1 = 8.166010e-03
+ err2 = 6.998928e-03
+sources 363 
+ err1 = 2.000089e-02
+ err2 = 6.629631e-06
+sources 364 
+ err1 = 2.546479e-02
+ err2 = 2.261094e-05
+sources 365 
+ err1 = 2.000163e-02
+ err2 = 2.827077e-06
+sources 366 
+ err1 = 1.527400e-07
+ err2 = 3.629981e-06
+sources 411 
+ err1 = 3.628175e-06
+ err2 = 3.628138e-06
+sources 412 
+ err1 = 1.272371e-02
+ err2 = 7.419918e-03
+sources 413 
+ err1 = 1.528278e-02
+ err2 = 6.710417e-06
+sources 414 
+ err1 = 3.967715e-02
+ err2 = 1.037786e-05
+sources 415 
+ err1 = 3.116479e-02
+ err2 = 1.432447e-06
+sources 416 
+ err1 = 5.603807e-02
+ err2 = 3.989522e-06
+sources 421 
+ err1 = 3.626011e-06
+ err2 = 3.792789e-09
+sources 422 
+ err1 = 8.146174e-03
+ err2 = 4.722441e-03
+sources 423 
+ err1 = 9.920257e-03
+ err2 = 9.248394e-03
+sources 424 
+ err1 = 1.260548e-02
+ err2 = 9.625634e-03
+sources 425 
+ err1 = 9.898632e-03
+ err2 = 2.796789e-03
+sources 426 
+ err1 = 3.957868e-02
+ err2 = 1.521217e-02
+sources 431 
+ err1 = 3.626011e-06
+ err2 = 3.792843e-09
+sources 432 
+ err1 = 4.254616e-03
+ err2 = 3.388474e-03
+sources 433 
+ err1 = 1.999995e-02
+ err2 = 5.657627e-06
+sources 434 
+ err1 = 2.546477e-02
+ err2 = 1.131568e-05
+sources 435 
+ err1 = 2.000161e-02
+ err2 = 1.413989e-06
+sources 436 
+ err1 = 4.001753e-02
+ err2 = 5.073203e-06
+sources 441 
+ err1 = 3.628175e-06
+ err2 = 3.628138e-06
+sources 442 
+ err1 = 4.295644e-03
+ err2 = 4.367077e-03
+sources 443 
+ err1 = 1.777876e-02
+ err2 = 1.197905e-05
+sources 444 
+ err1 = 2.546478e-02
+ err2 = 1.131818e-05
+sources 445 
+ err1 = 2.000162e-02
+ err2 = 1.414789e-06
+sources 446 
+ err1 = 4.002231e-02
+ err2 = 9.072078e-06
+sources 451 
+ err1 = 3.628175e-06
+ err2 = 3.628138e-06
+sources 452 
+ err1 = 4.290627e-03
+ err2 = 4.361501e-03
+sources 453 
+ err1 = 1.557060e-02
+ err2 = 1.392313e-05
+sources 454 
+ err1 = 2.546128e-02
+ err2 = 1.134759e-05
+sources 455 
+ err1 = 2.000125e-02
+ err2 = 1.417064e-06
+sources 456 
+ err1 = 3.996246e-02
+ err2 = 9.759534e-06
+sources 461 
+ err1 = 3.628175e-06
+ err2 = 3.628138e-06
+sources 462 
+ err1 = 8.166010e-03
+ err2 = 6.743147e-03
+sources 463 
+ err1 = 2.000089e-02
+ err2 = 1.074494e-05
+sources 464 
+ err1 = 2.546479e-02
+ err2 = 2.261985e-05
+sources 465 
+ err1 = 2.000163e-02
+ err2 = 2.827201e-06
+sources 466 
+ err1 = 1.527400e-07
+ err2 = 2.228079e-06
+sources 511 
+ err1 = 3.628175e-06
+ err2 = 3.628138e-06
+sources 512 
+ err1 = 1.272371e-02
+ err2 = 1.193522e-02
+sources 513 
+ err1 = 1.528278e-02
+ err2 = 6.710092e-06
+sources 514 
+ err1 = 3.967715e-02
+ err2 = 3.857676e-05
+sources 515 
+ err1 = 3.116479e-02
+ err2 = 5.207381e-05
+sources 516 
+ err1 = 5.603807e-02
+ err2 = 3.989559e-06
+sources 521 
+ err1 = 3.626011e-06
+ err2 = 2.394346e-07
+sources 522 
+ err1 = 8.146174e-03
+ err2 = 6.111801e-03
+sources 523 
+ err1 = 9.920257e-03
+ err2 = 1.003358e-02
+sources 524 
+ err1 = 1.260548e-02
+ err2 = 1.265043e-02
+sources 525 
+ err1 = 9.898632e-03
+ err2 = 9.593486e-03
+sources 526 
+ err1 = 3.957868e-02
+ err2 = 1.999105e-02
+sources 531 
+ err1 = 3.626011e-06
+ err2 = 2.394244e-07
+sources 532 
+ err1 = 4.254616e-03
+ err2 = 3.847495e-03
+sources 533 
+ err1 = 1.999995e-02
+ err2 = 3.656361e-04
+sources 534 
+ err1 = 2.546477e-02
+ err2 = 7.181998e-04
+sources 535 
+ err1 = 2.000161e-02
+ err2 = 9.031041e-05
+sources 536 
+ err1 = 4.001753e-02
+ err2 = 3.637142e-05
+sources 541 
+ err1 = 3.628175e-06
+ err2 = 3.628138e-06
+sources 542 
+ err1 = 4.295644e-03
+ err2 = 4.367340e-03
+sources 543 
+ err1 = 1.777876e-02
+ err2 = 2.171846e-05
+sources 544 
+ err1 = 2.546478e-02
+ err2 = 7.147907e-04
+sources 545 
+ err1 = 2.000162e-02
+ err2 = 9.027788e-05
+sources 546 
+ err1 = 4.002231e-02
+ err2 = 1.458743e-05
+sources 551 
+ err1 = 3.628175e-06
+ err2 = 3.628138e-06
+sources 552 
+ err1 = 4.290627e-03
+ err2 = 4.361762e-03
+sources 553 
+ err1 = 1.557060e-02
+ err2 = 2.743621e-05
+sources 554 
+ err1 = 2.546128e-02
+ err2 = 7.164125e-04
+sources 555 
+ err1 = 2.000125e-02
+ err2 = 9.042690e-05
+sources 556 
+ err1 = 3.996246e-02
+ err2 = 2.750929e-05
+sources 561 
+ err1 = 3.628175e-06
+ err2 = 3.628138e-06
+sources 562 
+ err1 = 8.166010e-03
+ err2 = 7.656605e-03
+sources 563 
+ err1 = 2.000089e-02
+ err2 = 1.088065e-05
+sources 564 
+ err1 = 2.546479e-02
+ err2 = 1.434435e-03
+sources 565 
+ err1 = 2.000163e-02
+ err2 = 1.799890e-04
+sources 566 
+ err1 = 1.527400e-07
+ err2 = 3.594131e-06
+sources 611 
+ err1 = 3.628175e-06
+ err2 = 3.628138e-06
+sources 612 
+ err1 = 1.272371e-02
+ err2 = 1.192729e-02
+sources 613 
+ err1 = 1.528278e-02
+ err2 = 6.706878e-06
+sources 614 
+ err1 = 3.967715e-02
+ err2 = 3.854683e-05
+sources 615 
+ err1 = 3.116479e-02
+ err2 = 5.820787e-05
+sources 616 
+ err1 = 5.603807e-02
+ err2 = 3.988517e-06
+sources 621 
+ err1 = 3.626011e-06
+ err2 = 3.628936e-06
+sources 622 
+ err1 = 8.146174e-03
+ err2 = 6.111800e-03
+sources 623 
+ err1 = 9.920257e-03
+ err2 = 1.003358e-02
+sources 624 
+ err1 = 1.260548e-02
+ err2 = 1.271377e-02
+sources 625 
+ err1 = 9.898632e-03
+ err2 = 9.977382e-03
+sources 626 
+ err1 = 3.957868e-02
+ err2 = 2.008942e-02
+sources 631 
+ err1 = 3.626011e-06
+ err2 = 3.628936e-06
+sources 632 
+ err1 = 4.254616e-03
+ err2 = 3.846699e-03
+sources 633 
+ err1 = 1.999995e-02
+ err2 = 8.192670e-03
+sources 634 
+ err1 = 2.546477e-02
+ err2 = 1.161708e-02
+sources 635 
+ err1 = 2.000161e-02
+ err2 = 1.504039e-02
+sources 636 
+ err1 = 4.001753e-02
+ err2 = 4.030242e-05
+sources 641 
+ err1 = 3.628175e-06
+ err2 = 3.628138e-06
+sources 642 
+ err1 = 4.295644e-03
+ err2 = 4.367369e-03
+sources 643 
+ err1 = 1.777876e-02
+ err2 = 2.169530e-05
+sources 644 
+ err1 = 2.546478e-02
+ err2 = 1.091050e-02
+sources 645 
+ err1 = 2.000162e-02
+ err2 = 1.504010e-02
+sources 646 
+ err1 = 4.002231e-02
+ err2 = 1.458504e-05
+sources 651 
+ err1 = 3.628175e-06
+ err2 = 3.628138e-06
+sources 652 
+ err1 = 4.290627e-03
+ err2 = 4.361792e-03
+sources 653 
+ err1 = 1.557060e-02
+ err2 = 2.740856e-05
+sources 654 
+ err1 = 2.546128e-02
+ err2 = 1.083326e-02
+sources 655 
+ err1 = 2.000125e-02
+ err2 = 1.506578e-02
+sources 656 
+ err1 = 3.996246e-02
+ err2 = 2.750505e-05
+sources 661 
+ err1 = 3.628175e-06
+ err2 = 3.628138e-06
+sources 662 
+ err1 = 8.166010e-03
+ err2 = 7.655021e-03
+sources 663 
+ err1 = 2.000089e-02
+ err2 = 1.086704e-05
+sources 664 
+ err1 = 2.546479e-02
+ err2 = 2.502004e-02
+sources 665 
+ err1 = 2.000163e-02
+ err2 = 3.007540e-02
+sources 666 
+ err1 = 1.527400e-07
+ err2 = 3.628315e-06
