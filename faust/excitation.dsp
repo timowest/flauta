@@ -22,7 +22,7 @@ import("constants.dsp");
 //import("utils.dsp");
 
 // out : sources, impulse
-excitation(Vac,Pp) = (Vac,Pp) <: (_,_,_,!)
+excitation(Vac, Pp) = (Vac,Pp) <: (_,_,_,!)
     : (_,(blow : (limit, limit, _)),_)
     : ((jet,_,_)
     <: (_,_,!,_,!,!,_,!)
@@ -47,7 +47,7 @@ with {
 
 // bernoulli
 // out : bernoulli, uj_steady, impulse
-bernoulli(pin,pout) = (pin,pout) <: ((curr_velocity ~ _), ((curr_velocity_steady ~ _), !)) 
+bernoulli(pin, pout) = (pin,pout) <: ((curr_velocity ~ _), ((curr_velocity_steady ~ _), !)) 
     // in : cv, cvp, cvs
     <: (_,!,_,impulse(_, _),!)
 with {
@@ -69,19 +69,20 @@ with {
 };
 
 // out : eta_d, Uj_d
-jet(hyd_feed,Vac,Uj,Uj_steady) = (hyd_feed,Vac,Uj_steady,Uj) : (receptivity,_) : (jetDelay, jetDelay)
+jet(hyd_feed, Vac, Uj, Uj_steady) = (hyd_feed,Vac,Uj_steady,Uj) : (receptivity,_) : (jetDelay, jetDelay)
 with {
     
     // initial definition of delay length
     initial_delay_length = floor((max_flue_labium_d / (min_convection_f * min_jet_vel)) / sampling_period);
-         
+    
     delay_length = (jet_msamples_per_sec / Uj_steady) : max(0.5) : min(initial_delay_length);
 
     jet_msamples_per_sec = flue_labium_distance / (convection_f * sampling_period);
-   
+        
+    // FIXME delay doesn't work 
     jetDelay = fdelay(MAX_DELAY_LENGTH, delay_length);
-
-    sampling_period = 1 / SR;
+    
+    sampling_period = 1.0 / SR;
 };
 
 receptivity(hyd_feed, vac, uj_steady) = excitation : jet_filter_peak1 : jet_filter_peak2 : jet_filter_shelf : *(1e-4)
@@ -144,7 +145,7 @@ with {
 };
 
 // out : hyd_feedback, sources
-sources(eta_d,Uj_d,Vac) = (eta_d,Uj_d,Vac) <: (_,_,!,!,_,_) : (jetDrive, turbulence, vortex) : (_,_+_+_);
+sources(eta_d, Uj_d, Vac) = (eta_d,Uj_d,Vac) <: (_,_,!,!,_,_) : (jetDrive, turbulence, vortex) : (_,_+_+_);
 
 // vortex
 vortex(vac) = select2(vac > 0, -va2, va1) * VORTEX_CTE * vac * vac

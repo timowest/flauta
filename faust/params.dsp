@@ -50,7 +50,7 @@ labium_position = vslider("h:h1/h:exc/h:Jet/lab pos", 20, 0, 127, 1) * 0.00001;
 min_jet_vel = 1.0;
 max_jet_vel = 40;
 step_Uj = 0.1;
-convection_f = 0.5;
+convection_f = 0.3;
 min_convection_f = 0.3;
 jet_width = 0.02;
 
