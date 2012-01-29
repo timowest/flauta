@@ -69,7 +69,7 @@ with {
 };
 
 // out : eta_d, Uj_d
-jet(hyd_feed,Vac,Uj_steady,Uj) = (hyd_feed,Vac,Uj_steady,Uj) : (receptivity,_) : (jetDelay, jetDelay)
+jet(hyd_feed,Vac,Uj,Uj_steady) = (hyd_feed,Vac,Uj_steady,Uj) : (receptivity,_) : (jetDelay, jetDelay)
 with {
     
     // initial definition of delay length
