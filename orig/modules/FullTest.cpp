@@ -311,7 +311,7 @@ void Sources_test(float* in1, float* in2, float* in3, const char* format, int in
 }
 
 // Jet Test Function
-void Jet_test(float* in1, float* in2, float in3, float* in4, const char* format, int index) {
+void Jet_test(float* in1, float* in2, float* in3, float in4, const char* format, int index) {
      
      // Jet definitions
      Jet *my_Jet;
@@ -320,7 +320,7 @@ void Jet_test(float* in1, float* in2, float in3, float* in4, const char* format,
      StkFloat Uj_d;
 
      for (int i = 0; i < SIZE; i++) { 
-         Eta_d = my_Jet->tick(in2[i], in4[i], in3, in1[i], Uj_d);
+         Eta_d = my_Jet->tick(in2[i], in3[i], in4, in1[i], Uj_d);
          out1[i] = Eta_d;
          out2[i] = Uj_d;
      }
@@ -402,7 +402,7 @@ int main(int argc, char *argv[]) {
                Sources_test(all_inputs[r], all_inputs[j], all_inputs[i], "../../gen/sources_out_%d_orig.txt",(i+1)*100+(r+1)*10+j+1);
                
 	       for(int q = 0; q < 6; q++) {	       
-               Jet_test(all_inputs[r], all_inputs[j], 25, all_inputs[q], "../../gen/jet_out_%d_orig.txt",(q+1)*1000+(i+1)*100+(r+1)*10+j+1);
+               Jet_test(all_inputs[r], all_inputs[j], all_inputs[q], 25, "../../gen/jet_out_%d_orig.txt",(q+1)*1000+(i+1)*100+(r+1)*10+j+1);
             
                }
             }
