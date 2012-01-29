@@ -107,11 +107,11 @@ StkFloat Resonator::get_acoustic_velocity()
 
 // delays
 
-chimneyDelayRight = fdelay(MAX_DELAY_LENGTH + 1, chimney_samples);
+chimneyDelayRight = fdelay(MAX_DELAY_LENGTH , chimney_samples);
 chimneyDelayLeft = fdelay(MAX_DELAY_LENGTH, chimney_samples);
-cavityDelayRight = fdelay(MAX_DELAY_LENGTH + 1, cavity_samples);
+cavityDelayRight = fdelay(MAX_DELAY_LENGTH , cavity_samples);
 cavityDelayLeft = fdelay(MAX_DELAY_LENGTH, cavity_samples);
-tubeDelayRight = fdelay(MAX_DELAY_LENGTH + 1, tube_samples);
+tubeDelayRight = fdelay(MAX_DELAY_LENGTH , tube_samples);
 tubeDelayLeft = fdelay(MAX_DELAY_LENGTH, tube_samples);
 endDelay = fdelay(MAX_DELAY_LENGTH, end_samples);
 
