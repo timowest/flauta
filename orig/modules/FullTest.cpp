@@ -320,7 +320,7 @@ void Jet_test(float* in1, float* in2, float in3, float* in4, const char* format,
      StkFloat Uj_d;
 
      for (int i = 0; i < SIZE; i++) { 
-         Eta_d = my_Jet->tick(in1[i], in2[i], in3, in4[i], Uj_d);
+         Eta_d = my_Jet->tick(in2[i], in4[i], in3, in1[i], Uj_d);
          out1[i] = Eta_d;
          out2[i] = Uj_d;
      }
