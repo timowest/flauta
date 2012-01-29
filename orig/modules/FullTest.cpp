@@ -400,7 +400,7 @@ int main(int argc, char *argv[]) {
 
             for(int i = 0; i < 6; i++) {	       
                Sources_test(all_inputs[r], all_inputs[j], all_inputs[i], "../../gen/sources_out_%d_orig.txt", (i+1)*100+(r+1)*10+j+1);
-               Jet_test(all_inputs[r], all_inputs[j], 25, all_inputs[i], "../../gen/jet_out_%d_orig.txt",     (i+1)*100+(r+1)*10+j+1);
+               Jet_test(all_inputs[r], all_inputs[j], all_inputs[i], 25, "../../gen/jet_out_%d_orig.txt",     (i+1)*100+(r+1)*10+j+1);
             }
         }
  
