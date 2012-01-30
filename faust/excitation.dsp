@@ -78,8 +78,7 @@ with {
     delay_length = (jet_msamples_per_sec / Uj_steady) : max(0.5) : min(initial_delay_length);
 
     jet_msamples_per_sec = flue_labium_distance / (convection_f * sampling_period);
-        
-    // FIXME delay doesn't work 
+          
     jetDelay = fdelay(MAX_DELAY_LENGTH, delay_length);
     
     sampling_period = 1.0 / SR;
