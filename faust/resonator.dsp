@@ -20,42 +20,42 @@ import("music.lib");
 import("constants.dsp");
 import("params.dsp");
 
-// out : acoustic_velocity, acoustic_pressure, out
-resonator(current_sources, impulse) = (current_sources, impulse) : (res ~ (_,!,_,_)) : out
+resonator(current_sources, impulse) = (current_sources, impulse) : (res ~ (_,_,_,!,!)) : out
 with {
-   
-    // TODO : merge res definition into resonator
-    // out : cdr, temp4, ed, tube out, tdl
-    res(cavityRight, end, tubeLeft, sources, impulse) = 
-      (tubeLeft, cavityRight, end, sources, impulse)   
-      // temp                          
-      : (_,_,temp) /* tule, cari, temp */ <: (!,!,_,_,!,!,_,_,_,!,_,!) /* temp, tule, tule, cari, temp, cari */
-      // temp2                                                                       
-      : (_,_,temp2,_) /* temp, tule, temp2, cari */
-      // temp3 & temp4
-      <: ( ((_,_,_,!) <: (_,_,_,!,(temp3 : cavityDelayRight)) <: (!,!,!,_,((_,_,_,_) : temp4 <: (_,ed)))),
-      // temp5 & temp6
-           ((!,!,_,_) : temp5 <: ((temp6 <: (_,_)),_) : (tubeDelayLeft,_+_))
-         )
-    with {
+	
+	res(end, tubeLeft, cdr, sources, impulse) = (end,sources,impulse,tubeLeft,cdr): 
+		(temp,_,_)
+		<:(_,temp2,_,!)
+		<:(_,temp3,!,_,_)
+		<:(_,_,_,_,_,_,_,_)
+		<:(temp4,!,temp5,!,!,_,!,!,!,!,!,!)
+		<:(ed,temp6,_,_,_,!)
+		<:(_,tubeDelayLeft,_,_,!,!,_,!,!,_)
+		:(_,_,_,_,+)
+     with{
         temp(end, sources, impulse) = sources + impulse/2 + end : chimneyDelayRight;
+
         temp2(tubeLeft, cavityRight, temp) = junction_gain * (-2 * temp + cavityRight + tubeLeft); 
-        temp3(tubeLeft, temp2) = temp2 + tubeLeft : cavityDelayLeft;
-        //cdr(temp3) = temp3 : cavityDelayRight; 
-        temp4(temp, tubeLeft, temp2, cdr) = temp2 + cdr + tubeLeft - temp : chimneyDelayLeft; 
+
+        temp3(temp2, tubeLeft) = temp2 + tubeLeft : cavityDelayLeft : cavityDelayRight;
+
+        temp4(temp, cdr, temp2, tubeLeft) = temp2 + cdr + tubeLeft - temp : chimneyDelayLeft; 
         // TODO : use impulse as input of ed
+
         ed(temp4) = temp4 + impulse/2 : mouth_radiation_filter : endDelay; 
-        temp5(temp2, cavityRight) = temp2 + cavityRight : tubeDelayRight : visco_termic_filter; 
+
+        temp5(cavityRight, temp2) = temp2 + cavityRight : tubeDelayRight : visco_termic_filter; 
+
         temp6(temp5) = temp5 : radiation_filter; 
         //tdl(temp6) = temp6 : tubeDelayLeft; 
+		
+		
     };
-
-    // out : acoustic_velocity, acoustic_pressure, out
-    out(cavityRight, chimneyLeft, end, tubeRight, out) = 
+  // out : acoustic_velocity, acoustic_pressure, out
+    out(end,tdl,cdr,chimneyLeft,out) = 
       ONE_OVER_RHO_C * (end - chimneyLeft), // Vac
       end + chimneyLeft, // Pp
       out;
-
     junction_gain = -1 * (chim_radius * chim_radius) / ((chim_radius * chim_radius) + 2 * (cav_radius * cav_radius)); 
 
 };

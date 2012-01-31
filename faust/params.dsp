@@ -17,7 +17,7 @@
 
 // EXCITATION
 
-gate = checkbox("play");//button("gate");
+gate = button("gate");
 
 // Pressure
 
