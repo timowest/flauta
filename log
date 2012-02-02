@@ -1651,112 +1651,112 @@ blow 6
  err2 = 0.000000e+00
  err3 = 0.000000e+00
 excitation 11 
- err1 = 1.353425e-04
+ err1 = 1.435218e-06
  err2 = 0.000000e+00
 excitation 12 
- err1 = 1.353425e-04
+ err1 = 1.435159e-06
  err2 = 0.000000e+00
 excitation 13 
- err1 = 1.594045e-04
+ err1 = 1.705796e-06
  err2 = 0.000000e+00
 excitation 14 
- err1 = 1.443454e-04
+ err1 = 1.445526e-06
  err2 = 0.000000e+00
 excitation 15 
- err1 = 1.353425e-04
+ err1 = 1.435175e-06
  err2 = 0.000000e+00
 excitation 16 
- err1 = 1.353425e-04
+ err1 = 1.435213e-06
  err2 = 0.000000e+00
 excitation 21 
- err1 = 2.388791e-02
+ err1 = 5.483083e-04
  err2 = 0.000000e+00
 excitation 22 
- err1 = 2.388791e-02
+ err1 = 5.483084e-04
  err2 = 0.000000e+00
 excitation 23 
- err1 = 2.457215e-02
+ err1 = 5.638002e-04
  err2 = 0.000000e+00
 excitation 24 
- err1 = 2.528353e-02
+ err1 = 5.807552e-04
  err2 = 0.000000e+00
 excitation 25 
- err1 = 2.388791e-02
+ err1 = 5.483084e-04
  err2 = 0.000000e+00
 excitation 26 
- err1 = 2.388791e-02
+ err1 = 5.483084e-04
  err2 = 0.000000e+00
 excitation 31 
- err1 = 1.005685e-04
+ err1 = 6.177516e-05
  err2 = 0.000000e+00
 excitation 32 
- err1 = 1.005686e-04
+ err1 = 6.177525e-05
  err2 = 0.000000e+00
 excitation 33 
- err1 = 1.073669e-04
+ err1 = 6.406788e-05
  err2 = 0.000000e+00
 excitation 34 
- err1 = 1.053305e-04
+ err1 = 6.275203e-05
  err2 = 0.000000e+00
 excitation 35 
- err1 = 1.005685e-04
+ err1 = 6.177527e-05
  err2 = 0.000000e+00
 excitation 36 
- err1 = 1.005687e-04
+ err1 = 6.177534e-05
  err2 = 0.000000e+00
 excitation 41 
- err1 = 7.600491e-05
+ err1 = 3.780036e-05
  err2 = 0.000000e+00
 excitation 42 
- err1 = 7.600513e-05
+ err1 = 3.780047e-05
  err2 = 0.000000e+00
 excitation 43 
- err1 = 8.135232e-05
+ err1 = 3.863535e-05
  err2 = 0.000000e+00
 excitation 44 
- err1 = 7.846705e-05
+ err1 = 4.046150e-05
  err2 = 0.000000e+00
 excitation 45 
- err1 = 7.600485e-05
+ err1 = 3.780023e-05
  err2 = 0.000000e+00
 excitation 46 
- err1 = 7.600493e-05
+ err1 = 3.780031e-05
  err2 = 0.000000e+00
 excitation 51 
- err1 = 1.356463e-04
+ err1 = 1.474638e-05
  err2 = 0.000000e+00
 excitation 52 
- err1 = 1.356463e-04
+ err1 = 1.474634e-05
  err2 = 0.000000e+00
 excitation 53 
- err1 = 1.600354e-04
+ err1 = 1.493648e-05
  err2 = 0.000000e+00
 excitation 54 
- err1 = 1.417100e-04
+ err1 = 1.625752e-05
  err2 = 0.000000e+00
 excitation 55 
- err1 = 1.356464e-04
+ err1 = 1.474640e-05
  err2 = 0.000000e+00
 excitation 56 
- err1 = 1.356464e-04
+ err1 = 1.474640e-05
  err2 = 0.000000e+00
 excitation 61 
- err1 = 2.634486e-04
+ err1 = 1.099631e-04
  err2 = 0.000000e+00
 excitation 62 
- err1 = 2.634486e-04
+ err1 = 1.099631e-04
  err2 = 0.000000e+00
 excitation 63 
- err1 = 2.612340e-04
+ err1 = 1.153173e-04
  err2 = 0.000000e+00
 excitation 64 
- err1 = 2.817649e-04
+ err1 = 1.170390e-04
  err2 = 0.000000e+00
 excitation 65 
- err1 = 2.634486e-04
+ err1 = 1.099631e-04
  err2 = 0.000000e+00
 excitation 66 
- err1 = 2.634486e-04
+ err1 = 1.099631e-04
  err2 = 0.000000e+00
 resonator 11 
  err1 = 0.000000e+00
