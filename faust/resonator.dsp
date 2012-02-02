@@ -20,18 +20,18 @@ import("music.lib");
 import("constants.dsp");
 import("params.dsp");
 
-resonator(current_sources, impulse) = (current_sources, impulse) : (res ~ (_,_,_,!,!)) : out
+resonator(current_sources, impulse) = (current_sources, impulse) : (res ~ (_,_,_)) : out
 with {
 	
-	res(end, tubeLeft, cdr, sources, impulse) = (end,sources,impulse,tubeLeft,cdr): 
-		(temp,_,_)
-		<:(_,temp2,_,!)
-		<:(_,temp3,!,_,_)
-		<:(_,_,_,_,_,_,_,_)
-		<:(temp4,!,temp5,!,!,_,!,!,!,!,!,!)
-		<:(ed,temp6,_,_,_,!)
-		<:(_,tubeDelayLeft,_,_,!,!,_,!,!,_)
-		:(_,_,_,_,+)
+    res(end, tubeLeft, cdr, sources, impulse) = (end, sources, impulse, tubeLeft, cdr) 
+         : (temp,_,_)
+        <: (_,temp2,_,!)
+        <: (_,temp3,!,_,_)
+        <: (_,_,_,_,_,_,_,_)
+        <: (temp4,!,temp5,!,!,_,!,!,!,!,!,!)
+        <: (ed,temp6,_,_,_,!)
+        <: (_,tubeDelayLeft,_,_,!,!,_,!,!,_)
+         : (_,_,_,_,+)
      with{
         temp(end, sources, impulse) = sources + impulse/2 + end : chimneyDelayRight;
 
@@ -51,11 +51,13 @@ with {
 		
 		
     };
-  // out : acoustic_velocity, acoustic_pressure, out
+  
+    // out : acoustic_velocity, acoustic_pressure, out
     out(end,tdl,cdr,chimneyLeft,out) = 
       ONE_OVER_RHO_C * (end - chimneyLeft), // Vac
       end + chimneyLeft, // Pp
       out;
+
     junction_gain = -1 * (chim_radius * chim_radius) / ((chim_radius * chim_radius) + 2 * (cav_radius * cav_radius)); 
 
 };

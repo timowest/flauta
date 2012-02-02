@@ -92,10 +92,10 @@ int main(int argc, char *argv[]) {
             if (argc > 1) continue; 
 
             // 3 inputs
-            for (int r = 0; r < 6; r++) {
-        	float* in3[] = {all_inputs[i], all_inputs[j], all_inputs[r]};  
-            	test(&s,  in3, "gen/sources_out_%d_faust.txt", (r+1)*100+(i+1)*10+j+1, 2);
-                test(&jt, in3, "gen/jet_out_%d_faust.txt",     (r+1)*100+(i+1)*10+j+1, 2);		
+            for (int k = 0; k < 6; k++) {
+        	float* in3[] = {all_inputs[i], all_inputs[j], all_inputs[k]};  
+            	test(&s,  in3, "gen/sources_out_%d_faust.txt", (i+1)*100+(j+1)*10+k+1, 2);
+                test(&jt, in3, "gen/jet_out_%d_faust.txt",     (i+1)*100+(j+1)*10+k+1, 2);		
             }
         } 
     }
