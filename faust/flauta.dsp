@@ -27,7 +27,7 @@ import("params.dsp");
 
 
 // flauta
-flauta = (excitation : resonator) ~ (_,_) : (!,!,_);
+flauta = (excitation : resonator) ~ (_,_) : (!,!,_) : (dac_scale * _) <: (_,_);
 
 process = flauta;
 

@@ -34,7 +34,7 @@ limit = max(min_jet_vel) : min(max_jet_vel);
 // blow
 // in : mouth pressure
 // out : uj, uj_steady, impulse
-blow = (((target_driving_pressure * envelope) <: (_ + (vibrato_gain * vibrato) * _) : max(0)),_ ) 
+blow = (((target_driving_pressure * envelope) <: (_ + vibrato * _) : max(0)),_ ) 
     : bernoulli : (max(0), max(0), _)
 with {
     target_driving_pressure = pressure;

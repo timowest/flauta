@@ -14,6 +14,8 @@
 
 // VERSION FOR TESTING
 
+dac_scale = 0.007;
+
 // parameters
 
 gate = button("gate");

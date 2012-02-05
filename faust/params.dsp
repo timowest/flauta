@@ -15,6 +15,10 @@
 
 // parameters
 
+// FLAUTA
+
+dac_scale = vslider("h:h2/h:res/dac scale", 7, 0, 100, 1) * 0.001;
+
 // EXCITATION
 
 gate = button("gate");
@@ -52,7 +56,7 @@ max_jet_vel = 40;
 step_Uj = 0.1;
 convection_f = 0.3;
 min_convection_f = 0.3;
-jet_width = 0.02;
+jet_width = 0.02; // TODO : make jet width controllable (input * 0.001)
 
 //SOURCES 
 turbulence_gain = vslider("h:h1/h:exc/h:Sources/turb gain", 16, 0, 127, 1) * 50 * 833;
@@ -84,7 +88,7 @@ tube_samples = SR / (freq - RAD_ORDER - VT_ORDER);
 
 cav_length = 0.010 + (vslider("h:h2/h:res/cavity len", 40, 0, 127, 1) * 0.0001); 
 cav_radius = 0.0085;
-chim_length = 0.008 + (vslider("h:h2/h:res/chimney len", 60, 0, 127, 1) * 0.0001); 
+chim_length = 0.008 + (vslider("h:h2/h:res/chimney len", 60, 0, 127, 1) * 0.0001);
 chim_radius = 0.007;
 end_length = vslider("h:h2/h:res/end len", 8, 1, 20, 0.1) * 0.01;
 end_radius = vslider("h:h2/h:res/end rad", 7, 1, 20, 0.1) * 0.001;
