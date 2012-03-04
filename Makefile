@@ -4,14 +4,17 @@ PAQ = `pkg-config --cflags --libs paq`
 FAUST = -I/usr/local/lib/faust/
 TESTS = gen/blow.cpp gen/bernoulli.cpp gen/excitation.cpp gen/jetdrive.cpp gen/receptivity.cpp gen/turbulence.cpp gen/vortex.cpp gen/jet.cpp gen/sources.cpp gen/resonator.cpp
 
-gen/flauta.cpp:
-	faust -a alsa-gtk.cpp -double faust/flauta.dsp > gen/flauta.cpp
-
-gen/%.cpp: tests/%-test.dsp
-	faust -a minimal.cpp -double -cn $(patsubst gen/%.cpp,%,$@) $< > $@
-
 standalone: gen/flauta.cpp 
 	g++ -Wall gen/flauta.cpp $(ALSA_GTK) $(FAUST) $(CFLAGS) -lm -o flauta.out
+
+gen:
+	mkdir gen
+
+gen/flauta.cpp: gen
+	faust -a alsa-gtk.cpp -double faust/flauta.dsp > gen/flauta.cpp
+
+gen/%.cpp: gen tests/%-test.dsp
+	faust -a minimal.cpp -double -cn $(patsubst gen/%.cpp,%,$@) $< > $@
 
 compare: $(TESTS)
 	g++ -Wall -fpermissive tests/tests.cpp -g $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
@@ -24,6 +27,11 @@ compare_fast: $(TESTS)
 	./tests.out fast
 	cd orig/modules;make clean fast;cd ../..
 	python compare.py fast
+
+wavgen: 
+	faust -a minimal.cpp -double -cn flauta faust/flauta.dsp > gen/flauta_min.cpp
+	g++ -Wall tests/wavgen.cpp $(FAUST) -lm -lsndfile -Igen/ -Isrc/ -o wavgen.out
+	./wavgen.out
 
 svg:
 	rm -rf faust/*-svg    

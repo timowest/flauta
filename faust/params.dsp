@@ -21,7 +21,7 @@ dac_scale = vslider("h:h2/h:res/dac scale", 7, 0, 100, 1) * 0.001;
 
 // EXCITATION
 
-gate = button("gate");
+gate = button("h:h2/gate");
 
 // Pressure
 
@@ -29,7 +29,8 @@ human_control_flag = checkbox("h:h2/h:res/Automatic pressure (StrW)");
 
 pressure = select2(human_control_flag, manual_pressure, calculated_pressure);
 
-calculated_pressure = pow(curr_freq * w/strW, 2) * rho/2
+//pow(current_frequency*W/STRW,2)*rho/2;
+calculated_pressure = pow(curr_freq * w / strW, 2) * rho/2
 with {
   curr_freq = freq;
   rho = 1.2;
@@ -63,7 +64,7 @@ turbulence_gain = vslider("h:h1/h:exc/h:Sources/turb gain", 16, 0, 127, 1) * 50 
 vortex_ampli1 = vslider("h:h1/h:exc/h:Sources/h:Vortex/Vor a1", 30, 0, 127, 1) * 0.1;
 vortex_ampli2 = vslider("h:h1/h:exc/h:Sources/h:Vortex/Vor a2", 50, 0, 127, 1) * 0.1;
 delta_d = vslider("h:h1/h:exc/h:Sources/Jet drive", 35, 0, 127, 1) * 0.0001;
-impulse_scale = 1; //impulse_scale = vslider("h:h1/h:exc/h:Sources/impulse scale", 40, 0, 127, 1);
+impulse_scale = 1;
 
 // ENVELOPE
 env_attack = vslider("h:h1/h:env/attack", 5, 1, 100, 1) * 0.001;
