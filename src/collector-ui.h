@@ -113,7 +113,7 @@ class CollectorUI : public UI {
         std::map<std::string, float *> labelToZone;
 
         void addZone(const char* label, float* zone) {
-            char fullPath[50];
+            char fullPath[100];
             strcpy(fullPath, boxes[1]);
             strcat(fullPath, "_");
             for (int i = 2; i < boxIndex; i++) {
@@ -121,7 +121,7 @@ class CollectorUI : public UI {
                 strcat(fullPath, "_");
             }
             strcat(fullPath, label);
-            //std::cout << fullPath << std::endl;
+            std::cout << fullPath << std::endl;
 
             std::string name(fullPath);
             labelToZone[name] = zone;

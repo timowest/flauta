@@ -28,6 +28,7 @@ int main() {
 
         *(ui.getZone("h2_gate")) = 1.0f; // note on 
         *(ui.getZone("h2_res_Note")) = pitches[i];
+        //*(ui.getZone("h2_res_dac scale")) = 0.5;
         fl.compute(SIZE, 0, outputs);
 
         // write wav
