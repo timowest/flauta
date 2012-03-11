@@ -18,7 +18,7 @@ dac_scale = 0.007;
 
 // parameters
 
-gate = button("gate");
+gate = 1.0;
 
 // EXCITATION
 

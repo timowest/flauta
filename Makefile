@@ -13,16 +13,16 @@ gen:
 gen/flauta.cpp: gen
 	faust -a alsa-gtk.cpp -double faust/flauta.dsp > gen/flauta.cpp
 
-gen/%.cpp: gen tests/%-test.dsp
+gen/%.cpp: tests/%-test.dsp
 	faust -a minimal.cpp -double -cn $(patsubst gen/%.cpp,%,$@) $< > $@
 
-compare: $(TESTS)
+compare: gen $(TESTS)
 	g++ -Wall -fpermissive tests/tests.cpp -g $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
 	./tests.out
 	cd orig/modules;make clean standalone;cd ../..
 	python compare.py
 
-compare_fast: $(TESTS)
+compare_fast: gen $(TESTS)
 	g++ -Wall -fpermissive tests/tests.cpp -g $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
 	./tests.out fast
 	cd orig/modules;make clean fast;cd ../..
