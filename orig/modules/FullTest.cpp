@@ -235,6 +235,7 @@ void Blow_test(float* in1, const char* format, int index) {
      StkFloat Uj_steady;
      StkFloat Impulse;
 
+     my_Blow->noteOn(32.0);
      for (int i = 0; i < SIZE; i++) { 
          Uj = my_Blow->tick(in1[i], Uj_steady, Impulse); // setting Uj_steady to 0
          out1[i] = Uj;
