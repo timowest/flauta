@@ -121,7 +121,7 @@ class CollectorUI : public UI {
                 strcat(fullPath, "_");
             }
             strcat(fullPath, label);
-            std::cout << fullPath << std::endl;
+            //std::cout << fullPath << std::endl;
 
             std::string name(fullPath);
             labelToZone[name] = zone;
