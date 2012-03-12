@@ -39,10 +39,10 @@ blow = (((target_driving_pressure * envelope) <: (_ + vibrato * _) : max(0)),_ )
 with {
     target_driving_pressure = pressure;
     
-    envelope = gate : adsr(env_attack * SR, env_decay, env_sustain, env_release);
+    envelope = gate : adsr(env_attack, env_decay, env_sustain, env_release);
 
     vibrato = vibrato_gain * osc(vibrato_freq) * vibrato_env; 
-    vibrato_env = gate : adsr(vib_attack * SR, vib_decay, vib_sustain, vib_release);
+    vibrato_env = gate : adsr(vib_attack, vib_decay, vib_sustain, vib_release);
 };
 
 // bernoulli
