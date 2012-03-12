@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cmath>
 #include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
 
 #include "flauta_min.cpp"    
 #include "collector-ui.h"
