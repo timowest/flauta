@@ -31,6 +31,31 @@ excitation(Vac, Pp) = (Vac,Pp) <: (_,_,_,!)
 
 limit = max(min_jet_vel) : min(max_jet_vel);
 
+// adsr envelope 
+// works more like the STK version
+// in: a,d,s,r = attack (sec), decay (sec), sustain (percentage), release (sec)
+//     t       = trigger signal
+adsr2(a,d,s,r,t) = env ~ (_,_) : (!,_) // the 2 'state' signals are fed back
+with {
+    env (p2,y) =
+        (t>0) & (p2|(y>=1)),                    // p2 = decay-sustain phase
+        (y + p1*u - (p2&(y>s))*v*y - p3*w*y)	// y  = envelop signal
+	*((p3==0)|(y>=eps))                     // cut off tails to prevent denormals
+    with {
+	p1 = (p2==0) & (t>0) & (y<1);           // p1 = attack phase
+	p3 = (t<=0) & (y>0);                    // p3 = release phase
+	// samples in attack, decay and release
+        samples(x) = SR * x + (x==0);
+        na = samples(a); nd = samples(d); nr = samples(r);
+	// correct zero sustain level
+	z = s + (s==0.0)*db2linear(-60);
+	// attack, decay and (-60dB) release rates
+	u = 1 / na; v = 1 / nd; w = z / nr;
+	// values below this threshold are considered zero in the release phase
+	eps = db2linear(-120);
+    };
+};
+
 // blow
 // in : mouth pressure
 // out : uj, uj_steady, impulse
@@ -39,10 +64,10 @@ blow = (((target_driving_pressure * envelope) <: (_ + vibrato * _) : max(0)),_ )
 with {
     target_driving_pressure = pressure;
     
-    envelope = gate : adsr(env_attack, env_decay, env_sustain, env_release);
+    envelope = gate : adsr2(env_attack, env_decay, env_sustain, env_release);
 
     vibrato = vibrato_gain * osc(vibrato_freq) * vibrato_env; 
-    vibrato_env = gate : adsr(vib_attack, vib_decay, vib_sustain, vib_release);
+    vibrato_env = gate : adsr2(vib_attack, vib_decay, vib_sustain, vib_release);
 };
 
 // bernoulli
