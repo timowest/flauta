@@ -13,7 +13,7 @@ gen:
 	mkdir gen
 
 gen/flauta.cpp: gen
-	faust -a alsa-gtk.cpp $(VEC) faust/flauta.dsp > gen/flauta.cpp
+	faust -a alsa-gtk.cpp -double faust/flauta.dsp > gen/flauta.cpp
 
 gen/%.cpp: tests/%-test.dsp
 	faust -a minimal.cpp -double -cn $(patsubst gen/%.cpp,%,$@) $< > $@
