@@ -6,12 +6,14 @@ TESTS = gen/blow.cpp gen/bernoulli.cpp gen/excitation.cpp gen/jetdrive.cpp gen/r
 
 standalone: gen/flauta.cpp 
 	g++ -Wall gen/flauta.cpp $(ALSA_GTK) $(FAUST) $(CFLAGS) -lm -o flauta.out
-
+caqt:  gen
+	faust2caqt faust/flauta.dsp
+	mv faust/flauta.app gen
 gen:
 	mkdir gen
 
 gen/flauta.cpp: gen
-	faust -a alsa-gtk.cpp -double faust/flauta.dsp > gen/flauta.cpp
+	faust -a alsa-gtk.cpp $(VEC) faust/flauta.dsp > gen/flauta.cpp
 
 gen/%.cpp: tests/%-test.dsp
 	faust -a minimal.cpp -double -cn $(patsubst gen/%.cpp,%,$@) $< > $@
