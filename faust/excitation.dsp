@@ -232,7 +232,7 @@ with {
    // turbulence_gain * MAX_AMPLITUDE * Uj * Uj * h * noise_filter->tick(random_sample);
 
    filtered_noise = noise : iir((b1,b2,b3),(a1,a2));
-
+   
    a1 = -1.59164698202301;
    a2 = 0.69491246133220;
    b1 = 0.15254376933390;

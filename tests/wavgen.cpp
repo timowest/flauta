@@ -7,6 +7,14 @@
 #include <cstdlib>
 #include <cstdio>
 
+float max(float x, float y) {
+    return fmaxf(x,y);
+}
+
+float min(float x, float y) {
+    return fminf(x,y);
+}
+
 #include "flauta_min.cpp"    
 #include "collector-ui.h"
 
