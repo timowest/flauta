@@ -4,7 +4,7 @@ PAQ = `pkg-config --cflags --libs paq`
 FAUST = -I/usr/local/lib/faust/
 TESTS = gen/blow.cpp gen/bernoulli.cpp gen/excitation.cpp gen/jetdrive.cpp gen/receptivity.cpp gen/turbulence.cpp gen/vortex.cpp gen/jet.cpp gen/sources.cpp gen/resonator.cpp
 
-# tested with Faust 0.9.46
+# tested with Faust 0.9.58
 
 standalone: gen/flauta.cpp 
 	g++ -Wall gen/flauta.cpp $(ALSA_GTK) $(FAUST) $(CFLAGS) -lm -o flauta.out
