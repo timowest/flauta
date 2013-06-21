@@ -104,7 +104,7 @@ int main(int argc, char *argv[]) {
 void test(dsp* processor, float** inputs, const char* format, int index, int out_count) {
     float out1[SIZE], out2[SIZE], out3[SIZE];
     float *outputs[] = {out1, out2, out3};
-    char outfile[32];
+    char outfile[40];
     sprintf(outfile, format, index);
 
     // process
