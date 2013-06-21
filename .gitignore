@@ -5,3 +5,4 @@
 /faust/*-svg
 alsa-gtk
 log
+*.cpp~
