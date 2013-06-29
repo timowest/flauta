@@ -71,12 +71,12 @@ StkFloat JetDrive :: FlowIn(StkFloat displacement ,
 	 */
 
   StkFloat tanh_argument = (displacement - this->labium_position)/b;
-  StkFloat tanh_table_index = (int)((tanh_argument - this->min_value_tanh_table)*
+  /*StkFloat tanh_table_index = (int)((tanh_argument - this->min_value_tanh_table)*
   				    this->inv_step_tanh_table) + 1;
+  StkFloat Flow = Velocity*b*jet_width*(1.0 + tanh_table->tick(tanh_table_index));*/
+  StkFloat Flow = Velocity*b*jet_width*(1.0 + tanh(tanh_argument));
 
-  //StkFloat Flow = Velocity*b*jet_width*(1.0 + tanh(tanh_argument));
-  StkFloat Flow = Velocity*b*jet_width*(1.0 + tanh_table->tick(tanh_table_index));
-  return(Flow);  
+  return(Flow);
 }
 
 void JetDrive::noteOff()
@@ -171,10 +171,10 @@ void JetDrive::set_flue_labium_distance(StkFloat value)
 void JetDrive::update_Hyd_constant()
 {
   StkFloat ratio = delta_d/flue_labium_distance;
-  StkFloat beta = ratio + sqrt(ratio*(2 + ratio));
-  StkFloat kappa = 1 + beta;
-    Hyd_constant = 2*ratio*(kappa*kappa - 1)/
-     (M_PI*(kappa*kappa + 1));
+  StkFloat beta = ratio + sqrt(ratio*(2.0 + ratio));
+  StkFloat kappa = 1.0 + beta;
+    Hyd_constant = 2.0*ratio*(kappa*kappa - 1.0)/
+     (M_PI*(kappa*kappa + 1.0));
     //std::cout<<"Hyd_constant = "<< Hyd_constant << std::endl;
 }
 

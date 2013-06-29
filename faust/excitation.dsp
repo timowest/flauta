@@ -178,47 +178,45 @@ with {
     va2 = vortex_ampli2;
 };
 
-//tanh_slow = min(4.0) : max(-4.0) : tanh;
-
 // XXX tanh lookup table behaves a little bit different than in STK version
-tanh_fast = min(4.0) : max(-4.0) : (1000*(_+4.0)) <: (int(_),decimal(_)) : lookup
+/*tanh_fast = min(4.0) : max(-4.0) : (1000*(_+4.0)) <: (int(_),decimal(_)) : lookup
 with {
    size = 8000;
    index = (+(1)~_ ) - 1; // 0,1,2,...
    tanh_creation = float(index) / size * 8.0 -4.0 : tanh;
    table(x) = rdtable(size+1, tanh_creation, int(x)); // 0.0-8.0
 
-   // XXX make this to use double precision properly
    tanh	= ffunction(float tanh (float), <math.h>,"");
 
    // linear interpolation
    decimal(x) = x - int(x);
    lookup(x, frac) = select2(frac > 0, table(x), ((table(x), table(x+1)) <: (_,_,_,!) : (_+frac*(_-_)) ));
-};
+};*/
 
 // jetDrive
 // out : hyd_feed, jet_drive
 jetDrive(jet_displacement, uj) = (jet_displacement, uj) : Qin <: hyd_constant * _, (jet_drive_cst * (_ - _'))
 with {
     
-    Qin(jet_displacement, uj) = uj * b * jet_width * (1.0 + tanh_fast(tanh_argument))
+    // XXX
+    Qin(jet_displacement, uj) = uj * b * jet_width * (1.0 + tanh(tanh_argument))
     with {
       tanh_argument = (jet_displacement - labium_position) / b;
-      // form JetDrive::set_jet_height(StkFloat value)
+      // from JetDrive::set_jet_height(StkFloat value)
       jet_hgt = jet_height : max(0.0001); 
       // from JetDrive::set_b_constant(StkFloat value) in JetDrive.cpp
       b_constant = jet_shape : max(0.1) : min(2.9); 
       b = b_constant * jet_hgt;
     };
 
-    hyd_constant = 2.0 * ratio * (kappa * kappa - 1.0) / (M_PI * (kappa * kappa + 1))
+    hyd_constant = 2.0 * ratio * (kappa * kappa - 1.0) / (M_PI * (kappa * kappa + 1.0))
     with {
         ratio = delta_d / flue_labium_distance;
         beta = ratio + sqrt(ratio * (2.0 + ratio));
         kappa = 1.0 + beta;
     };
 
-    jet_drive_cst = (-1 * AIR_DENSITY * delta_d) / (jet_width * flue_labium_distance * sampling_period);
+    jet_drive_cst = (-1.0 * AIR_DENSITY * delta_d) / (jet_width * flue_labium_distance * sampling_period);
   
     sampling_period = 1.0 / SR;
 

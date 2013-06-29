@@ -6,3 +6,4 @@
 alsa-gtk
 log
 *.cpp~
+.project

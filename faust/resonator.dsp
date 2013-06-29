@@ -62,51 +62,6 @@ with {
 
 };
 
-/*StkFloat Resonator::tick(StkFloat current_sources, StkFloat impulse)
-{
-
-  // Propagate to the tube throught the 3 port junction
-  
-  StkFloat temp,temp2,temp3,temp4,temp5,temp6;
-
-  temp = chimneyDelayRight->tick(current_sources +(impulse/2) + endDelay->lastOut());
-  // the common sigma
-  temp2 = junction_gain* (-2*temp + cavityDelayRight->lastOut() + tubeDelayLeft->lastOut());
-  
-  // The cavity
-  temp3 = cavityDelayLeft->tick(temp2 + tubeDelayLeft->lastOut());
-  cavityDelayRight->tick(temp3);
-  
-  // The chimney
-  temp4 = chimneyDelayLeft->tick(temp2 + cavityDelayRight->lastOut() + tubeDelayLeft->lastOut() - temp);
-  endDelay->tick(mouth_radiation_filter->tick(temp4 + impulse/2));
-  // The tube
-  temp5 = visco_thermic_tick(tubeDelayRight->tick(temp2 + cavityDelayRight->lastOut()));
-  temp6 = radiation_tick(temp5);
-  tubeDelayLeft->tick(temp6);
-
-  // OUTPUT:
-  //Reading at the embochure
-  //  last_Output = endDelay->lastOut() + chimneyDelayLeft->lastOut();
-  
-  // Reading at the end of the tube
-  last_Output = temp5 + temp6;
-  return (last_Output);
-
-}
-
-StkFloat Resonator::get_mouth_acoustic_pressure()
-{
-  return(endDelay->lastOut() + chimneyDelayLeft->lastOut());
-}
-
-StkFloat Resonator::get_acoustic_velocity()
-{
-  return(ONE_OVER_RHO_C*(endDelay->lastOut() - chimneyDelayLeft->lastOut()));
-}
-
-*/
-
 // delays
 
 chimneyDelayRight = fdelay(MAX_DELAY_LENGTH , chimney_samples);
