@@ -92,7 +92,6 @@ void read(const char* in_file, float* floats) {
 
 // Vortex Test Function 
 void Vortex_test(float* in1, const char* format, int index) {
-   
    // Vortex Definitions
    Vortex *my_Vortex;
    my_Vortex = new Vortex();
@@ -117,7 +116,6 @@ void Vortex_test(float* in1, const char* format, int index) {
 
 // Turbulence Test Function // 
 void Turbulence_test(float* in1, const char* format, int index) {
-     
      // Turbulence Definitions
      Turbulence *my_Turbulence;
      my_Turbulence = new Turbulence();
@@ -126,7 +124,6 @@ void Turbulence_test(float* in1, const char* format, int index) {
     for (int i = 0; i < SIZE; i++) {
         current_turbulence = my_Turbulence->tick(in1[i], 1.08e-3);    
         out1[i] = current_turbulence;
-      
     }
  
     //save_outputs();
@@ -142,7 +139,6 @@ void Turbulence_test(float* in1, const char* format, int index) {
 
 // Receptivity Test Function
 void Receptivity_test(float* in1, float* in2,float in3, const char* format, int index) {
-
      // Receptivity Definitions
      Receptivity *My_Receptivity;
      My_Receptivity = new Receptivity(1.08e-3, 4.0e-3); // parameters need to be identical with Faust code
@@ -154,7 +150,6 @@ void Receptivity_test(float* in1, float* in2,float in3, const char* format, int 
          // reverse order to match the Faust code
          ETA = My_Receptivity->tick(in2[i],in1[i]);    
          out1[i] = ETA;
-      
     }
     //save_outputs();
      char outfile[40];
@@ -169,7 +164,6 @@ void Receptivity_test(float* in1, float* in2,float in3, const char* format, int 
 
 // JetDrive Test Function
 void JetDrive_test(float* in1, float* in2, const char* format, int index) {
-
      // JetDrive Definitions
      JetDrive *My_JetDrive;
      My_JetDrive = new JetDrive();
@@ -182,7 +176,6 @@ void JetDrive_test(float* in1, float* in2, const char* format, int index) {
          HYD_FEED = My_JetDrive->get_Hyd_feedback();      
          out1[i] = HYD_FEED;
          out2[i] = JET_DRIVE;
-       
      }
      //save_outputs();
      char outfile[40];
@@ -198,7 +191,6 @@ void JetDrive_test(float* in1, float* in2, const char* format, int index) {
 
 // Bernoulli Test Function
 void Bernoulli_test(float* in1, float* in2, const char* format, int index) {
-     
      // Bernoulli definitions
      Bernoulli *my_Bernoulli;
      my_Bernoulli = new Bernoulli();
@@ -227,7 +219,6 @@ void Bernoulli_test(float* in1, float* in2, const char* format, int index) {
 }
 // Blow Test Function
 void Blow_test(float* in1, const char* format, int index) {
-     
      // Blow definitions
      Blow *my_Blow;
      my_Blow = new Blow();
@@ -241,7 +232,6 @@ void Blow_test(float* in1, const char* format, int index) {
          out1[i] = Uj;
          out2[i] = Uj_steady;
          out3[i] = Impulse;
-
      }
     
      //save_outputs();
@@ -258,13 +248,13 @@ void Blow_test(float* in1, const char* format, int index) {
 
 // Excitation Test Function
 void Excitation_test(float* in1, float* in2, const char* format, int index) {
-     
      // Excitation definitions
      Excitation *my_Excitation;
      my_Excitation = new Excitation();
      StkFloat Sources;
      StkFloat Impulse;
 
+     my_Excitation->noteOn(32.0);
      for (int i = 0; i < SIZE; i++) { 
          // inputs are pressure and velocity
          Sources = my_Excitation->tick(in2[i], in1[i], Impulse);
@@ -286,7 +276,6 @@ void Excitation_test(float* in1, float* in2, const char* format, int index) {
 
 // Sources Test Function
 void Sources_test(float* in1, float* in2, float* in3, const char* format, int index) {
-     
      // Sources definitions
      Sources *my_Sources;
      my_Sources = new Sources();
@@ -313,13 +302,13 @@ void Sources_test(float* in1, float* in2, float* in3, const char* format, int in
 
 // Jet Test Function
 void Jet_test(float* in1, float* in2, float* in3, float in4, const char* format, int index) {
-     
      // Jet definitions
      Jet *my_Jet;
      my_Jet = new Jet();
      StkFloat Eta_d;
      StkFloat Uj_d;
 
+     my_Jet->noteOn();
      for (int i = 0; i < SIZE; i++) { 
          Eta_d = my_Jet->tick(in2[i], in3[i], in4, in1[i], Uj_d);
          out1[i] = Eta_d;
@@ -339,21 +328,20 @@ void Jet_test(float* in1, float* in2, float* in3, float in4, const char* format,
 }
 // Resonator Test Function
 void Resonator_test(float* in1, float* in2, const char* format, int index) {
-     
      // Resonator definitions
      Resonator *my_Resonator;
      my_Resonator = new Resonator();
      StkFloat Vac;
      StkFloat Pp;
-     StkFloat output;	
+     StkFloat output;
 
      for (int i = 0; i < SIZE; i++) { 
-	 output = my_Resonator->tick(in1[i], in2[i]);
+         output = my_Resonator->tick(in1[i], in2[i]);
          Vac= my_Resonator->get_acoustic_velocity();
          Pp=my_Resonator->get_mouth_acoustic_pressure();
          out1[i] = Vac;
          out2[i] = Pp;
-	 out3[i] = output;
+         out3[i] = output;
      }
     
      //save_outputs();
@@ -371,7 +359,6 @@ void Resonator_test(float* in1, float* in2, const char* format, int index) {
 
 
 int main(int argc, char *argv[]) {
-    
     Stk::setSampleRate( 44100.0 );  
 
     // inputs
@@ -388,26 +375,25 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < 6; i++) {
         Vortex_test(all_inputs[i], "../../gen/vortex_out_%d_orig.txt" ,        (i+1)); 
         Turbulence_test(all_inputs[i], "../../gen/turbulence_out_%d_orig.txt", (i+1));
-	Blow_test(all_inputs[i], "../../gen/blow_out_%d_orig.txt",             (i+1));
+        Blow_test(all_inputs[i], "../../gen/blow_out_%d_orig.txt",             (i+1));
             
         for (int j = 0; j < 6; j++) {            
             Bernoulli_test(all_inputs[i], all_inputs[j], "../../gen/bernoulli_out_%d_orig.txt",           (i+1)*10+j+1);
-	    Receptivity_test(all_inputs[i], all_inputs[j], 25.0, "../../gen/receptivity_out_%d_orig.txt", (i+1)*10+j+1);
-            JetDrive_test(all_inputs[i], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt",             (i+1)*10+j+1);	    
-	    Excitation_test(all_inputs[i], all_inputs[j], "../../gen/excitation_out_%d_orig.txt",         (i+1)*10+j+1);
-	    Resonator_test(all_inputs[i], all_inputs[j], "../../gen/resonator_out_%d_orig.txt",           (i+1)*10+j+1);
+            Receptivity_test(all_inputs[i], all_inputs[j], 25.0, "../../gen/receptivity_out_%d_orig.txt", (i+1)*10+j+1);
+            JetDrive_test(all_inputs[i], all_inputs[j], "../../gen/jetdrive_out_%d_orig.txt",             (i+1)*10+j+1);
+            Excitation_test(all_inputs[i], all_inputs[j], "../../gen/excitation_out_%d_orig.txt",         (i+1)*10+j+1);
+            Resonator_test(all_inputs[i], all_inputs[j], "../../gen/resonator_out_%d_orig.txt",           (i+1)*10+j+1);
 
             if (argc > 1) continue;
 
-            for(int k = 0; k < 6; k++) {	       
+            for(int k = 0; k < 6; k++) {
                Sources_test(all_inputs[i], all_inputs[j], all_inputs[k], "../../gen/sources_out_%d_orig.txt", (i+1)*100+(j+1)*10+k+1);
                Jet_test(all_inputs[i], all_inputs[j], all_inputs[k], 25.0, "../../gen/jet_out_%d_orig.txt",   (i+1)*100+(j+1)*10+k+1);
             }
         }
- 
     }
 
-return 0;
+    return 0;
 
 }
 

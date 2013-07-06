@@ -22,7 +22,7 @@ gate = 1.0;
 
 // EXCITATION
 
-pressure = 32;
+pressure = 32.0;
 
 //JET
 channel_length = 4e-3;
@@ -33,33 +33,33 @@ max_flue_labium_d = 0.016;
 labium_position = 0.0002;
 
 min_jet_vel = 1.0;
-max_jet_vel = 40;
+max_jet_vel = 40.0;
 step_Uj = 0.1;
 convection_f = 0.3;
 min_convection_f = 0.3;
 jet_width = 0.02;
 
 //SOURCES 
-turbulence_gain = 1;
+turbulence_gain = 1.0;
 vortex_ampli1 = 0.1;
 vortex_ampli2 = 4.99;
 delta_d = 1.0e-3;
-impulse_scale = 1;
+impulse_scale = 1.0;
 
 // ENVELOPE
 env_attack = 0.005;
 env_decay = 0.01;
-env_sustain = 1;
+env_sustain = 1.0;
 env_release = 0.01;
 
 // VIBRATO
 vibrato_freq = 5.9; 
-vibrato_gain = 0; 
+vibrato_gain = 0.0; 
 
 vib_attack = 0.01;
 vib_decay = 0.01;
-vib_sustain = 1;
-vib_release = 0;
+vib_sustain = 1.0;
+vib_release = 0.0;
 
 // RESONATOR
 end_samples = end_length * SR / TWO_SOUND_SPEED;
