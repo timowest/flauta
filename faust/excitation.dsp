@@ -66,8 +66,9 @@ with {
     
     envelope = gate : adsr2(env_attack, env_decay, env_sustain, env_release);
 
-    vibrato = vibrato_gain * osc(vibrato_freq) * vibrato_env; 
-    vibrato_env = gate : adsr2(vib_attack, vib_decay, vib_sustain, vib_release);
+    vibrato = vibrato_gain * osc(vibrato_freq);
+    //vibrato = vibrato_gain * osc(vibrato_freq) * vibrato_env; 
+    //vibrato_env = gate : adsr2(vib_attack, vib_decay, vib_sustain, vib_release);
 };
 
 // bernoulli
