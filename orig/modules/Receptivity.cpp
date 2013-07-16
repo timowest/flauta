@@ -87,8 +87,8 @@ void Receptivity::calculate_peak_filter(StkFloat low_freq,
   //    return;
   //  } 
   
-  StkFloat  c1 = cos(PI * low_freq);
-  StkFloat  c2 = cos(PI * high_freq);
+  StkFloat  c1 = cos(M_PI * low_freq);
+  StkFloat  c2 = cos(M_PI * high_freq);
   StkFloat  beta = (1.0 + c1*c2)/(c1 + c2);
   StkFloat  wc = acos(beta - (beta/fabs(beta))*sqrt((beta*beta)-1));//sign(x) = x/abs(x)
   StkFloat  cc = cos(wc);
@@ -147,7 +147,7 @@ void Receptivity::calculate_shelf_filter(StkFloat transition_freq,
   
   StkFloat transition_gain = sqrt(low_gain * high_gain);
 
-  StkFloat pi_transition_frequency = PI * transition_freq;
+  StkFloat pi_transition_frequency = M_PI * transition_freq;
 
   StkFloat Zero = (high_gain*high_gain) + (low_gain*low_gain) - 2*(transition_gain*transition_gain);
   StkFloat alpha;
@@ -166,7 +166,7 @@ void Receptivity::calculate_shelf_filter(StkFloat transition_freq,
   StkFloat beta0 = 0.5 * ((low_gain + high_gain) + (low_gain - high_gain) * alpha);
   StkFloat beta1 = 0.5 * ((low_gain - high_gain) + (low_gain + high_gain) * alpha);
 
-  StkFloat rho = sin(pi_transition_frequency/2 - PI/4) / sin(pi_transition_frequency/2 + PI/4);
+  StkFloat rho = sin(pi_transition_frequency/2 - M_PI/4) / sin(pi_transition_frequency/2 + M_PI/4);
 
   B_coeffs[0] = (beta0 + rho*beta1) / (1 + rho*alpha);
   B_coeffs[1] = (beta1 + rho*beta0) / (1 + rho*alpha);
@@ -212,7 +212,8 @@ StkFloat Receptivity::tick(StkFloat Vac, StkFloat Hyd_feedback)
   // lastOut = Jet_fiter_one_over_omega->tick(Jet_filter_shelf->tick(Jet_filter_peak2->tick(Jet_filter_peak1->tick(excitation))));
   lastOut = 1e-4*Jet_filter_shelf->tick(Jet_filter_peak2->tick(Jet_filter_peak1->tick(excitation)));
   
-    return(lastOut);  
+    return(excitation);  
+//  return(lastOut);  
 }
 
 
@@ -240,7 +241,7 @@ void Receptivity::set_Coefficients(StkFloat Uj_steady)
   StkFloat B_peak2_coeffs[3];
   StkFloat A_peak2_coeffs[3];
   
-  this->calculate_shelf_filter(0.2954*(Uj_steady/jet_height)*(2/(2*PI*sampling_frequency)), 
+  this->calculate_shelf_filter(0.2954*(Uj_steady/jet_height)*(2/(2*M_PI*sampling_frequency)), 
 			       pow(10,2.3884*(flue_labium_dist/jet_height)/20),
 			       pow(10,0.0*(flue_labium_dist/jet_height)/20),
 			       B_shelf_coeffs,
@@ -254,8 +255,8 @@ void Receptivity::set_Coefficients(StkFloat Uj_steady)
   
   //////////////////////////////////
   
-  this->calculate_peak_filter(0.0645*(Uj_steady/jet_height)*(2/(2*PI*sampling_frequency)), 
-			      0.3278*(Uj_steady/jet_height)*(2/(2*PI*sampling_frequency)),
+  this->calculate_peak_filter(0.0645*(Uj_steady/jet_height)*(2/(2*M_PI*sampling_frequency)), 
+			      0.3278*(Uj_steady/jet_height)*(2/(2*M_PI*sampling_frequency)),
 			      pow(10,2.6337*(flue_labium_dist/jet_height)/20),
 			      B_peak1_coeffs,
 			      A_peak1_coeffs);
@@ -266,8 +267,8 @@ void Receptivity::set_Coefficients(StkFloat Uj_steady)
   
   ///////////////////////////////////
   
-  this->calculate_peak_filter(0.3278*(Uj_steady/jet_height)*(2/(2*PI*sampling_frequency)), 
-			      1.2006*(Uj_steady/jet_height)*(2/(2*PI*sampling_frequency)),
+  this->calculate_peak_filter(0.3278*(Uj_steady/jet_height)*(2/(2*M_PI*sampling_frequency)), 
+			      1.2006*(Uj_steady/jet_height)*(2/(2*M_PI*sampling_frequency)),
 			      pow(10,5.0719*(flue_labium_dist/jet_height)/20),
 			      B_peak2_coeffs,
 			      A_peak2_coeffs);

@@ -60,9 +60,9 @@ class Jet
       StkFloat _step_Uj = 1e-1,
       StkFloat flue_labium_d = 4e-3 ,
       StkFloat max_flue_labium_d = 0.016,
-      StkFloat convection_f = 0.3,
+      StkFloat convection_f = 0.5,
       StkFloat min_convection_f = 0.3,
-      StkFloat jet_h = 1.08e-3); // was 1e-3
+      StkFloat jet_h = 1e-3);
 
   ~Jet();
   

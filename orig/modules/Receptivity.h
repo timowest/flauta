@@ -59,7 +59,7 @@ class Receptivity
 
  public:
 
-  Receptivity(StkFloat  _jet_height = 1.08e-3,
+  Receptivity(StkFloat  _jet_height = 1e-3,
 	      StkFloat  _flue_labium_dist = 4e-3   
 	      );
 

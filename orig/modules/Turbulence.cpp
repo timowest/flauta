@@ -39,7 +39,8 @@ StkFloat Turbulence::tick(StkFloat Uj, StkFloat h)
 {
 
   random_sample = 2*(((StkFloat)random()/RAND_MAX) - 0.5);//between -1,1 
-   current_turbulence = turbulence_gain * MAX_AMPLITUDE * Uj * Uj * h * noise_filter->tick(random_sample);
+//  current_turbulence = turbulence_gain * MAX_AMPLITUDE * Uj * Uj * h * noise_filter->tick(random_sample);
+  current_turbulence = turbulence_gain * MAX_AMPLITUDE * Uj * Uj * h * noise_filter->tick(1);
 
   return(current_turbulence);
 

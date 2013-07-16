@@ -89,6 +89,17 @@ void Jet :: change_delay_length(StkFloat Uj_steady)
   jetDelay->setDelay(new_length_delay_line);
   jetDelayUj->setDelay(new_length_delay_line);
   //jetDelayUj_steady->setDelay(new_length_delay_line);
+}
+
+
+StkFloat Jet::tick(StkFloat Vac, 
+		   StkFloat Uj, 
+		   StkFloat Uj_steady, 
+		   StkFloat Hyd_feedback, 
+		   StkFloat &del_uj)
+{
+
+
   
   /**************************************
    *    If changes in the jet velocity  *
@@ -99,30 +110,16 @@ void Jet :: change_delay_length(StkFloat Uj_steady)
   StkFloat delta_jet_velocity = fabs(Uj_steady - last_Uj);
   if ( delta_jet_velocity > step_Uj)
     { 
-      
-      /********************************
-       * Now I need to change the     *
-       * parameters on the Receptivity*
-       * filter                       *
-       ********************************/
       my_Receptivity->set_Coefficients(Uj_steady);
       
       last_Uj = Uj_steady;
-  
     }
-}
 
-
-StkFloat Jet::tick(StkFloat Vac, 
-		   StkFloat Uj, 
-		   StkFloat Uj_steady, 
-		   StkFloat Hyd_feedback, 
-		   StkFloat &del_uj)
-{
   
   /************************************
    * Calculating the jet displacement * 
    ************************************/
+
   Jet_displacement = my_Receptivity->tick(Vac, Hyd_feedback);
   
   
@@ -132,6 +129,7 @@ StkFloat Jet::tick(StkFloat Vac,
   this->change_delay_length(Uj_steady);
   Delayed_Jet_displacement = jetDelay->tick(Jet_displacement);
   Delayed_Uj = jetDelayUj->tick(Uj);
+
   
   //Filling out the output
   del_uj = Delayed_Uj;

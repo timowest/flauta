@@ -122,7 +122,7 @@ void Turbulence_test(float* in1, const char* format, int index) {
      StkFloat current_turbulence;
 
     for (int i = 0; i < SIZE; i++) {
-        current_turbulence = my_Turbulence->tick(in1[i], 1.08e-3);    
+        current_turbulence = my_Turbulence->tick(in1[i], 1.0e-3);    
         out1[i] = current_turbulence;
     }
  
@@ -141,7 +141,7 @@ void Turbulence_test(float* in1, const char* format, int index) {
 void Receptivity_test(float* in1, float* in2,float in3, const char* format, int index) {
      // Receptivity Definitions
      Receptivity *My_Receptivity;
-     My_Receptivity = new Receptivity(1.08e-3, 4.0e-3); // parameters need to be identical with Faust code
+     My_Receptivity = new Receptivity(1.0e-3, 4.0e-3); // parameters need to be identical with Faust code
      StkFloat ETA;
  
    

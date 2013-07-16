@@ -59,7 +59,7 @@ Excitation::Excitation(StkFloat min_jet_vel,
    */
 
   Uj= 0;
-  Uj_steady = 1;
+  Uj_steady = 0;
   Jet_displacement = 0;
   current_impulse = 0;
   Hyd_feedback = Previous_Hyd_feedback = 0;
@@ -101,8 +101,9 @@ StkFloat Excitation::tick(StkFloat mouth_acoustic_pressure,
   if(Uj_steady > max_jet_velocity)
     Uj_steady = max_jet_velocity;
   
+
   //Hydrodynamic feedback before ticking the jet
-  //  Hyd_feedback = my_Sources->get_Hyd_feedback();
+  //Hyd_feedback = my_Sources->get_Hyd_feedback();
 
   //Jet calculates the jet displacement and delayed Uj
   Jet_displacement = my_Jet->tick(mouth_acoustic_velocity,Uj, Uj_steady, Previous_Hyd_feedback, delayedUj);

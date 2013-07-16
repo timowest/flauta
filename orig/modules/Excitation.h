@@ -40,13 +40,13 @@ class Excitation
 	     StkFloat flue_labium_distance = 4e-3,
 	     StkFloat max_flue_labium_d = 0.016,
 	     StkFloat labium_position = 0.0002,
-	     StkFloat convection_f = 0.3,
+	     StkFloat convection_f = 0.5,
 	     StkFloat min_convection_f = 0.3,
 	     StkFloat chimney_radius = 0.007,
 	     StkFloat channel_length = 4e-3,
 	     StkFloat VibratoFreq = 5.9,
 	     StkFloat VibratoGain = 0.0,
-	     StkFloat jet_height = 1.08e-3, 
+	     StkFloat jet_height = 1e-3, 
 	     StkFloat jet_width = 0.02,
 	     StkFloat delta_d = 1.0e-3);
 

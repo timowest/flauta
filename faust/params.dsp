@@ -21,7 +21,7 @@ dac_scale = vslider("h:h2/h:res/dac scale", 7, 0, 100, 1) * 0.001;
 
 // EXCITATION
 
-gate = button("h:h2/gate");
+gate = checkbox("h:h2/gate");
 
 // Pressure
 
@@ -30,10 +30,9 @@ human_control_flag = checkbox("h:h2/h:res/Automatic pressure (StrW)");
 pressure = select2(human_control_flag, manual_pressure, calculated_pressure);
 
 //pow(current_frequency*W/STRW,2)*rho/2;
-calculated_pressure = pow(curr_freq * w / strW, 2) * rho/2
+calculated_pressure = pow(curr_freq * w / strW, 2) * AIR_DENSITY/2
 with {
   curr_freq = freq;
-  rho = 1.2;
   w = flue_labium_distance;
   strW  = vslider("h:h2/h:res/StrW", 25, 1, 100, 1) * 0.01;
 };
@@ -45,17 +44,17 @@ with {
 };
 
 //JET
-channel_length = ( vslider("h:h1/h:exc/h:Jet/channel len", 23, 1, 127, 1) + 5 ) * 0.001; 
+channel_length = vslider("h:h1/h:exc/h:Jet/channel len", 28, 1, 127, 1) * 0.001; 
 jet_height = vslider("h:h1/h:exc/h:Jet/jet hgt", 100, 5, 127, 1) * 0.00001; 
 jet_shape = vslider("h:h1/h:exc/h:Jet/jet shp", 90, 5, 127, 1) / 127.0;
-flue_labium_distance = vslider("h:h1/h:exc/h:Jet/fl-la dist", 44, 5, 127, 1) * 0.0001;
+flue_labium_distance = vslider("h:h1/h:exc/h:Jet/fl-la dist", 40, 5, 127, 1) * 0.0001;
 max_flue_labium_d = 0.016;
 labium_position = vslider("h:h1/h:exc/h:Jet/lab pos", 20, 0, 127, 1) * 0.00001;
 
 min_jet_vel = 1.0;
 max_jet_vel = 40;
 step_Uj = 0.1;
-convection_f = 0.3;
+convection_f = 0.5;
 min_convection_f = 0.3;
 jet_width = 0.02; // TODO : make jet width controllable (input * 0.001)
 
@@ -73,12 +72,8 @@ env_sustain = vslider("h:h1/h:env/sustain", 100, 10, 100, 1);
 env_release = vslider("h:h1/h:env/release", 10, 0, 1000, 10) * 0.001;
 
 // VIBRATO
-vibrato_freq = vslider("h:h2/h:vib/freq", 0.0, 0.0, 99, 1) * ONE_OVER_128 * 12.0; 
-vibrato_gain = vslider("h:h2/h:vib/gain", 0.0, 0.0, 99, 1) * ONE_OVER_128 * 2.0; 
-vib_attack = vslider("h:h2/h:vib/attack", 5, 1, 100, 1) * 0.001;
-vib_decay = vslider("h:h2/h:vib/decay", 10, 0, 1000, 10) * 0.001;
-vib_sustain = vslider("h:h2/h:vib/sustain", 100, 10, 100, 1);
-vib_release = vslider("h:h2/h:vib/release", 10, 0, 1000, 10) * 0.001;
+vibrato_freq = vslider("h:h2/h:vib/freq", 5.9, 0.0, 99, 0.1) ; 
+vibrato_gain = vslider("h:h2/h:vib/gain", 0.0, 0.0, 99, 0.1) ;
 
 // RESONATOR
 end_samples = end_length * SR / TWO_SOUND_SPEED;
@@ -100,5 +95,3 @@ freq = vslider("h:h2/h:res/Note", 76, 1, 127, 1) : midiToFreq;
 
 //MIDItoFREQ
 midiToFreq(n) = 440 * pow(2, (n-69)/12);
-
-

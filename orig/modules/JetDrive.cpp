@@ -139,7 +139,7 @@ StkFloat JetDrive::get_jet_height()
 
 void JetDrive::set_b_constant(StkFloat value)
 {
-  //Set limit from 0.1 to 0.9
+  //Set limit from 0.1 to 2.9
   if (value < 0.1){value = 0.1;}
   if (value > 2.9){value = 2.9;}
   b_constant = value;

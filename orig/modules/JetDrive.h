@@ -8,7 +8,6 @@
 #include "Stk.h"
 #include "Tanh_table.h"
 //#include "MyFilter.h"
-#include <math.h>
 
 class JetDrive
 {
@@ -50,7 +49,7 @@ class JetDrive
     void update_b();
  public:
 
-    JetDrive( StkFloat jet_h = 1.08e-3,
+    JetDrive( StkFloat jet_h = 1.0e-3,
 	      StkFloat jet_w = 0.02,
 	      StkFloat d_d = 1.0e-3,
 	      StkFloat flue_labium_d = 4.0e-3,

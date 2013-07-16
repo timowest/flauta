@@ -11,7 +11,7 @@ Blow::Blow(StkFloat chimney_radius,
    * ENVELOPE   INITIALIZATION *
    *****************************/
   my_envelope  = new ADSR;
-  my_envelope->setAllTimes((StkFloat) 0.005, (StkFloat) 0.01, (StkFloat) 1.0, (StkFloat) 0.01/*0.001*/);
+  my_envelope->setAllTimes((StkFloat) 0.005, (StkFloat) 0.01, (StkFloat) 1.0, (StkFloat) 0.01);
   
   /*****************************
    * BERNOULLI   INITIALIZATION *
@@ -23,7 +23,7 @@ Blow::Blow(StkFloat chimney_radius,
 
 
   driving_pressure = 0;
-  target_driving_pressure = 0;
+  target_driving_pressure = 32;
   Uj = Uj_steady = Impulse = 0;
 }
 
@@ -36,12 +36,9 @@ Blow::~Blow(){
 
 StkFloat Blow::tick(StkFloat mouth_pressure, StkFloat &uj_steady, StkFloat &impulse)
 {
-  
-    driving_pressure = my_envelope->tick() * target_driving_pressure;
-    driving_pressure += driving_pressure * ( vibratoGain * vibrato->tick());
-       
-    //StkFloat curr_envelope = my_envelope->tick() * target_driving_pressure;
-    //driving_pressure = driving_pressure + curr_envelope * (vibratoGain * vibrato->tick());
+    driving_pressure = target_driving_pressure; 
+    //driving_pressure = my_envelope->tick() * target_driving_pressure;
+    //driving_pressure += driving_pressure * ( vibratoGain * vibrato->tick());
 
 
   if( driving_pressure <= 0.0){

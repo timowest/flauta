@@ -4,8 +4,8 @@
 Bernoulli::Bernoulli(StkFloat chim_radius, StkFloat chan_length)
 {
   
-  //sampling_rate = Stk::sampleRate();
-  sampling_rate = 44100.0;
+  sampling_rate = Stk::sampleRate();
+  //sampling_rate = 44100.0;
   previous_Velocity = 0;
   Curr_Velocity = 0;
   Curr_Velocity_steady = 0;
@@ -42,11 +42,13 @@ StkFloat Bernoulli::tick(StkFloat pressure_in,
   if( Impulse > max_impulse)
     Impulse = max_impulse;
 
+/*
   if(pressure_in < pressure_out) {  //only asumming blowing from inside to outside.
     Curr_Velocity_steady = 0.0;
     Impulse = 0.0;
     Curr_Velocity = 0.0;
   } 
+*/
 
   previous_Velocity = Curr_Velocity; 
   //Filling out the output

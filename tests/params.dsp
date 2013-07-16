@@ -26,16 +26,16 @@ pressure = 32.0;
 
 //JET
 channel_length = 4e-3;
-jet_height = 1.08e-3; 
+jet_height = 1.0e-3; 
 jet_shape = 0.5; // used as b_constant in jet_drive
-flue_labium_distance = 4e-3;
+flue_labium_distance = 4.0e-3;
 max_flue_labium_d = 0.016;
 labium_position = 0.0002;
 
 min_jet_vel = 1.0;
 max_jet_vel = 40.0;
 step_Uj = 0.1;
-convection_f = 0.3;
+convection_f = 0.5;
 min_convection_f = 0.3;
 jet_width = 0.02;
 
@@ -54,12 +54,7 @@ env_release = 0.01;
 
 // VIBRATO
 vibrato_freq = 5.9; 
-vibrato_gain = 0.0; 
-
-vib_attack = 0.01;
-vib_decay = 0.01;
-vib_sustain = 1.0;
-vib_release = 0.0;
+vibrato_gain = 0.0;
 
 // RESONATOR
 end_samples = end_length * SR / TWO_SOUND_SPEED;
