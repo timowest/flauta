@@ -101,30 +101,25 @@ with {
     sampling_period = 1.0 / SR;
 };
 
-receptivity(hyd_feed, vac, uj_steady) = excitation
+receptivity(hyd_feed, vac, uj_steady) = excitation : jet_filter_peak1 : jet_filter_peak2 : jet_filter_shelf : *(1e-4)
 with {
     excitation = TWO_div_M_PI * vac + hyd_feed;
-};
 
-//receptivity(hyd_feed, vac, uj_steady) = excit : jet_filter_peak1 : jet_filter_peak2 : jet_filter_shelf : *(1e-4)
-//with {
-//    excit = TWO_div_M_PI * vac + hyd_feed;
-//
-//    jet_filter_peak1 = receptivity_peak_filter(
-//        0.0645*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
-//       0.3278*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
-//        pow(10, 2.6337*(flue_labium_distance / jet_height)/20.0));
-//
-//    jet_filter_peak2 = receptivity_peak_filter(
-//        0.3278*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
-//        1.2006*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
-//        pow(10, 5.0719*(flue_labium_distance / jet_height)/20.0));
-//
-//    jet_filter_shelf = receptivity_shelf_filter(
-//        0.2954*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
-//        pow(10.0, 2.3884*(flue_labium_distance / jet_height)/20.0),
-//        pow(10.0, 0.0*(flue_labium_distance / jet_height)/20.0));
-//};
+    jet_filter_peak1 = receptivity_peak_filter(
+        0.0645*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
+        0.3278*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
+        pow(10, 2.6337*(flue_labium_distance / jet_height)/20.0));
+
+    jet_filter_peak2 = receptivity_peak_filter(
+        0.3278*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
+        1.2006*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
+        pow(10, 5.0719*(flue_labium_distance / jet_height)/20.0));
+
+    jet_filter_shelf = receptivity_shelf_filter(
+        0.2954*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
+        pow(10.0, 2.3884*(flue_labium_distance / jet_height)/20.0),
+        pow(10.0, 0.0*(flue_labium_distance / jet_height)/20.0));
+};
 
 receptivity_shelf_filter(transition_freq, low_gain, high_gain) = iir((b0,b1),(a1))
 with {

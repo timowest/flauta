@@ -211,9 +211,8 @@ StkFloat Receptivity::tick(StkFloat Vac, StkFloat Hyd_feedback)
  
   // lastOut = Jet_fiter_one_over_omega->tick(Jet_filter_shelf->tick(Jet_filter_peak2->tick(Jet_filter_peak1->tick(excitation))));
   lastOut = 1e-4*Jet_filter_shelf->tick(Jet_filter_peak2->tick(Jet_filter_peak1->tick(excitation)));
-  
-    return(excitation);  
-//  return(lastOut);  
+
+  return(lastOut);
 }
 
 
