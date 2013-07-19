@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2011 Timo Westkämper, Carlos Barría, Daniel Tirado and Patricio de la Cuadra
+ *  Copyright (C) 2011 Timo WestkÃÂ¤mper, Carlos BarrÃÂ­a, Daniel Tirado and Patricio de la Cuadra
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -56,10 +56,21 @@ with {
     };
 };
 
+
 // blow
 // in : mouth pressure
 // out : uj, uj_steady, impulse
+
+
+//blow2 = (((pressure * envelope) <: (_ + vibrato * _) : max(0)),_ ) 
+//    : bernoulli : (max(0), max(0), _)
+//with {
+//    envelope = gate : adsr2(env_attack, env_decay, env_sustain, env_release);
+//    vibrato = vibrato_gain * osc(vibrato_freq);
+//};
+
 blow = (pressure,_ ) : (max(0),_) : bernoulli : (max(0), max(0), _) ;
+
 
 
 // bernoulli
@@ -84,11 +95,8 @@ with {
 };
 
 // out : eta_d, Uj_d
-jet(hyd_feed, Vac, Uj, Uj_steady) = (hyd_feed,Vac,u,Uj) : (receptivity,_) : (jetDelay, jetDelay)
+jet(hyd_feed, Vac, Uj, Uj_steady) = (hyd_feed,Vac,Uj_steady,Uj) : (receptivity,_) : (jetDelay, jetDelay)
 with {
-    diff= abs(Uj_steady-Uj);
-    u=select2(diff>step_Uj,Uj,Uj_steady);
-
     // initial definition of delay length
     initial_delay_length = floor((max_flue_labium_d / (min_convection_f * min_jet_vel)) / sampling_period);
     
@@ -101,24 +109,30 @@ with {
     sampling_period = 1.0 / SR;
 };
 
-receptivity(hyd_feed, vac, uj_steady) = excitation : jet_filter_peak1 : jet_filter_peak2 : jet_filter_shelf : *(1e-4)
+receptivity = recept~ _ : (!,_);
+
+recept(last_Uj,hyd_feed, vac, Uj_steady) = (u,(excitation : jet_filter_peak1 : jet_filter_peak2 : jet_filter_shelf : _ *1e-4))
 with {
     excitation = TWO_div_M_PI * vac + hyd_feed;
 
+    diff = abs(Uj_steady - last_Uj);
+    u = select2(diff > step_Uj, last_Uj, Uj_steady);
+
     jet_filter_peak1 = receptivity_peak_filter(
-        0.0645*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
-        0.3278*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
+        0.0645*(u/jet_height)*(2.0/(2.0*M_PI*SR)),
+        0.3278*(u/jet_height)*(2.0/(2.0*M_PI*SR)),
         pow(10, 2.6337*(flue_labium_distance / jet_height)/20.0));
 
     jet_filter_peak2 = receptivity_peak_filter(
-        0.3278*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
-        1.2006*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
+        0.3278*(u/jet_height)*(2.0/(2.0*M_PI*SR)),
+        1.2006*(u/jet_height)*(2.0/(2.0*M_PI*SR)),
         pow(10, 5.0719*(flue_labium_distance / jet_height)/20.0));
 
     jet_filter_shelf = receptivity_shelf_filter(
-        0.2954*(uj_steady/jet_height)*(2.0/(2.0*M_PI*SR)),
+        0.2954*(u/jet_height)*(2.0/(2.0*M_PI*SR)),
         pow(10.0, 2.3884*(flue_labium_distance / jet_height)/20.0),
         pow(10.0, 0.0*(flue_labium_distance / jet_height)/20.0));
+
 };
 
 receptivity_shelf_filter(transition_freq, low_gain, high_gain) = iir((b0,b1),(a1))
