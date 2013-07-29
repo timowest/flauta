@@ -1,21 +1,37 @@
-ALSA_GTK = `pkg-config --cflags --libs alsa` `pkg-config --cflags --libs gtk+-2.0`
-JACK_GTK = `pkg-config --cflags --libs jack` `pkg-config --cflags --libs gtk+-2.0`
-GTKMM = `pkg-config --cflags --libs gtkmm-2.4`
-PAQ = `pkg-config --cflags --libs paq`
+ALSA = `pkg-config --cflags --libs alsa`
+JACK = `pkg-config --cflags --libs jack` 
+GTK = `pkg-config --cflags --libs gtk+-2.0`
+SC = `pkg-config --cflags libscsynth`
 FAUST = -I/usr/local/lib/faust/
 TESTS = gen/blow.cpp gen/bernoulli.cpp gen/excitation.cpp gen/jetdrive.cpp gen/receptivity.cpp gen/turbulence.cpp gen/vortex.cpp gen/jet.cpp gen/sources.cpp gen/resonator.cpp
 
 # tested with Faust 0.9.58
 
-standalone:
+alsa-gtk:
 	faust -a alsa-gtk.cpp -double faust/flauta.dsp > gen/flauta.cpp
-	g++ -Wall gen/flauta.cpp $(ALSA_GTK) $(FAUST) $(CFLAGS) -lm -o flauta.out
+	g++ -Wall gen/flauta.cpp $(ALSA) $(GTK) $(FAUST) $(CFLAGS) -lm -o flauta.out
 
-jack:
-	faust -a jack-gtk.cpp -double faust/flauta.dsp > gen/flauta.cpp
-	g++ -Wall gen/flauta.cpp $(JACK_GTK) $(FAUST) $(CFLAGS) -lm -o flauta.out
-
-caqt:  gen
+jack-gtk:
+	faust2jack faust/flauta.dsp
+	mv faust/flauta gen
+	
+jack-qt:	
+	faust2jaqt faust/flauta.dsp
+	mv faust/flauta gen
+	
+puredata:	
+	faust2puredata faust/flauta.dsp
+	mv faust/flauta~.pd_linux gen
+	
+msp:
+	faust2msp faust/flauta.dsp # FIXME
+	
+supercollider:	
+	faust2supercollider faust/flauta.dsp
+	mv faust/flauta.sc gen
+	mv faust/flauta.so gen	
+	
+ca-qt: gen
 	faust2caqt faust/flauta.dsp
 	mv faust/flauta.app gen
 
