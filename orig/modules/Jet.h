@@ -57,12 +57,12 @@ class Jet
 
   Jet(StkFloat min_jet_vel = 1.0 ,
       StkFloat max_jet_vel = 40,
-      StkFloat _step_Uj = 1e-1,
-      StkFloat flue_labium_d = 4e-3 ,
+      StkFloat _step_Uj = 0.1,
+      StkFloat flue_labium_d = 1e-2 ,
       StkFloat max_flue_labium_d = 0.016,
       StkFloat convection_f = 0.5,
       StkFloat min_convection_f = 0.3,
-      StkFloat jet_h = 1e-3);
+      StkFloat jet_h = 2e-3);
 
   ~Jet();
   

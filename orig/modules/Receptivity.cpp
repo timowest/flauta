@@ -36,7 +36,8 @@ Receptivity::Receptivity(StkFloat  _jet_height,
   Jet_fiter_one_over_omega = new MyFilter(3, one_over_B_Coeffs,3,  one_over_A_Coeffs);
 
   //DEBUGGING...
-  //  set_Coefficients(15.0);
+    //StkFloat paul = 0.001;
+    //set_Coefficients(paul);
 }
 
 
@@ -203,15 +204,13 @@ StkFloat Receptivity::tick(StkFloat Vac, StkFloat Hyd_feedback)
    ******************************************************/
  
   excitation = TWO_div_M_PI * Vac + Hyd_feedback;
-  
   //  StkFloat lastOut =(0.5*Jet_filter_shelf->tick(Jet_filter_peak2->tick(Jet_filter_peak1->tick(excitation))) +
   //   0.5*Jet_filter_shelf_inv->tick(Jet_filter_peak2_inv->tick(Jet_filter_peak1_inv->tick(excitation)))) - 
   //  excitation ;
 
  
-  // lastOut = Jet_fiter_one_over_omega->tick(Jet_filter_shelf->tick(Jet_filter_peak2->tick(Jet_filter_peak1->tick(excitation))));
+   //lastOut = Jet_fiter_one_over_omega->tick(Jet_filter_shelf->tick(Jet_filter_peak2->tick(Jet_filter_peak1->tick(excitation))));
   lastOut = 1e-4*Jet_filter_shelf->tick(Jet_filter_peak2->tick(Jet_filter_peak1->tick(excitation)));
-
   return(lastOut);
 }
 
@@ -276,7 +275,6 @@ void Receptivity::set_Coefficients(StkFloat Uj_steady)
   Jet_filter_peak2->setCoefficients(3, B_peak2_coeffs,3, A_peak2_coeffs);
   Jet_filter_peak2_inv->setCoefficients(3, A_peak2_coeffs,3,  B_peak2_coeffs);
   
-
 }
 
 

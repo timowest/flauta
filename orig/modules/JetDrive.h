@@ -49,11 +49,11 @@ class JetDrive
     void update_b();
  public:
 
-    JetDrive( StkFloat jet_h = 1.0e-3,
+    JetDrive( StkFloat jet_h = 2.0e-3,
 	      StkFloat jet_w = 0.02,
 	      StkFloat d_d = 1.0e-3,
-	      StkFloat flue_labium_d = 4.0e-3,
-	      StkFloat labium_p = 0.0002
+	      StkFloat flue_labium_d = 1.0e-2,
+	      StkFloat labium_p = 0.0001
 );
 
   ~JetDrive();

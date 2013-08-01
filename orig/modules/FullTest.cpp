@@ -114,6 +114,8 @@ void Vortex_test(float* in1, const char* format, int index) {
     
 }
 
+
+
 // Turbulence Test Function // 
 void Turbulence_test(float* in1, const char* format, int index) {
      // Turbulence Definitions
@@ -141,7 +143,7 @@ void Turbulence_test(float* in1, const char* format, int index) {
 void Receptivity_test(float* in1, float* in2,float in3, const char* format, int index) {
      // Receptivity Definitions
      Receptivity *My_Receptivity;
-     My_Receptivity = new Receptivity(1.0e-3, 4.0e-3); // parameters need to be identical with Faust code
+     My_Receptivity = new Receptivity(2.0e-3, 1.0e-2); // parameters need to be identical with Faust code
      StkFloat ETA;
  
    
@@ -363,12 +365,12 @@ int main(int argc, char *argv[]) {
 
     // inputs
     float in_imp[SIZE], in_noise[SIZE], in_ramp[SIZE], in_sine[SIZE], in_triang[SIZE], in_step[SIZE];
-    read("tests/in_imp.txt", in_imp);       // 1
-    read("tests/in_noise.txt", in_noise);   // 2
-    read("tests/in_ramp.txt", in_ramp);     // 3
-    read("tests/in_sine.txt", in_sine);     // 4
-    read("tests/in_triang.txt", in_triang); // 5
-    read("tests/in_step.txt", in_step);     // 6
+    read("../../tests/in_imp.txt", in_imp);       // 1
+    read("../../tests/in_noise.txt", in_noise);   // 2
+    read("../../tests/in_ramp.txt", in_ramp);     // 3
+    read("../../tests/in_sine.txt", in_sine);     // 4
+    read("../../tests/in_triang.txt", in_triang); // 5
+    read("../../tests/in_step.txt", in_step);     // 6
 
     float* all_inputs[] = {in_imp, in_noise, in_ramp, in_sine, in_triang, in_step};
 

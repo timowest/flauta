@@ -30,7 +30,7 @@ class Blow
  public:
 
   Blow(StkFloat chimney_radius = 0.007,
-       StkFloat channel_length = 4e-3,
+       StkFloat channel_length = 1e-2,
        StkFloat VibratoFreq = 5.9,
        StkFloat VibratoGain = 0.0);
 

@@ -7,6 +7,7 @@ Bernoulli::Bernoulli(StkFloat chim_radius, StkFloat chan_length)
   sampling_rate = Stk::sampleRate();
   //sampling_rate = 44100.0;
   previous_Velocity = 0;
+  previous_Velocity_steady = 0;
   Curr_Velocity = 0;
   Curr_Velocity_steady = 0;
   Impulse = 0;
@@ -24,7 +25,7 @@ StkFloat Bernoulli::tick(StkFloat pressure_in,
 			 StkFloat &uj_steady,
 			 StkFloat &impulse)
 {
-  
+
   Curr_Velocity = Curr_Velocity + 
     (const_bernoulli*
      ((pressure_in - pressure_out) - (HALF_DENSITY * (Curr_Velocity * Curr_Velocity)))
@@ -34,29 +35,36 @@ StkFloat Bernoulli::tick(StkFloat pressure_in,
     (const_bernoulli*
      (pressure_in - (HALF_DENSITY*(Curr_Velocity_steady * Curr_Velocity_steady)))
      );
-  
-  //  Impulse = output_impedance * (Curr_Velocity - previous_Velocity);
-  Impulse = const_impulse * (Curr_Velocity - previous_Velocity);
-  if( Impulse < 0.0)
-    Impulse = 0.0;
-  if( Impulse > max_impulse)
-    Impulse = max_impulse;
 
 /*
-  if(pressure_in < pressure_out) {  //only asumming blowing from inside to outside.
-    Curr_Velocity_steady = 0.0;
-    Impulse = 0.0;
-    Curr_Velocity = 0.0;
-  } 
+    Curr_Velocity = previous_Velocity + const_bernoulli*((pressure_in - pressure_out)-HALF_DENSITY *previous_Velocity*previous_Velocity);
+  
+  Curr_Velocity_steady = previous_Velocity_steady + const_bernoulli*(pressure_in-HALF_DENSITY *previous_Velocity_steady*previous_Velocity_steady);
 */
+  Impulse = const_impulse * (Curr_Velocity - previous_Velocity);
+  if( Impulse < 0.0){
+    Impulse = 0.0;
+  }
+
+  if( Impulse > max_impulse){
+    Impulse = max_impulse;
+  }
+
+  if (Curr_Velocity <= 0.0){
+    Curr_Velocity = 0.0; 	/* No negative jet velocity allowed */
+  }
+  
+  if (Curr_Velocity_steady <= 0.0){
+    Curr_Velocity_steady = 0.0; 	/* No negative jet velocity allowed */
+  }
 
   previous_Velocity = Curr_Velocity; 
+  previous_Velocity_steady = Curr_Velocity_steady; 
+
   //Filling out the output
   uj_steady = Curr_Velocity_steady;
   impulse = Impulse;
-
   return(Curr_Velocity);
-
 }
 
 

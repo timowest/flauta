@@ -20,11 +20,11 @@ class Sources
   StkFloat vortex;
  public:
 
-  Sources(StkFloat jet_height = 1e-3, 
+  Sources(StkFloat jet_height = 2e-3, 
 	  StkFloat jet_width = 0.02,
 	  StkFloat delta_d = 1.0e-3,
-	  StkFloat flue_labium_distance = 4.0e-3,
-	  StkFloat labium_position = 0.0002);
+	  StkFloat flue_labium_distance = 1.0e-2,
+	  StkFloat labium_position = 0.0001);
 
   ~Sources();
   

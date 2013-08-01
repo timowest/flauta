@@ -63,7 +63,7 @@ class Flauta : public Instrmnt
 	 StkFloat min_jet_vel = 1.0 ,
 	 StkFloat max_jet_vel = 40,
 	 StkFloat step_Uj = .1,
-	 StkFloat flue_labium_distance = 4e-3,
+	 StkFloat flue_labium_distance = 1e-2,
 	 StkFloat max_flue_labium_d = 0.016,
 	 StkFloat labium_position = 0.0002,
 	 StkFloat convection_f = 0.5,

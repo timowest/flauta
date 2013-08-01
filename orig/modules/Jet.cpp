@@ -56,7 +56,7 @@ Jet::Jet(StkFloat min_jet_vel,
   Delayed_Jet_displacement = 0;
   Delayed_Uj = 0;
   new_length_delay_line = length_delay_line;
-  last_Uj = 1;
+  last_Uj = 0;
   //  noteOn_flag = 0;//initialize off 
 }
 
@@ -110,10 +110,9 @@ StkFloat Jet::tick(StkFloat Vac,
   StkFloat delta_jet_velocity = fabs(Uj_steady - last_Uj);
   if ( delta_jet_velocity > step_Uj)
     { 
-      my_Receptivity->set_Coefficients(Uj_steady);
-      
       last_Uj = Uj_steady;
     }
+      my_Receptivity->set_Coefficients(last_Uj);
 
   
   /************************************

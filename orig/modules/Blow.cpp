@@ -23,7 +23,7 @@ Blow::Blow(StkFloat chimney_radius,
 
 
   driving_pressure = 0;
-  target_driving_pressure = 32;
+  target_driving_pressure = 0;
   Uj = Uj_steady = Impulse = 0;
 }
 
@@ -48,19 +48,8 @@ StkFloat Blow::tick(StkFloat mouth_pressure, StkFloat &uj_steady, StkFloat &impu
 
   Uj = my_Bernoulli->tick(driving_pressure, mouth_pressure, Uj_steady, Impulse);
   //  Uj_steady = my_Bernoulli->get_steady_velocity();
-  
-  // Check for the velocity and pressure limits
-  // We only need to verify that is not negative here
-  // Jet should take care that it doesn't pass the allowed thresholds
 
-  if (Uj <= 0.0){
-    Uj = 0.0; 	/* No negative jet velocity allowed */
-  }
-  
-  if (Uj_steady <= 0.0){
-    Uj_steady = 0.0; 	/* No negative jet velocity allowed */
-  }
-  
+
   //Filling out the output
   uj_steady = Uj_steady;
   impulse = Impulse;

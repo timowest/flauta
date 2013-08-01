@@ -1,4 +1,4 @@
-// test for bernoulli-component
+// test for blow-component
 
 import("../faust/excitation.dsp");
 //import("oscillator.lib");

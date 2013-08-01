@@ -17,10 +17,9 @@ class Bernoulli
   StkFloat const_bernoulli;
   StkFloat const_impulse;
   StkFloat chimney_radius;
-  //static const StkFloat half_density = 0.6;
-
  
   StkFloat previous_Velocity;
+  StkFloat previous_Velocity_steady;
   StkFloat Curr_Velocity;
   StkFloat Curr_Velocity_steady;
   StkFloat Impulse;
@@ -32,7 +31,7 @@ class Bernoulli
  public:
 
   Bernoulli(StkFloat chim_radius = 0.007,
-	    StkFloat chan_length = 4e-3);
+	    StkFloat chan_length = 1e-2);
 
   ~Bernoulli();
   

@@ -25,12 +25,12 @@ gate = 1.0;
 pressure = 32.0;
 
 //JET
-channel_length = 4e-3;
-jet_height = 1.0e-3; 
+channel_length = 1e-2;
+jet_height = 2.0e-3; 
 jet_shape = 0.5; // used as b_constant in jet_drive
-flue_labium_distance = 4.0e-3;
+flue_labium_distance = 1e-2;
 max_flue_labium_d = 0.016;
-labium_position = 0.0002;
+labium_position = 0.0001;
 
 min_jet_vel = 1.0;
 max_jet_vel = 40.0;
