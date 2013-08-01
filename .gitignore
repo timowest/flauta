@@ -7,3 +7,8 @@ alsa-gtk
 log
 *.cpp~
 .project
+
+#TEMPORARY FILES
+*.dsp~
+*.h~
+*.py~
