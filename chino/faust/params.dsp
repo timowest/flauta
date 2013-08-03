@@ -16,14 +16,10 @@
 // parameters
 
 // FLAUTA
-
 dac_scale = vslider("h:h2/volume", 7, 0, 10, 0.01) * 0.001;
 
-
 // EXCITATION
-
-//gate = checkbox("h:h2/gate");
-gate = 1 ; 
+gate = checkbox("h:h2/gate");
 
 // Pressure
 pressure = coarse + fine
@@ -33,12 +29,12 @@ with {
 };
 
 //JET
-channel_length = (vslider("h:exc/h:Jet/channel len", 122, 1, 127, 1)+5)*0.001; 
-jet_height = vslider("h:exc/h:Jet/jet hgt", 118, 5, 127, 1) * 0.00001; 
-jet_shape = vslider("h:exc/h:Jet/jet shp", 121, 5, 127, 1)/127;
-flue_labium_distance = vslider("h:exc/h:Jet/fl-la dist", 13.7, 1, 16, 0.1)*0.001;
+channel_length = (vslider("h:exc/h:Jet/chan_len", 122, 1, 127, 1)+5)*0.001; 
+jet_height = vslider("h:exc/h:Jet/jet_hgt", 118, 5, 127, 1) * 0.00001; 
+jet_shape = vslider("h:exc/h:Jet/jet_shp", 121, 5, 127, 1)/127;
+flue_labium_distance = vslider("h:exc/h:Jet/fl-la_dist", 13.7, 1, 16, 0.1)*0.001;
 max_flue_labium_d = 0.016;
-labium_position = vslider("h:exc/h:Jet/lab pos", 8, 0, 127, 1)*0.00001;
+labium_position = vslider("h:exc/h:Jet/lab_pos", 8, 0, 127, 1)*0.00001;
 
 min_jet_vel = 1.0;
 max_jet_vel = 40;
@@ -49,19 +45,19 @@ jet_width = 0.02; // TODO : make jet width controllable (input * 0.001)
 
 
 //SOURCES 
-turbulence_gain = vslider("h:exc/h:Sources/turb gain", 16, 0, 227, 1) * 50 * 800;
-vortex_ampli1 = vslider("h:exc/h:Sources/h:Vortex/Vor a1", 42, 0, 127, 1) * 0.1;
-vortex_ampli2 = vslider("h:exc/h:Sources/h:Vortex/Vor a2", 39, 0, 127, 1) * 0.1;
-delta_d = vslider("h:exc/h:Sources/Jet drive", 125, 0, 127, 1) * 0.0001;
+turbulence_gain = vslider("h:exc/h:Sources/turb_gain", 16, 0, 227, 1) * 50 * 800;
+vortex_ampli1 = vslider("h:exc/h:Sources/h:Vortex/Vor_a1", 42, 0, 127, 1) * 0.1;
+vortex_ampli2 = vslider("h:exc/h:Sources/h:Vortex/Vor_a2", 39, 0, 127, 1) * 0.1;
+delta_d = vslider("h:exc/h:Sources/Jet_drive", 125, 0, 127, 1) * 0.0001;
 impulse_scale = 1;
 
 // RESONATOR
-  length1 = vslider("h:h2/h:res/len1", 31.1, 10, 35, 0.1)*0.01;
-  length2 = vslider("h:h2/h:res/len2", 28.5, 10, 35, 0.1)*0.01;
-  radius1 = vslider("h:h2/h:res/rad1", 7.2, 2, 11, 0.1)*0.001;
-  radius2 = vslider("h:h2/h:res/rad2", 3.1, 2, 12, 0.1)*0.001;
+  length1 = vslider("h:h2/h:res/len1", 0.31, 0.01, 0.35, 0.001);
+  length2 = vslider("h:h2/h:res/len2", 0.285, 0.01, 0.35, 0.001);
+  radius1 = vslider("h:h2/h:res/rad1", 0.72, 0.002, 0.011, 0.0001);
+  radius2 = vslider("h:h2/h:res/rad2", 0.31, 0.002, 0.012, 0.0001);
 
-  lossescoef = vslider("h:h2/h:res/losses", 3.13, 0.0, 7, 0.01)*0.00001;
+  lossescoef = vslider("h:h2/h:res/losses", 0.0000313, 0, 0.00007, 0.000001);
   rad_coef = vslider("h:h2/h:res/radiation", 0.6133, 0.6133, 0.8488, 0.0001);
 
 

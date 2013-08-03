@@ -41,9 +41,17 @@ gen:
 gen/%.cpp: tests/%-test.dsp
 	faust -a minimal.cpp -double -cn $(patsubst gen/%.cpp,%,$@) $< > $@
 
-impedance:
-	faust -a plot.cpp -o gen/resonator.cpp faust/resonator-test.dsp
-	g++ -Wall -O3 -lm  gen/resonator.cpp -o resonator
+compare: gen $(TESTS)
+	g++ -Wall -fpermissive tests/tests.cpp -g $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
+	./tests.out
+	cd orig/modules;make clean standalone;cd ../..
+	python compare.py
+
+compare_fast: gen $(TESTS)
+	g++ -Wall -fpermissive tests/tests.cpp -g $(FAUST) -lm -Igen/ -Isrc/ -o tests.out
+	./tests.out fast
+	cd orig/modules;make clean fast;cd ../..
+	python compare.py fast
 
 wavgen: 
 	faust -a minimal.cpp -double -cn flauta faust/flauta.dsp > gen/flauta_min.cpp

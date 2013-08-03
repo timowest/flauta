@@ -1,5 +1,6 @@
-// test for computing the entry impedance of the resonator
+import("resonator.dsp");
 
-import("flauta.dsp");
 
-//process = (1-1',0) : resonator ;
+reso = res~(_,lossesFilter) : (!,!,_,_) : calc : (!,!,_) ;
+
+process = 1-1' : reso ;

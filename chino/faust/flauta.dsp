@@ -28,4 +28,4 @@ import("resonator.dsp");
 // flauta
 flauta = (excitation : resonator) ~ (_,_) : (!,!,_) : (dac_scale * _) <: (_,_) ;
 
-process(pressure,turbulence_gain,vortex_ampli1,vortex_ampli2,channel_length,jet_height,jet_shape,labium_position,flue_labium_distance,delta_d,vibrato_gain,vibrato_freq,env_attack,env_decay,env_sustain,env_release,length1,length2,radius1,radius2,lossescoef) = flauta ;
+process = flauta ;

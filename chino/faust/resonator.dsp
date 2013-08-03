@@ -52,9 +52,7 @@ with {
 // 2portj
 twoportjunc = (_, _) <: (_,_,_,_) : (_,(_-_)*rk,_) : (_, (_ <: (_,_)) ,_ ) : (_+_, _+_)
 with {
-
    rk = ((radius2*radius2) - (radius1*radius1)) / ((radius2*radius2) + (radius1*radius1));
-
 };
 
 // resonador
@@ -67,9 +65,6 @@ with {
 // calculus of pressure and velocity
 calc(p_out, p_in) = ((p_in-p_out)*ONE_OVER_RHO_C, p_out+p_in) <: (_,_,!,_);  // Vac, Pp and Pp for output
 
-resonator(source,impulse) = source+impulse : res~(rad,lossesFilter) : (!,!,_,_) : calc ;
-
-
-
+resonator(source,impulse) = source+impulse : res~(_,_) : (!,!,_,_) : calc ;
 
 //process = resonator ;

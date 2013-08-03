@@ -3,28 +3,28 @@
 
 Fs=44100; % sample frequency
 f_hz=20:20000; % frequency range in Hertz
-N=Fs; % output length
+N=Fs/10; % output length
 f_range=20:5600; % useful frequency range
 f_use=f_range(1:Fs/N:end);
 index=f_use*N/Fs;
 
 %% Collecting experience data
-% read=csvread('../Measurements/LMA_Grande.csv',2,0);
-% Zexp=read(1:2*Fs/N:end,2);
 
-file_name='../Measurements/catarra.txt';
-%file_name='../Measurements/segundera.txt';
-%file_name='../Measurements/puntera.txt';
+file_name='../Measurements/antara14.csv';
+%file_name='../Measurements/antara24.csv';
+%file_name='../Measurements/antara34.csv';
+%file_name='../Measurements/antara44.csv';
+
 Zexp=get_data(file_name,f_use);
-
 Yexp_dB=imp_to_adm(Zexp');
 Yexp_square=Yexp_dB.^2;
 
-%% Initial parameters (m)
-%L1= 0.28; L2= 0.28; r1= 0.0095; r2= 0.0055; beta=0.003; % LMA
-L1= 0.111; L2= 0.124; r1= 0.0085; r2= 0.00525; beta=0.003; % catarra
-%L1= 0.28; L2= 0.26; r1= 0.0075; r2= 0.005; beta=0.003; % segundera
-%L1= 0.31; L2= 0.30; r1= 0.009; r2= 0.0055; beta=0.003; % puntera
+%% Initial parameters of antara tubes
+
+L1= 0.029; L2= 0.048; L3= 0.109 ; r1= 0.016; r2= 0.019; r3= 0.013; beta=0.003;
+L1= 0.028; L2= 0.055; L3= 0.116 ; r1= 0.0; r2= 0.019; r3= 0.013; beta=0.003;
+L1= 0.028; L2= 0.064; L3= 0.137 ; r1= 0.016; r2= 0.019; r3= 0.013; beta=0.003;
+L1= 0.030; L2= 0.076; L3= 0.154 ; r1= 0.016; r2= 0.019; r3= 0.013; beta=0.003;
 
 p_ini=[L1,L2,r1,r2,beta];
 

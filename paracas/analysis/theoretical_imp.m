@@ -1,4 +1,4 @@
-function [Z] = theoretical_imp_3tubes(p,f_use)
+function [Z] = theoretical_imp(p,f_use)
 
 c=343.54;  % sound speed
 

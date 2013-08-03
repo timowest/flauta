@@ -32,12 +32,12 @@ with {
 };
 
 //JET
-channel_length = (vslider("h:exc/h:Jet/channel len", 122, 1, 127, 1)+5)*0.001; 
-jet_height = vslider("h:exc/h:Jet/jet hgt", 118, 5, 127, 1) * 0.00001; 
-jet_shape = vslider("h:exc/h:Jet/jet shp", 121, 5, 127, 1)/127;
-flue_labium_distance = vslider("h:exc/h:Jet/fl-la dist", 13.7, 1, 16, 0.1)*0.001;
+channel_length = (vslider("h:exc/h:Jet/chan_len", 122, 1, 127, 1)+5)*0.001; 
+jet_height = vslider("h:exc/h:Jet/jet_hgt", 118, 5, 127, 1) * 0.00001; 
+jet_shape = vslider("h:exc/h:Jet/jet_shp", 121, 5, 127, 1)/127;
+flue_labium_distance = vslider("h:exc/h:Jet/fl-la_dist", 13.7, 1, 16, 0.1)*0.001;
 max_flue_labium_d = 0.016;
-labium_position = vslider("h:exc/h:Jet/lab pos", 8, 0, 127, 1)*0.00001;
+labium_position = vslider("h:exc/h:Jet/lab_pos", 8, 0, 127, 1)*0.00001;
 
 min_jet_vel = 1.0;
 max_jet_vel = 40;
@@ -48,10 +48,10 @@ jet_width = 0.02; // TODO : make jet width controllable (input * 0.001)
 
 
 //SOURCES 
-turbulence_gain = vslider("h:exc/h:Sources/turb gain", 16, 0, 227, 1) * 50 * 800;
-vortex_ampli1 = vslider("h:exc/h:Sources/h:Vortex/Vor a1", 42, 0, 127, 1) * 0.1;
-vortex_ampli2 = vslider("h:exc/h:Sources/h:Vortex/Vor a2", 39, 0, 127, 1) * 0.1;
-delta_d = vslider("h:exc/h:Sources/Jet drive", 125, 0, 127, 1) * 0.0001;
+turbulence_gain = vslider("h:exc/h:Sources/turb_gain", 16, 0, 227, 1) * 50 * 800;
+vortex_ampli1 = vslider("h:exc/h:Sources/h:Vortex/Vor_a1", 42, 0, 127, 1) * 0.1;
+vortex_ampli2 = vslider("h:exc/h:Sources/h:Vortex/Vor_a2", 39, 0, 127, 1) * 0.1;
+delta_d = vslider("h:exc/h:Sources/Jet_drive", 125, 0, 127, 1) * 0.0001;
 impulse_scale = 1;
 
 // RESONATOR
