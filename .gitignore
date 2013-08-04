@@ -5,10 +5,10 @@
 /faust/*-svg
 alsa-gtk
 log
-*.cpp~
 .project
-
-#TEMPORARY FILES
+*.cpp~
 *.dsp~
 *.h~
 *.py~
+*.txt~
+*.m~
